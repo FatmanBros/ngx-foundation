@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    [id]="ctlName"
+    [name]="ctlName"
+    [autocomplete]="autocomplete"
+    [maxlength]="maxLength"
+    [(ngModel)]="value"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (change)="onChange()"
+  />
+  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+</mat-form-field>
