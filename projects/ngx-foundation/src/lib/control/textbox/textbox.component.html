@@ -1,6 +1,7 @@
-<mat-form-field>
+<mat-form-field [appearance]="appearance">
   <mat-label>{{ label }}</mat-label>
-  <input matInput
+  <input
+    matInput
     [id]="ctlName"
     [name]="ctlName"
     [autocomplete]="autocomplete"
@@ -10,5 +11,6 @@
     (blur)="onBlur()"
     (change)="onChange()"
   />
+  <mat-hint>{{ hint }}</mat-hint>
   <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
 </mat-form-field>

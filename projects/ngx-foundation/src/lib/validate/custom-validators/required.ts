@@ -1,9 +1,9 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
 import {
-  ValidatorOptions,
-  VALIDATOR_OPTIONS
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS,
 } from '../../ngx-foundation.module';
 import { Util } from '../../util/utils';
 import { BaseValidator } from '../base-validator';
@@ -14,8 +14,8 @@ import { Validation, Validations } from '../validation';
   providedIn: 'root',
 })
 export class Required extends BaseValidator {
-  constructor(@Inject(VALIDATOR_OPTIONS) options: ValidatorOptions) {
-    super(options);
+  constructor(injector: Injector) {
+    super(injector);
   }
   public validator(): { [key: string]: CustomValidatorFn } {
     return {
@@ -30,7 +30,9 @@ export class Required extends BaseValidator {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       if (!control.labelText) {
-        throw new Error('Unable to generate validation message because labelText item of CustomFormControl is not set.');
+        throw new Error(
+          'Unable to generate validation message because labelText item of CustomFormControl is not set.'
+        );
       }
       if (Validations.isBlank(control.value)) {
         return {

@@ -6,7 +6,7 @@ import {
   Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { autocomplete } from '../../enum/enums';
+import { Autocomplete } from '../../enum/enums';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
@@ -23,7 +23,9 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextboxComponent extends BaseControlComponent {
-  @Input() autocomplete: autocomplete = autocomplete.newPassword;
+  @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
+  @Input() hint: string = '';
+  
 
   constructor(injector: Injector) {
     super(injector);

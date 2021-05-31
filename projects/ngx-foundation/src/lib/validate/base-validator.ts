@@ -1,8 +1,13 @@
-import { Inject } from '@angular/core';
-import { ValidatorOptions, VALIDATOR_OPTIONS } from '../ngx-foundation.module';
+import { Injector } from '@angular/core';
+import {
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS
+} from '../ngx-foundation.module';
 
 export abstract class BaseValidator {
-  constructor(@Inject(VALIDATOR_OPTIONS) protected options: ValidatorOptions) {
-  }
+  protected options: ngxFoundationOptions;
 
+  constructor(injector: Injector) {
+    this.options = injector.get(NGX_FOUNDATION_OPTIONS);
+  }
 }

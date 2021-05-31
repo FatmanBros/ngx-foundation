@@ -2,16 +2,22 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
+  Inject,
   Injector,
   Input,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
 import {
   ControlValueAccessor,
   NgControl,
-  ValidationErrors
+  ValidationErrors,
 } from '@angular/forms';
+import { Appearance } from '../enum/enums';
+import {
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS,
+} from '../ngx-foundation.module';
 import { Util } from '../util/utils';
 import { BaseComponent } from './base-component';
 import { CustomFormControl } from './custom-form-control';
@@ -24,8 +30,8 @@ export abstract class BaseControlComponent
   implements OnInit, AfterViewInit, ControlValueAccessor
 {
   @Input() label!: string;
-
   @Input() formControlName!: string;
+  @Input() appearance: Appearance;
 
   @Output() focus = new EventEmitter<CustomFormControl>();
   @Output() blur = new EventEmitter<CustomFormControl>();
@@ -39,8 +45,13 @@ export abstract class BaseControlComponent
     return this.control?.maxLength;
   }
 
+  protected options: ngxFoundationOptions;
+
   constructor(private injector: Injector) {
     super(injector);
+
+    this.options = injector.get(NGX_FOUNDATION_OPTIONS);
+    this.appearance = this.options.appearance ?? Appearance.standard;
   }
 
   ngOnInit() {
@@ -57,6 +68,8 @@ export abstract class BaseControlComponent
         this.detectorRef.markForCheck();
       })
     );
+
+    this.label = this.control.labelText;
   }
 
   public value: string = '';
@@ -108,8 +121,9 @@ export abstract class BaseControlComponent
       return '';
     }
 
-    return Object.keys(this.control.errors)
+    const msg = Object.keys(this.control.errors)
       .map((key) => (this.control.errors as ValidationErrors)[key])
       .join('\r\n');
+    return msg;
   }
 }

@@ -12,9 +12,11 @@ export class Util {
   }
 
   public static message(s1: string, ...replaces: string[]) {
-    return replaces.reduce((replace, v, i) => {
-      const regexp = new RegExp(`$[${i}]`, 'g');
-      return s1.replace(regexp, replace);
+    let msg: string = s1;
+    replaces.forEach((replace, i) => {
+      const regexp = new RegExp(`\\\$${i}`, 'g');
+      msg = msg.replace(regexp, replace);
     });
+    return msg;
   }
 }
