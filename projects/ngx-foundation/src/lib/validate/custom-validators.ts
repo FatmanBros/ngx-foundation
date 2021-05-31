@@ -1,4 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
+import { FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { CustomFormControl } from '../control/custom-form-control';
 import { Required } from './custom-validators/required';
 
 export interface CustomValidatorFn {
@@ -15,5 +18,25 @@ export class CustomValidators {
   constructor(injector: Injector) {
     const required = injector.get(Required);
     this.required = required.validator;
+  }
+}
+
+export class CustomErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: CustomFormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    if (!control) {
+      return false;
+    }
+    if (!control.errors) {
+      return false;
+    }
+    if (control.dirty || control.touched || isSubmitted) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

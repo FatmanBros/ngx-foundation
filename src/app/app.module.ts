@@ -18,9 +18,9 @@ import { NormalComponent } from './examples/normal/normal.component';
     ReactiveFormsModule,
     NgxFoundationModule.init({
       messages: {
-        required: '$0は必須',
-        maxLength: '$0は$1文字以内',
-        minLength: '$0は$1文字以上',
+        required: '$0は必須です。',
+        maxLength: '$0は$1文字以内で入力してください。',
+        minLength: '$0は$1文字以上で入力してください。',
       },
       appearance: Appearance.outline,
     }),

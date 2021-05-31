@@ -7,12 +7,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 const modules = [
+  MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
   MatRadioModule,
   MatSelectModule,
   MatButtonModule,
-  MatFormFieldModule,
 ];
 
 @NgModule({

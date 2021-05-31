@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
-  Inject,
   Injector,
   Input,
   OnInit,
@@ -19,6 +18,7 @@ import {
   NGX_FOUNDATION_OPTIONS,
 } from '../ngx-foundation.module';
 import { Util } from '../util/utils';
+import { CustomErrorStateMatcher } from '../validate/custom-validators';
 import { BaseComponent } from './base-component';
 import { CustomFormControl } from './custom-form-control';
 
@@ -27,9 +27,9 @@ import { CustomFormControl } from './custom-form-control';
 })
 export abstract class BaseControlComponent
   extends BaseComponent
-  implements OnInit, AfterViewInit, ControlValueAccessor
+  implements OnInit, ControlValueAccessor
 {
-  @Input() label!: string;
+  @Input() labelText!: string;
   @Input() formControlName!: string;
   @Input() appearance: Appearance;
 
@@ -38,8 +38,9 @@ export abstract class BaseControlComponent
   @Output() change = new EventEmitter<CustomFormControl>();
 
   public ngControl!: NgControl;
-
   public control!: CustomFormControl;
+
+  public matcher = new CustomErrorStateMatcher();
 
   public get maxLength() {
     return this.control?.maxLength;
@@ -52,15 +53,17 @@ export abstract class BaseControlComponent
 
     this.options = injector.get(NGX_FOUNDATION_OPTIONS);
     this.appearance = this.options.appearance ?? Appearance.standard;
+
+    this.ctlName = (this.formControlName ?? '') + Util.random();
   }
 
   ngOnInit() {
     this.ngControl = this.injector.get(NgControl);
-    this.ctlName = (this.formControlName ?? '') + Util.random();
   }
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     this.control = this.ngControl.control as CustomFormControl;
+    this.labelText = this.control.labelText;
 
     // ビュー更新
     this.subscriptions.push(
@@ -68,8 +71,6 @@ export abstract class BaseControlComponent
         this.detectorRef.markForCheck();
       })
     );
-
-    this.label = this.control.labelText;
   }
 
   public value: string = '';
@@ -84,14 +85,13 @@ export abstract class BaseControlComponent
   }
 
   protected _onChangeCallback = (_: any) => {};
-  protected _onTouchedCallback = (_: any) => {};
+  protected _onTouchedCallback = () => {};
   registerOnChange(fn: any): void {
     this._onChangeCallback = fn;
   }
 
   writeValue(v: any): void {
     if (v !== this.value) {
-      // 各プロパティに値を格納する
       this.value = v;
     }
   }
@@ -105,6 +105,7 @@ export abstract class BaseControlComponent
   }
 
   onBlur() {
+    this._onTouchedCallback();
     this.blur.emit(this.control);
   }
 
@@ -112,18 +113,18 @@ export abstract class BaseControlComponent
     this.change.emit(this.control);
   }
 
-  public get errorMessage(): string {
+  public get errorMessage(): string[] {
     if (!this.control) {
-      return '';
+      return [];
     }
 
     if (!this.control.errors) {
-      return '';
+      return [];
     }
 
-    const msg = Object.keys(this.control.errors)
-      .map((key) => (this.control.errors as ValidationErrors)[key])
-      .join('\r\n');
+    const msg = Object.keys(this.control.errors).map(
+      (key) => (this.control.errors as ValidationErrors)[key]
+    );
     return msg;
   }
 }

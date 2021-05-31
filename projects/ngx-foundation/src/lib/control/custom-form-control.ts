@@ -2,7 +2,7 @@ import {
   AsyncValidatorFn,
   FormControl,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { CustomValidatorFn } from '../validate/custom-validators';
@@ -21,7 +21,7 @@ export class CustomFormControl extends FormControl {
   constructor(customForm: CustomForm) {
     super(customForm.formState);
     this.labelText = customForm.labelText;
-    
+
     this.validators = customForm.validators;
 
     const customValidators = this.createCustomValidatorFns(
@@ -30,23 +30,18 @@ export class CustomFormControl extends FormControl {
     this.setValidators(Validators.compose(customValidators));
   }
 
-
   /**
    * transform custom validators
-   * 
-   * @param validators 
-   * @returns 
+   *
+   * @param validators
+   * @returns
    */
   private createCustomValidatorFns(
     validators: { [key: string]: CustomValidatorFn }[] = []
   ): ValidatorFn[] {
-    let fns: ValidatorFn[] = [];
-    validators.forEach((fn, i) => {
+    const fns = validators.map((fn, i) => {
       const key: string = Object.keys(fn)[0];
       const define: CustomValidatorFn = fn[key] as CustomValidatorFn;
-      const validatorKey: string = `${key}_${i}`;
-      fns.push(define.func(validatorKey));
-
       switch (key) {
         case Validation.required:
           this.required = true;
@@ -57,6 +52,9 @@ export class CustomFormControl extends FormControl {
         default:
           break;
       }
+
+      const validatorKey: string = `${key}_${i}`;
+      return define.func(validatorKey);
     });
 
     return fns;

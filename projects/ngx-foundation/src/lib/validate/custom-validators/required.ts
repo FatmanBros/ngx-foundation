@@ -17,14 +17,14 @@ export class Required extends BaseValidator {
   constructor(injector: Injector) {
     super(injector);
   }
-  public validator(): { [key: string]: CustomValidatorFn } {
+  public validator: () => { [key: string]: CustomValidatorFn } = () => {
     return {
       [Validation.required]: {
         func: this.func,
         args: null,
       },
     };
-  }
+  };
 
   public func = (validatorKey: any) => {
     return (c: AbstractControl) => {

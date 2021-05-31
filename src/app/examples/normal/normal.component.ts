@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CustomFormControl } from '@ngx-foundation/ngx-foundation';
-import { CustomValidators } from '@ngx-foundation/ngx-foundation';
-import { Required } from 'projects/ngx-foundation/src/lib/validate/custom-validators/required';
+import { CustomFormControl, CustomValidators } from '@ngx-foundation/ngx-foundation';
 
 @Component({
   selector: 'app-normal',
@@ -14,11 +12,11 @@ export class NormalComponent implements OnInit {
     test: new CustomFormControl({
       labelText: 'テスト',
       value: '',
-      validators: [this.required.validator()],
+      validators: [this.customValidators.required()],
     }),
   });
 
-  constructor(private fb: FormBuilder, private required: Required) {}
+  constructor(private fb: FormBuilder, private customValidators: CustomValidators) {}
 
   ngOnInit() {}
 }
