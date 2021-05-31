@@ -1,7 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, Type } from '@angular/core';
 import { FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomFormControl } from '../control/custom-form-control';
+import { BaseValidator } from './base-validator';
+import { MaxLength } from './custom-validators/max-length';
 import { Required } from './custom-validators/required';
 
 export interface CustomValidatorFn {
@@ -13,11 +15,17 @@ export interface CustomValidatorFn {
   providedIn: 'root',
 })
 export class CustomValidators {
-  public required: () => { [key: string]: CustomValidatorFn };
+  public required: (arg?: null) => { [key: string]: CustomValidatorFn };
+  public maxLength: (ln: number) => { [key: string]: CustomValidatorFn };
 
-  constructor(injector: Injector) {
-    const required = injector.get(Required);
-    this.required = required.validator;
+  constructor(private injector: Injector) {
+    this.required = this.getValidator(Required);
+    this.maxLength = this.getValidator(MaxLength);
+  }
+
+  getValidator(validator: typeof BaseValidator) {
+    const _validator = this.injector.get(validator);
+    return _validator.validator;
   }
 }
 

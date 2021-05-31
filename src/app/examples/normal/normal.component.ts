@@ -9,10 +9,15 @@ import { CustomFormControl, CustomValidators } from '@ngx-foundation/ngx-foundat
 })
 export class NormalComponent implements OnInit {
   public form: FormGroup = this.fb.group({
-    test: new CustomFormControl({
-      labelText: 'テスト',
+    test_textbox: new CustomFormControl({
+      labelText: 'テスト テキストボックス',
       value: '',
-      validators: [this.customValidators.required()],
+      validators: [this.customValidators.required(), this.customValidators.maxLength(10)],
+    }),
+    test_textarea: new CustomFormControl({
+      labelText: 'テスト テキストエリア',
+      value: '',
+      validators: [this.customValidators.required(), this.customValidators.maxLength(2000)],
     }),
   });
 

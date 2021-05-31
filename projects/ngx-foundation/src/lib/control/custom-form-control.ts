@@ -10,8 +10,8 @@ import { Validation } from '../validate/validation';
 
 export class CustomFormControl extends FormControl {
   public validators?: { [key: string]: CustomValidatorFn }[];
-
   public viewUpdate$ = new Subject();
+  public args: { [key: string]: any } = {};
 
   public labelText!: string;
   public required!: boolean;
@@ -54,6 +54,7 @@ export class CustomFormControl extends FormControl {
       }
 
       const validatorKey: string = `${key}_${i}`;
+      this.args[validatorKey] = define.args;
       return define.func(validatorKey);
     });
 

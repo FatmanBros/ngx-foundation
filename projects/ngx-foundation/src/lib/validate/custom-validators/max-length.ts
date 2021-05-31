@@ -1,10 +1,6 @@
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
-import {
-  ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS,
-} from '../../ngx-foundation.module';
 import { Util } from '../../util/utils';
 import { BaseValidator } from '../base-validator';
 import { CustomValidatorFn } from '../custom-validators';
@@ -13,15 +9,15 @@ import { Validation, Validations } from '../validation';
 @Injectable({
   providedIn: 'root',
 })
-export class Required extends BaseValidator {
+export class MaxLength extends BaseValidator {
   constructor(injector: Injector) {
     super(injector);
   }
-  public validator: () => { [key: string]: CustomValidatorFn } = () => {
+  public validator = (len: number) => {
     return {
-      [Validation.required]: {
+      [Validation.maxLength]: {
         func: this.func,
-        args: null,
+        args: len,
       },
     };
   };
@@ -29,16 +25,12 @@ export class Required extends BaseValidator {
   public func = (validatorKey: any) => {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
-      if (!control.labelText) {
-        throw new Error(
-          'Unable to generate validation message because labelText item of CustomFormControl is not set.'
-        );
-      }
-      if (Validations.isBlank(control.value)) {
+      const maxLength: number = control.args[validatorKey];
+      if (control.value?.length > maxLength) {
         return {
           [validatorKey]: Util.message(
-            this.options.messages[Validation.required],
-            control.labelText
+            this.options.messages[Validation.maxLength],
+            maxLength + ''
           ),
         };
       } else {
