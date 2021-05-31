@@ -22,8 +22,4 @@ export class SelectComponent extends BaseControlComponent {
     super(injector);
   }
 
-
-  ngOnInit(): void {
-  }
-
 }

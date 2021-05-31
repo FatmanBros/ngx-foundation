@@ -17,3 +17,5 @@ export * from './lib/control/select/select.component';
 
 export * from './lib/validate/custom-validators';
 export * from './lib/control/custom-form-control';
+
+export * from './lib/constants/constants';

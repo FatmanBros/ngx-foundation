@@ -45,13 +45,13 @@ export abstract class BaseControlComponent
     return this.control?.maxLength;
   }
 
-  protected options: ngxFoundationOptions;
+  protected ngxFoundationOptions: ngxFoundationOptions;
 
   constructor(private injector: Injector) {
     super(injector);
 
-    this.options = injector.get(NGX_FOUNDATION_OPTIONS);
-    this.appearance = this.options.appearance ?? Appearance.standard;
+    this.ngxFoundationOptions = injector.get(NGX_FOUNDATION_OPTIONS);
+    this.appearance = this.ngxFoundationOptions.appearance ?? Appearance.standard;
 
     const name =  this.elementRef.nativeElement.getAttribute('formControlName');
     this.ctlName = (name ?? '') + Util.random();

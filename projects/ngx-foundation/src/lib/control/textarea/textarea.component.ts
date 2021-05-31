@@ -37,7 +37,7 @@ export class TextareaComponent extends BaseControlComponent {
       return '';
     }
     return Util.message(
-      this.options.option.numberOfWords,
+      this.ngxFoundationOptions.option.numberOfWords,
       remaining + '',
       this.maxLength + ''
     );

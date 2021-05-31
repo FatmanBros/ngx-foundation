@@ -20,6 +20,9 @@ export class CustomFormControl extends FormControl {
 
   constructor(customForm: CustomForm) {
     super(customForm.formState);
+    
+    this.setValue(customForm.value);
+    
     this.labelText = customForm.labelText;
 
     this.validators = customForm.validators;
@@ -82,7 +85,7 @@ export class CustomFormControl extends FormControl {
 
 export interface CustomForm {
   labelText: string;
-  value: string;
+  value: any;
   formState?: any;
   validators?: { [key: string]: CustomValidatorFn }[];
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;

@@ -19,3 +19,11 @@ export enum Appearance {
   fill = 'fill',
   outline = 'outline',
 }
+
+
+export enum LabelDirection {
+  top,
+  left,
+  right,
+  bottom
+}
