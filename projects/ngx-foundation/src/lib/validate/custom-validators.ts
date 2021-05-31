@@ -30,7 +30,7 @@ export class CustomErrorStateMatcher implements ErrorStateMatcher {
     if (!control) {
       return false;
     }
-    if (!control.errors) {
+    if (!control.invalid) {
       return false;
     }
     if (control.dirty || control.touched || isSubmitted) {

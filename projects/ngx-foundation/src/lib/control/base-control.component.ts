@@ -27,7 +27,7 @@ import { CustomFormControl } from './custom-form-control';
 })
 export abstract class BaseControlComponent
   extends BaseComponent
-  implements OnInit, ControlValueAccessor
+  implements OnInit, AfterViewInit ,ControlValueAccessor
 {
   @Input() labelText!: string;
   @Input() formControlName!: string;
@@ -64,7 +64,9 @@ export abstract class BaseControlComponent
   ngAfterContentInit(): void {
     this.control = this.ngControl.control as CustomFormControl;
     this.labelText = this.control.labelText;
+  }
 
+  ngAfterViewInit() {
     // ビュー更新
     this.subscriptions.push(
       this.control.viewUpdate$.subscribe(() => {
@@ -73,31 +75,17 @@ export abstract class BaseControlComponent
     );
   }
 
-  public value: string = '';
-
-  public get ctlValue() {
-    return this.value;
-  }
-
-  public set ctlValue(val: any) {
-    this.value = val;
-    this._onChangeCallback(val);
-  }
-
   protected _onChangeCallback = (_: any) => {};
   protected _onTouchedCallback = () => {};
   registerOnChange(fn: any): void {
     this._onChangeCallback = fn;
   }
 
-  writeValue(v: any): void {
-    if (v !== this.value) {
-      this.value = v;
-    }
-  }
-
   registerOnTouched(fn: any): void {
     this._onTouchedCallback = fn;
+  }
+
+  writeValue(v: any): void {
   }
 
   onFocus() {
