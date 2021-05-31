@@ -5,6 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const modules = [
   MatFormFieldModule,
@@ -13,6 +15,8 @@ const modules = [
   MatRadioModule,
   MatSelectModule,
   MatButtonModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 ];
 
 @NgModule({

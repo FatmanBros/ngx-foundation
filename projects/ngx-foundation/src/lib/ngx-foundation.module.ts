@@ -13,6 +13,7 @@ import { Appearance } from './enum/enums';
 import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import { Validation } from './validate/validation';
+import { DatepickerComponent } from './control/datepicker/datepicker.component';
 
 export const NGX_FOUNDATION_OPTIONS = new InjectionToken<ngxFoundationOptions>(
   'ngx.foundation.options'
@@ -52,6 +53,7 @@ export interface ngxFoundationOptions {
     RadioComponent,
     ButtonComponent,
     LabelComponent,
+    DatepickerComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, UiModule],
   exports: [
@@ -63,6 +65,7 @@ export interface ngxFoundationOptions {
     RadioComponent,
     ButtonComponent,
     LabelComponent,
+    DatepickerComponent,
   ],
   providers: [
     {

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   CustomFormControl,
   CustomValidators,
+  LabelDirection,
 } from '@ngx-foundation/ngx-foundation';
-import { LabelDirection } from 'projects/ngx-foundation/src/lib/enum/enums';
 
 @Component({
   selector: 'app-normal',
@@ -50,6 +50,10 @@ export class NormalComponent implements OnInit {
     test_radio: new CustomFormControl({
       labelText: 'テスト ラジオボタン',
       value: '3',
+    }),
+    test_date: new CustomFormControl({
+      labelText: 'テスト 日付',
+      value: new Date(),
     }),
   });
 
