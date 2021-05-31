@@ -4,6 +4,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomFormControl } from '../control/custom-form-control';
 import { BaseValidator } from './base-validator';
 import { MaxLength } from './custom-validators/max-length';
+import { MinLength } from './custom-validators/min-length';
 import { Required } from './custom-validators/required';
 
 export interface CustomValidatorFn {
@@ -16,10 +17,12 @@ export interface CustomValidatorFn {
 })
 export class CustomValidators {
   public required: (arg?: null) => { [key: string]: CustomValidatorFn };
+  public minLength: (ln: number) => { [key: string]: CustomValidatorFn };
   public maxLength: (ln: number) => { [key: string]: CustomValidatorFn };
 
   constructor(private injector: Injector) {
     this.required = this.getValidator(Required);
+    this.minLength = this.getValidator(MinLength);
     this.maxLength = this.getValidator(MaxLength);
   }
 

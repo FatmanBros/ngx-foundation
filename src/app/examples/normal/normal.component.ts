@@ -27,6 +27,7 @@ export class NormalComponent implements OnInit {
       value: '',
       validators: [
         this.customValidators.required(),
+        this.customValidators.minLength(5),
         this.customValidators.maxLength(10),
       ],
     }),
