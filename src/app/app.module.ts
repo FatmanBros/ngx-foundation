@@ -22,6 +22,9 @@ import { NormalComponent } from './examples/normal/normal.component';
         maxLength: '$0文字以内で入力してください。',
         minLength: '$0文字以上で入力してください。',
       },
+      option: {
+        numberOfWords: '残り$0文字',
+      },
       appearance: Appearance.outline,
     }),
   ],

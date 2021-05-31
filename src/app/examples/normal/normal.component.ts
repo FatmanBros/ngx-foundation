@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CustomFormControl, CustomValidators } from '@ngx-foundation/ngx-foundation';
+import {
+  CustomFormControl,
+  CustomValidators,
+} from '@ngx-foundation/ngx-foundation';
 
 @Component({
   selector: 'app-normal',
@@ -12,16 +15,25 @@ export class NormalComponent implements OnInit {
     test_textbox: new CustomFormControl({
       labelText: 'テスト テキストボックス',
       value: '',
-      validators: [this.customValidators.required(), this.customValidators.maxLength(10)],
+      validators: [
+        this.customValidators.required(),
+        this.customValidators.maxLength(10),
+      ],
     }),
     test_textarea: new CustomFormControl({
       labelText: 'テスト テキストエリア',
       value: '',
-      validators: [this.customValidators.required(), this.customValidators.maxLength(2000)],
+      validators: [
+        this.customValidators.required(),
+        this.customValidators.maxLength(2000),
+      ],
     }),
   });
 
-  constructor(private fb: FormBuilder, private customValidators: CustomValidators) {}
+  constructor(
+    private fb: FormBuilder,
+    private customValidators: CustomValidators
+  ) {}
 
   ngOnInit() {}
 }

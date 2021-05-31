@@ -29,9 +29,8 @@ export abstract class BaseControlComponent
   extends BaseComponent
   implements OnInit, AfterViewInit ,ControlValueAccessor
 {
-  @Input() labelText!: string;
-  @Input() formControlName!: string;
-  @Input() appearance: Appearance;
+  @Input() labelText: string = '';
+  @Input() appearance: Appearance = Appearance.standard;
 
   @Output() focus = new EventEmitter<CustomFormControl>();
   @Output() blur = new EventEmitter<CustomFormControl>();
@@ -54,7 +53,8 @@ export abstract class BaseControlComponent
     this.options = injector.get(NGX_FOUNDATION_OPTIONS);
     this.appearance = this.options.appearance ?? Appearance.standard;
 
-    this.ctlName = (this.formControlName ?? '') + Util.random();
+    const name =  this.elementRef.nativeElement.getAttribute('formControlName');
+    this.ctlName = (name ?? '') + Util.random();
   }
 
   ngOnInit() {

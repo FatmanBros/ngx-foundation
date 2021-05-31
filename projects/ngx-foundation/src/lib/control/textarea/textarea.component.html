@@ -1,1 +1,18 @@
-<p>textarea works!</p>
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{ labelText }}</mat-label>
+  <textarea
+    matInput
+    [matTextareaAutosize]="isAutoSize"
+    [formControl]="control"
+    [id]="ctlName"
+    [name]="ctlName"
+    [maxlength]="maxLength"
+    [rows]="rows"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (change)="onChange()"
+    [errorStateMatcher]="matcher"
+  ></textarea>
+  <mat-hint>{{ numberOfWords }}</mat-hint>
+  <mat-error *ngFor="let err of errorMessage">{{ err }}</mat-error>
+</mat-form-field>

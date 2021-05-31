@@ -23,7 +23,10 @@ export const defaultOptions: ngxFoundationOptions = {
     [Validation.maxLength]: 'up to $1 characters for $0',
     [Validation.minLength]: 'at least $1 characters for $0',
   },
-  appearance: Appearance.standard
+  option: {
+    numberOfWords: '$0 / $1',
+  },
+  appearance: Appearance.standard,
 };
 
 export interface ngxFoundationOptions {
@@ -32,7 +35,11 @@ export interface ngxFoundationOptions {
     [Validation.maxLength]: string;
     [Validation.minLength]: string;
   };
-  appearance?: Appearance,
+
+  option: {
+    numberOfWords: string;
+  };
+  appearance?: Appearance;
 }
 
 @NgModule({
@@ -46,12 +53,7 @@ export interface ngxFoundationOptions {
     ButtonComponent,
     LabelComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UiModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, UiModule],
   exports: [
     NgxFoundationComponent,
     TextboxComponent,
