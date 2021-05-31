@@ -1,11 +1,17 @@
 import {
+  AfterViewInit,
   Component,
   EventEmitter,
   Injector,
   Input,
-  Output,
+  OnInit,
+  Output
 } from '@angular/core';
-import { NgControl, ValidationErrors } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  NgControl,
+  ValidationErrors
+} from '@angular/forms';
 import { Util } from '../util/utils';
 import { BaseComponent } from './base-component';
 import { CustomFormControl } from './custom-form-control';
@@ -13,7 +19,10 @@ import { CustomFormControl } from './custom-form-control';
 @Component({
   template: '',
 })
-export abstract class BaseControlComponent extends BaseComponent {
+export abstract class BaseControlComponent
+  extends BaseComponent
+  implements OnInit, AfterViewInit, ControlValueAccessor
+{
   @Input() label!: string;
 
   @Input() formControlName!: string;
@@ -27,7 +36,7 @@ export abstract class BaseControlComponent extends BaseComponent {
   public control!: CustomFormControl;
 
   public get maxLength() {
-    return this.control.maxLength;
+    return this.control?.maxLength;
   }
 
   constructor(private injector: Injector) {
@@ -39,7 +48,7 @@ export abstract class BaseControlComponent extends BaseComponent {
     this.ctlName = (this.formControlName ?? '') + Util.random();
   }
 
-  ngAfterContaintInit() {
+  ngAfterViewInit(): void {
     this.control = this.ngControl.control as CustomFormControl;
 
     // ビュー更新
@@ -50,12 +59,32 @@ export abstract class BaseControlComponent extends BaseComponent {
     );
   }
 
-  public get value() {
-    return this.control.value;
+  public value: string = '';
+
+  public get ctlValue() {
+    return this.value;
   }
 
-  public set value(val: any) {
-    this.control.setValue(val);
+  public set ctlValue(val: any) {
+    this.value = val;
+    this._onChangeCallback(val);
+  }
+
+  protected _onChangeCallback = (_: any) => {};
+  protected _onTouchedCallback = (_: any) => {};
+  registerOnChange(fn: any): void {
+    this._onChangeCallback = fn;
+  }
+
+  writeValue(v: any): void {
+    if (v !== this.value) {
+      // 各プロパティに値を格納する
+      this.value = v;
+    }
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouchedCallback = fn;
   }
 
   onFocus() {
@@ -80,7 +109,7 @@ export abstract class BaseControlComponent extends BaseComponent {
     }
 
     return Object.keys(this.control.errors)
-      .map((key) => (this.control.errors as ValidationErrors)[key].message)
+      .map((key) => (this.control.errors as ValidationErrors)[key])
       .join('\r\n');
   }
 }

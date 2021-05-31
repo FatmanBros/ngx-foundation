@@ -8,7 +8,7 @@ export class Util {
 
     return [...Array(N)]
       .map((_) => charset[Math.floor(Math.random() * charset.length)])
-      .join();
+      .join('');
   }
 
   public static message(s1: string, ...replaces: string[]) {

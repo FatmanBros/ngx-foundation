@@ -12,7 +12,7 @@ import { Required } from 'projects/ngx-foundation/src/lib/validate/custom-valida
 export class NormalComponent implements OnInit {
   public form: FormGroup = this.fb.group({
     test: new CustomFormControl({
-      label: 'テスト',
+      labelText: 'テスト',
       value: '',
       validators: [this.required.validator()],
     }),

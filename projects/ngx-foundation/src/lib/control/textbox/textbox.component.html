@@ -1,11 +1,11 @@
 <mat-form-field>
   <mat-label>{{ label }}</mat-label>
-  <input
+  <input matInput
     [id]="ctlName"
     [name]="ctlName"
     [autocomplete]="autocomplete"
     [maxlength]="maxLength"
-    [(ngModel)]="value"
+    [(ngModel)]="ctlValue"
     (focus)="onFocus()"
     (blur)="onBlur()"
     (change)="onChange()"

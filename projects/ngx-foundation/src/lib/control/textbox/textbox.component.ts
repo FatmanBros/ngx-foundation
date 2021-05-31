@@ -3,7 +3,7 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { autocomplete } from '../../enum/enums';
@@ -29,5 +29,4 @@ export class TextboxComponent extends BaseControlComponent {
     super(injector);
   }
 
-  ngOnInit(): void {}
 }

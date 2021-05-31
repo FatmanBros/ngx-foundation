@@ -1,11 +1,8 @@
 import { Inject } from '@angular/core';
-import { ValidatorOptoins, VALIDATOR_OPTIONS } from '../ngx-foundation.module';
-import { Validation } from './validation';
+import { ValidatorOptions, VALIDATOR_OPTIONS } from '../ngx-foundation.module';
 
-export class BaseValidator {
-  constructor(@Inject(VALIDATOR_OPTIONS) protected options: ValidatorOptoins) {};
-
-  protected message(key: Validation.required | Validation.maxLength | Validation.minLength): string {
-    return this.options.messages[key];
+export abstract class BaseValidator {
+  constructor(@Inject(VALIDATOR_OPTIONS) protected options: ValidatorOptions) {
   }
+
 }

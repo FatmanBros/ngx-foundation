@@ -1,9 +1,8 @@
-import { AfterViewInit, Component } from '@angular/core';
 import {
   AsyncValidatorFn,
   FormControl,
   ValidatorFn,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { CustomValidatorFn } from '../validate/custom-validators';
@@ -21,6 +20,8 @@ export class CustomFormControl extends FormControl {
 
   constructor(customForm: CustomForm) {
     super(customForm.formState);
+    this.labelText = customForm.labelText;
+    
     this.validators = customForm.validators;
 
     const customValidators = this.createCustomValidatorFns(
@@ -81,7 +82,7 @@ export class CustomFormControl extends FormControl {
 }
 
 export interface CustomForm {
-  label: string;
+  labelText: string;
   value: string;
   formState?: any;
   validators?: { [key: string]: CustomValidatorFn }[];

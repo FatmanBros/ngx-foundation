@@ -13,10 +13,10 @@ import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import { Validation } from './validate/validation';
 
-export const VALIDATOR_OPTIONS = new InjectionToken<ValidatorOptoins>(
+export const VALIDATOR_OPTIONS = new InjectionToken<ValidatorOptions>(
   'ngx.foundation.validator.options'
 );
-export const defaultMessages: ValidatorOptoins = {
+export const defaultMessages: ValidatorOptions = {
   messages: {
     [Validation.required]: '$0 is required',
     [Validation.maxLength]: 'up to $1 characters for $0',
@@ -24,7 +24,7 @@ export const defaultMessages: ValidatorOptoins = {
   },
 };
 
-export interface ValidatorOptoins {
+export interface ValidatorOptions {
   messages: {
     [Validation.required]: string;
     [Validation.maxLength]: string;
@@ -68,7 +68,7 @@ export interface ValidatorOptoins {
 })
 export class NgxFoundationModule {
   static init(
-    options: ValidatorOptoins
+    options: ValidatorOptions
   ): ModuleWithProviders<NgxFoundationModule> {
     return {
       ngModule: NgxFoundationModule,
