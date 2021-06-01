@@ -31,6 +31,8 @@ import { NormalComponent } from './examples/normal/normal.component';
         required: '必須です。',
         maxLength: '$0文字以内で入力してください。',
         minLength: '$0文字以上で入力してください。',
+        minDate: '$0日以降の日付を入力してください。',
+        maxDate: '$0日以前の日付を入力してください。',
       },
       option: {
         numberOfWords: '残り$0文字',

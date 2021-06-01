@@ -23,6 +23,8 @@ export const defaultOptions: ngxFoundationOptions = {
     [Validation.required]: '$0 is required',
     [Validation.maxLength]: 'up to $1 characters for $0',
     [Validation.minLength]: 'at least $1 characters for $0',
+    [Validation.maxDate]: '',
+    [Validation.minDate]: '',
   },
   option: {
     numberOfWords: '$0 / $1',
@@ -35,6 +37,8 @@ export interface ngxFoundationOptions {
     [Validation.required]: string;
     [Validation.maxLength]: string;
     [Validation.minLength]: string;
+    [Validation.maxDate]: string;
+    [Validation.minDate]: string;
   };
 
   option: {

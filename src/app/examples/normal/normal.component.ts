@@ -5,6 +5,7 @@ import {
   CustomValidators,
   LabelDirection,
 } from '@ngx-foundation/ngx-foundation';
+import { DateUtils } from '../utils/date-utils';
 
 @Component({
   selector: 'app-normal',
@@ -54,6 +55,9 @@ export class NormalComponent implements OnInit {
     test_date: new CustomFormControl({
       labelText: 'テスト 日付',
       value: new Date(),
+      validators: [
+        this.customValidators.minDate(DateUtils.getToday())
+      ]
     }),
   });
 
