@@ -1,18 +1,11 @@
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
-import {
-  ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS,
-} from '../../ngx-foundation.module';
 import { Util } from '../../util/utils';
 import { BaseValidator } from '../base-validator';
 import { CustomValidatorFn } from '../custom-validators';
 import { Validation, Validations } from '../validation';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class Required extends BaseValidator {
   constructor(injector: Injector) {
     super(injector);

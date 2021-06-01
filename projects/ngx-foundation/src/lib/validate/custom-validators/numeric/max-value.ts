@@ -1,6 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import * as moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
 import { Util } from '../../../util/utils';
 import { BaseValidator } from '../../base-validator';
