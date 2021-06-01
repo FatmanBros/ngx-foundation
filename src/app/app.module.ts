@@ -40,13 +40,12 @@ import { NormalComponent } from './examples/normal/normal.component';
       option: {
         numberOfWords: '残り$0文字',
       },
-      appearance: Appearance.outline,
     }),
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'fill' },
+      useValue: { appearance: Appearance.outline },
     },
     { provide: MAT_DATE_LOCALE, useValue: 'ja-JP' },
     {

@@ -15,7 +15,7 @@ export class MaxValue extends BaseValidator {
   }
   public validator = (vl: number) => {
     return {
-      [Validation.maxDate]: {
+      [Validation.maxValue]: {
         func: this.func,
         args: vl,
       },

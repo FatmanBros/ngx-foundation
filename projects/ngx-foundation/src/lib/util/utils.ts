@@ -19,4 +19,8 @@ export class Util {
     });
     return msg;
   }
+
+  public static numberWithCommas(num: string | number): string {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 }

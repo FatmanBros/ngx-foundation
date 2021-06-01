@@ -19,6 +19,7 @@ import {
 } from '../ngx-foundation.module';
 import { Util } from '../util/utils';
 import { CustomErrorStateMatcher } from '../validate/custom-validators';
+import { Validation } from '../validate/validation';
 import { BaseComponent } from './base-component';
 import { CustomFormControl } from './custom-form-control';
 
@@ -27,10 +28,11 @@ import { CustomFormControl } from './custom-form-control';
 })
 export abstract class BaseControlComponent
   extends BaseComponent
-  implements OnInit, AfterViewInit ,ControlValueAccessor
+  implements OnInit, AfterViewInit, ControlValueAccessor
 {
   @Input() labelText: string = '';
   @Input() appearance: Appearance = Appearance.standard;
+  isNumeric: boolean = false;
 
   @Output() focus = new EventEmitter<CustomFormControl>();
   @Output() blur = new EventEmitter<CustomFormControl>();
@@ -51,9 +53,10 @@ export abstract class BaseControlComponent
     super(injector);
 
     this.ngxFoundationOptions = injector.get(NGX_FOUNDATION_OPTIONS);
-    this.appearance = this.ngxFoundationOptions.appearance ?? Appearance.standard;
+    this.appearance =
+      this.ngxFoundationOptions.appearance ?? Appearance.standard;
 
-    const name =  this.elementRef.nativeElement.getAttribute('formControlName');
+    const name = this.elementRef.nativeElement.getAttribute('formControlName');
     this.ctlName = (name ?? '') + Util.random();
   }
 
@@ -67,6 +70,9 @@ export abstract class BaseControlComponent
   }
 
   ngAfterViewInit() {
+    this.isNumeric = !!this.control.validators?.some((validator) =>
+      Object.keys(validator).some((key) => key === Validation.numeric)
+    );
     // ビュー更新
     this.subscriptions.push(
       this.control.viewUpdate$.subscribe(() => {
@@ -85,8 +91,7 @@ export abstract class BaseControlComponent
     this._onTouchedCallback = fn;
   }
 
-  writeValue(v: any): void {
-  }
+  writeValue(v: any): void {}
 
   onFocus() {
     this.focus.emit(this.control);

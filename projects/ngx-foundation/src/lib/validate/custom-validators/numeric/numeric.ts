@@ -14,7 +14,7 @@ export class Numeric extends BaseValidator {
   }
   public validator = () => {
     return {
-      [Validation.maxDate]: {
+      [Validation.numeric]: {
         func: this.func,
         args: null,
       },

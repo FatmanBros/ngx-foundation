@@ -38,7 +38,7 @@ export class NormalComponent implements OnInit {
       validators: [
         this.customValidators.required(),
         this.customValidators.numeric(),
-        this.customValidators.maxValue(100000),
+        this.customValidators.maxValue(10000000),
         this.customValidators.minValue(100),
       ],
     }),

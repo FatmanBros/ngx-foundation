@@ -14,7 +14,7 @@ export class MinValue extends BaseValidator {
   }
   public validator = (vl: number) => {
     return {
-      [Validation.maxDate]: {
+      [Validation.minValue]: {
         func: this.func,
         args: vl,
       },
