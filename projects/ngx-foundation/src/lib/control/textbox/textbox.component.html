@@ -1,14 +1,18 @@
 <mat-form-field>
-  <mat-label>{{ label }}</mat-label>
-  <input matInput
+  <mat-label>{{ labelText }}</mat-label>
+  <input
+    matInput
+    [formControl]="control"
     [id]="ctlName"
     [name]="ctlName"
     [autocomplete]="autocomplete"
     [maxlength]="maxLength"
-    [(ngModel)]="ctlValue"
     (focus)="onFocus()"
     (blur)="onBlur()"
     (change)="onChange()"
+    [errorStateMatcher]="matcher"
   />
-  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  <mat-hint>{{ hint }}</mat-hint>
+  <mat-hint *ngIf="isNumeric">{{ control.value | numberWithCommas}}</mat-hint>
+  <mat-error *ngFor="let err of errorMessage">{{ err }}</mat-error>
 </mat-form-field>

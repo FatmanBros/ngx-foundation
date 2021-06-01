@@ -1,8 +1,17 @@
-import { Inject } from '@angular/core';
-import { ValidatorOptions, VALIDATOR_OPTIONS } from '../ngx-foundation.module';
+import { Injector } from '@angular/core';
+import {
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS,
+} from '../ngx-foundation.options';
+import { CustomValidatorFn } from './custom-validators';
 
 export abstract class BaseValidator {
-  constructor(@Inject(VALIDATOR_OPTIONS) protected options: ValidatorOptions) {
-  }
+  protected options: ngxFoundationOptions;
 
+  abstract validator: (arg: any) => { [key: string]: CustomValidatorFn };
+  abstract func: (validatorKey: any) => {};
+
+  constructor(injector: Injector) {
+    this.options = injector.get(NGX_FOUNDATION_OPTIONS);
+  }
 }

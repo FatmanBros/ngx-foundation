@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Injector
+  Injector,
+  Input,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ListItem } from '../../constants/constants';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
@@ -21,9 +23,9 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioComponent extends BaseControlComponent {
+  @Input() radioOptions: ListItem[] = [];
+
   constructor(injector: Injector) {
     super(injector);
   }
-
-  ngOnInit(): void {}
 }

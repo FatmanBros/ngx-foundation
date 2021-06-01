@@ -2,7 +2,7 @@ import {
   AsyncValidatorFn,
   FormControl,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { CustomValidatorFn } from '../validate/custom-validators';
@@ -10,8 +10,8 @@ import { Validation } from '../validate/validation';
 
 export class CustomFormControl extends FormControl {
   public validators?: { [key: string]: CustomValidatorFn }[];
-
   public viewUpdate$ = new Subject();
+  public args: { [key: string]: any } = {};
 
   public labelText!: string;
   public required!: boolean;
@@ -20,8 +20,11 @@ export class CustomFormControl extends FormControl {
 
   constructor(customForm: CustomForm) {
     super(customForm.formState);
-    this.labelText = customForm.labelText;
     
+    this.setValue(customForm.value);
+    
+    this.labelText = customForm.labelText;
+
     this.validators = customForm.validators;
 
     const customValidators = this.createCustomValidatorFns(
@@ -30,23 +33,18 @@ export class CustomFormControl extends FormControl {
     this.setValidators(Validators.compose(customValidators));
   }
 
-
   /**
    * transform custom validators
-   * 
-   * @param validators 
-   * @returns 
+   *
+   * @param validators
+   * @returns
    */
   private createCustomValidatorFns(
     validators: { [key: string]: CustomValidatorFn }[] = []
   ): ValidatorFn[] {
-    let fns: ValidatorFn[] = [];
-    validators.forEach((fn, i) => {
+    const fns = validators.map((fn, i) => {
       const key: string = Object.keys(fn)[0];
       const define: CustomValidatorFn = fn[key] as CustomValidatorFn;
-      const validatorKey: string = `${key}_${i}`;
-      fns.push(define.func(validatorKey));
-
       switch (key) {
         case Validation.required:
           this.required = true;
@@ -57,6 +55,10 @@ export class CustomFormControl extends FormControl {
         default:
           break;
       }
+
+      const validatorKey: string = `${key}_${i}`;
+      this.args[validatorKey] = define.args;
+      return define.func(validatorKey);
     });
 
     return fns;
@@ -83,7 +85,7 @@ export class CustomFormControl extends FormControl {
 
 export interface CustomForm {
   labelText: string;
-  value: string;
+  value: any;
   formState?: any;
   validators?: { [key: string]: CustomValidatorFn }[];
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;

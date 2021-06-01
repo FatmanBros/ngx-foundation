@@ -1,36 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ButtonComponent } from './control/button/button.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
+import { DatepickerComponent } from './control/datepicker/datepicker.component';
 import { LabelComponent } from './control/label/label.component';
 import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
 import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
+import { Appearance } from './enum/enums';
 import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
+import {
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS
+} from './ngx-foundation.options';
+import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
 
-export const VALIDATOR_OPTIONS = new InjectionToken<ValidatorOptions>(
-  'ngx.foundation.validator.options'
-);
-export const defaultMessages: ValidatorOptions = {
+export const defaultOptions: ngxFoundationOptions = {
   messages: {
     [Validation.required]: '$0 is required',
     [Validation.maxLength]: 'up to $1 characters for $0',
     [Validation.minLength]: 'at least $1 characters for $0',
+    [Validation.maxDate]: '',
+    [Validation.minDate]: '',
+    [Validation.maxValue]: '',
+    [Validation.minValue]: '',
+    [Validation.numeric]: '',
   },
+  option: {
+    numberOfWords: '$0 / $1',
+  },
+  appearance: Appearance.standard,
 };
-
-export interface ValidatorOptions {
-  messages: {
-    [Validation.required]: string;
-    [Validation.maxLength]: string;
-    [Validation.minLength]: string;
-  };
-}
 
 @NgModule({
   declarations: [
@@ -42,13 +47,10 @@ export interface ValidatorOptions {
     RadioComponent,
     ButtonComponent,
     LabelComponent,
+    DatepickerComponent,
+    NumberWithCommasPipe,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UiModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, UiModule],
   exports: [
     NgxFoundationComponent,
     TextboxComponent,
@@ -58,6 +60,7 @@ export interface ValidatorOptions {
     RadioComponent,
     ButtonComponent,
     LabelComponent,
+    DatepickerComponent,
   ],
   providers: [
     {
@@ -68,11 +71,18 @@ export interface ValidatorOptions {
 })
 export class NgxFoundationModule {
   static init(
-    options: ValidatorOptions
+    options: ngxFoundationOptions
   ): ModuleWithProviders<NgxFoundationModule> {
+    let op = defaultOptions;
+    if (options.messages) {
+      op.messages = options.messages;
+    }
+    if (options.appearance) {
+      op.appearance = options.appearance;
+    }
     return {
       ngModule: NgxFoundationModule,
-      providers: [{ provide: VALIDATOR_OPTIONS, useValue: options }],
+      providers: [{ provide: NGX_FOUNDATION_OPTIONS, useValue: options }],
     };
   }
 }

@@ -2,30 +2,25 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Injector,
-  Input
+  Injector
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Autocomplete } from '../../enum/enums';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
-  selector: 'foundation-textbox',
-  templateUrl: './textbox.component.html',
-  styleUrls: ['./textbox.component.css'],
+  selector: 'foundation-datepicker',
+  templateUrl: './datepicker.component.html',
+  styleUrls: ['./datepicker.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TextboxComponent),
+      useExisting: forwardRef(() => DatepickerComponent),
       multi: true,
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextboxComponent extends BaseControlComponent {
-  @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
-  @Input() hint: string = '';
-
+export class DatepickerComponent extends BaseControlComponent {
   constructor(injector: Injector) {
     super(injector);
   }

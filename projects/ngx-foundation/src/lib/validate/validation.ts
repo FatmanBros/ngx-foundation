@@ -18,7 +18,7 @@ export enum Validation {
 
 export class Validations {
   public static isNullOrLengthZero(val: any): boolean {
-    return val == null ?? val.length === 0
+    return val == null || val.length === 0
   }
 
   public static isBlank(val: any):boolean {

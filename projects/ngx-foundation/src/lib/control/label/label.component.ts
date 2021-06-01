@@ -25,5 +25,4 @@ export class LabelComponent extends BaseControlComponent {
     super(injector);
   }
 
-  ngOnInit(): void {}
 }

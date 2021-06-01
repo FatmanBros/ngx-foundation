@@ -1,4 +1,4 @@
-export enum autocomplete {
+export enum Autocomplete {
   on = 'on',
   name = 'name',
   email = 'email',
@@ -11,4 +11,19 @@ export enum autocomplete {
   tel = 'tel',
   url = 'url',
   photo = 'photo',
+}
+
+export enum Appearance {
+  legacy = 'legacy',
+  standard = 'standard',
+  fill = 'fill',
+  outline = 'outline',
+}
+
+
+export enum LabelDirection {
+  top,
+  left,
+  right,
+  bottom
 }
