@@ -33,6 +33,9 @@ import { NormalComponent } from './examples/normal/normal.component';
         minLength: '$0文字以上で入力してください。',
         minDate: '$0日以降の日付を入力してください。',
         maxDate: '$0日以前の日付を入力してください。',
+        maxValue: '$0以下の値を入力してください。',
+        minValue: '$0以上の値を入力してください。',
+        numeric: '数値を入力してください。',
       },
       option: {
         numberOfWords: '残り$0文字',

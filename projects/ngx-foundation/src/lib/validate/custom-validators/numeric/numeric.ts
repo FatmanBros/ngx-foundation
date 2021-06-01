@@ -1,22 +1,22 @@
 import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { CustomFormControl } from '../../control/custom-form-control';
-import { Util } from '../../util/utils';
-import { BaseValidator } from '../base-validator';
-import { Validation, Validations } from '../validation';
+import { CustomFormControl } from '../../../control/custom-form-control';
+import { Util } from '../../../util/utils';
+import { BaseValidator } from '../../base-validator';
+import { Validation, Validations } from '../../validation';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MinLength extends BaseValidator {
+export class Numeric extends BaseValidator {
   constructor(injector: Injector) {
     super(injector);
   }
-  public validator = (len: number) => {
+  public validator = () => {
     return {
-      [Validation.minLength]: {
+      [Validation.maxDate]: {
         func: this.func,
-        args: len,
+        args: null,
       },
     };
   };
@@ -24,18 +24,18 @@ export class MinLength extends BaseValidator {
   public func = (validatorKey: any) => {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
-      const minLength: number = control.args[validatorKey];
+
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (control.value?.length > minLength) {
+      const n = Number(control.value);
+      if (!isNaN(n)) {
         return null;
       }
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.maxLength],
-          minLength + ''
+          this.options.messages[Validation.numeric]
         ),
       };
     };

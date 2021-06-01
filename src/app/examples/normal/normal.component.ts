@@ -32,6 +32,16 @@ export class NormalComponent implements OnInit {
         this.customValidators.maxLength(10),
       ],
     }),
+    test_numeric: new CustomFormControl({
+      labelText: 'テスト 数字',
+      value: '',
+      validators: [
+        this.customValidators.required(),
+        this.customValidators.numeric(),
+        this.customValidators.maxValue(100000),
+        this.customValidators.minValue(100),
+      ],
+    }),
     test_textarea: new CustomFormControl({
       labelText: 'テスト テキストエリア',
       value: '',

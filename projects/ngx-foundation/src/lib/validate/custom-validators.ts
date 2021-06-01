@@ -1,12 +1,15 @@
-import { Injectable, Injector, Type } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomFormControl } from '../control/custom-form-control';
 import { BaseValidator } from './base-validator';
-import { MaxDate } from './custom-validators/max-date';
-import { MaxLength } from './custom-validators/max-length';
-import { MinDate } from './custom-validators/min-date';
-import { MinLength } from './custom-validators/min-length';
+import { MaxDate } from './custom-validators/date/max-date';
+import { MinDate } from './custom-validators/date/min-date';
+import { MaxLength } from './custom-validators/length/max-length';
+import { MinLength } from './custom-validators/length/min-length';
+import { MaxValue } from './custom-validators/numeric/max-value';
+import { MinValue } from './custom-validators/numeric/min-value';
+import { Numeric } from './custom-validators/numeric/numeric';
 import { Required } from './custom-validators/required';
 
 export interface CustomValidatorFn {
@@ -19,6 +22,9 @@ export interface CustomValidatorFn {
 })
 export class CustomValidators {
   public required: (arg?: null) => { [key: string]: CustomValidatorFn };
+  public numeric: (arg?: null) => { [key: string]: CustomValidatorFn };
+  public maxValue: (vl: number) => { [key: string]: CustomValidatorFn };
+  public minValue: (vl: number) => { [key: string]: CustomValidatorFn };
   public minLength: (ln: number) => { [key: string]: CustomValidatorFn };
   public maxLength: (ln: number) => { [key: string]: CustomValidatorFn };
   public minDate: (dt: Date) => { [key: string]: CustomValidatorFn };
@@ -26,6 +32,9 @@ export class CustomValidators {
 
   constructor(private injector: Injector) {
     this.required = this.getValidator(Required);
+    this.numeric = this.getValidator(Numeric);
+    this.maxValue = this.getValidator(MaxValue);
+    this.minValue = this.getValidator(MinValue);
     this.minLength = this.getValidator(MinLength);
     this.maxLength = this.getValidator(MaxLength);
     this.minDate = this.getValidator(MinDate);
