@@ -21,3 +21,5 @@ export * from './lib/control/custom-form-control';
 
 export * from './lib/constants/constants';
 export * from './lib/enum/enums';
+
+export * from './lib/ngx-foundation.options';

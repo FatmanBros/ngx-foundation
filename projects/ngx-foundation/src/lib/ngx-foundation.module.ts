@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ButtonComponent } from './control/button/button.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
+import { DatepickerComponent } from './control/datepicker/datepicker.component';
 import { LabelComponent } from './control/label/label.component';
 import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
@@ -12,13 +13,13 @@ import { TextboxComponent } from './control/textbox/textbox.component';
 import { Appearance } from './enum/enums';
 import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
-import { Validation } from './validate/validation';
-import { DatepickerComponent } from './control/datepicker/datepicker.component';
+import {
+  ngxFoundationOptions,
+  NGX_FOUNDATION_OPTIONS
+} from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
+import { Validation } from './validate/validation';
 
-export const NGX_FOUNDATION_OPTIONS = new InjectionToken<ngxFoundationOptions>(
-  'ngx.foundation.options'
-);
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
     [Validation.required]: '$0 is required',
@@ -35,24 +36,6 @@ export const defaultOptions: ngxFoundationOptions = {
   },
   appearance: Appearance.standard,
 };
-
-export interface ngxFoundationOptions {
-  messages: {
-    [Validation.required]: string;
-    [Validation.maxLength]: string;
-    [Validation.minLength]: string;
-    [Validation.maxDate]: string;
-    [Validation.minDate]: string;
-    [Validation.maxValue]: string;
-    [Validation.minValue]: string;
-    [Validation.numeric]: string;
-  };
-
-  option: {
-    numberOfWords: string;
-  };
-  appearance?: Appearance;
-}
 
 @NgModule({
   declarations: [

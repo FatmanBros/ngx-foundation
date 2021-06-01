@@ -2,7 +2,7 @@ import { Injector } from '@angular/core';
 import {
   ngxFoundationOptions,
   NGX_FOUNDATION_OPTIONS,
-} from '../ngx-foundation.module';
+} from '../ngx-foundation.options';
 import { CustomValidatorFn } from './custom-validators';
 
 export abstract class BaseValidator {

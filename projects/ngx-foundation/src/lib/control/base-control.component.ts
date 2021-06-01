@@ -16,7 +16,7 @@ import { Appearance } from '../enum/enums';
 import {
   ngxFoundationOptions,
   NGX_FOUNDATION_OPTIONS,
-} from '../ngx-foundation.module';
+} from '../ngx-foundation.options';
 import { Util } from '../util/utils';
 import { CustomErrorStateMatcher } from '../validate/custom-validators';
 import { Validation } from '../validate/validation';
