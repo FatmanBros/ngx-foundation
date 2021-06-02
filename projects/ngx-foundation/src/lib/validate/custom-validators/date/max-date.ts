@@ -7,23 +7,17 @@ import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
 const moment = _moment;
-@Injectable({
-  providedIn: 'root',
-})
 export class MaxDate extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator = (dt: Date) => {
+  public static validator(dt: Date) {
     return {
       [Validation.maxDate]: {
-        func: this.func,
+        func: MaxDate.func,
         args: dt,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       const date: Date = control.args[validatorKey];
@@ -37,10 +31,10 @@ export class MaxDate extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.maxLength],
+          BaseValidator.options.messages[Validation.maxLength],
           moment(date).format('l')
         ),
       };
     };
-  };
+  }
 }

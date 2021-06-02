@@ -12,19 +12,16 @@ const moment = _moment;
   providedIn: 'root',
 })
 export class MinDate extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator = (date: Date) => {
+  public static validator(date: Date) {
     return {
       [Validation.minDate]: {
-        func: this.func,
+        func: MinDate.func,
         args: date,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       const date: Date = control.args[validatorKey];
@@ -37,10 +34,10 @@ export class MinDate extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.minDate],
+          BaseValidator.options.messages[Validation.minDate],
           moment(date).format('l')
         ),
       };
     };
-  };
+  }
 }

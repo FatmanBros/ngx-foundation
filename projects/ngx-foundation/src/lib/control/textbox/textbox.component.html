@@ -12,7 +12,7 @@
     (change)="onChange()"
     [errorStateMatcher]="matcher"
   />
-  <mat-hint>{{ hint }}</mat-hint>
+  <mat-hint *ngIf="!isNumeric">{{ hint }}</mat-hint>
   <mat-hint *ngIf="isNumeric">{{ control.value | numberWithCommas}}</mat-hint>
   <mat-error *ngFor="let err of errorMessage">{{ err }}</mat-error>
 </mat-form-field>

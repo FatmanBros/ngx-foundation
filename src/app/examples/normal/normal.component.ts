@@ -27,27 +27,27 @@ export class NormalComponent implements OnInit {
       labelText: 'テスト テキストボックス',
       value: '',
       validators: [
-        this.customValidators.required(),
-        this.customValidators.minLength(5),
-        this.customValidators.maxLength(10),
+        CustomValidators.required(),
+        CustomValidators.minLength(5),
+        CustomValidators.maxLength(10),
       ],
     }),
     test_numeric: new CustomFormControl({
       labelText: 'テスト 数字',
       value: '',
       validators: [
-        this.customValidators.required(),
-        this.customValidators.numeric(),
-        this.customValidators.maxValue(10000000),
-        this.customValidators.minValue(100),
+        CustomValidators.required(),
+        CustomValidators.numeric(),
+        CustomValidators.maxValue(10000000),
+        CustomValidators.minValue(100),
       ],
     }),
     test_textarea: new CustomFormControl({
       labelText: 'テスト テキストエリア',
       value: '',
       validators: [
-        this.customValidators.required(),
-        this.customValidators.maxLength(2000),
+        CustomValidators.required(),
+        CustomValidators.maxLength(2000),
       ],
     }),
     test_check1: new CustomFormControl({
@@ -66,14 +66,13 @@ export class NormalComponent implements OnInit {
       labelText: 'テスト 日付',
       value: new Date(),
       validators: [
-        this.customValidators.minDate(DateUtils.getToday())
+        CustomValidators.minDate(DateUtils.getToday())
       ]
     }),
   });
 
   constructor(
     private fb: FormBuilder,
-    private customValidators: CustomValidators
   ) {}
 
   ngOnInit() {}

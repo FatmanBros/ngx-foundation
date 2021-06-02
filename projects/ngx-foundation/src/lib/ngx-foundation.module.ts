@@ -19,6 +19,7 @@ import {
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
+import { BaseValidator } from './validate/base-validator';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -80,6 +81,8 @@ export class NgxFoundationModule {
     if (options.appearance) {
       op.appearance = options.appearance;
     }
+    BaseValidator.options = op;
+    
     return {
       ngModule: NgxFoundationModule,
       providers: [{ provide: NGX_FOUNDATION_OPTIONS, useValue: options }],

@@ -5,23 +5,17 @@ import { Util } from '../../../util/utils';
 import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class MaxLength extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator = (len: number) => {
+  public static validator(len: number) {
     return {
       [Validation.maxLength]: {
-        func: this.func,
+        func: MaxLength.func,
         args: len,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       const maxLength: number = control.args[validatorKey];
@@ -35,10 +29,10 @@ export class MaxLength extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.maxLength],
+          BaseValidator.options.messages[Validation.maxLength],
           maxLength + ''
         ),
       };
     };
-  };
+  }
 }
