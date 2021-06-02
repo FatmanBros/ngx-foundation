@@ -1,17 +1,59 @@
-<foundation-toolbar [title]="'test'" [rightButtons]="rightButtons"></foundation-toolbar>
+<foundation-toolbar
+  [title]="'test'"
+  [rightButtons]="buttons"
+></foundation-toolbar>
 <form [formGroup]="form">
-  <foundation-textbox formControlName="test_textbox"></foundation-textbox>
-  <foundation-textbox formControlName="test_numeric"></foundation-textbox>
-  <foundation-textarea formControlName="test_textarea"></foundation-textarea>
-  <foundation-checkbox
-    formControlName="test_check1"
-    [dir]="labelDir.right"
-  ></foundation-checkbox>
-  <foundation-checkbox formControlName="test_check2"></foundation-checkbox>
+  <div class="m1">
+    <h3 class="m1">テキストボックス</h3>
+    <foundation-textbox
+      formControlName="test_textbox"
+      class="m1"
+    ></foundation-textbox>
+    <foundation-textbox
+      formControlName="test_numeric"
+      class="m1"
+    ></foundation-textbox>
+    <mat-divider></mat-divider>
 
-  <foundation-radio
-    formControlName="test_radio"
-    [radioOptions]="radioOptions"
-  ></foundation-radio>
-  <foundation-datepicker formControlName="test_date"></foundation-datepicker>
+    <h3 class="m1">テキストエリア</h3>
+    <foundation-textarea
+      formControlName="test_textarea"
+      class="m1"
+    ></foundation-textarea>
+    <mat-divider></mat-divider>
+
+    <h3 class="m1">チェックボックス</h3>
+    <foundation-checkbox
+      formControlName="test_check1"
+      [labelDir]="labelDir.right"
+      class="m1"
+    ></foundation-checkbox>
+    <foundation-checkbox
+      formControlName="test_check2"
+      class="m1"
+    ></foundation-checkbox>
+
+    <mat-divider></mat-divider>
+
+    <h3 class="m1">ラジオボタン</h3>
+    <foundation-radio
+      formControlName="test_radio"
+      [radioOptions]="radioOptions"
+      class="m1"
+    ></foundation-radio>
+    <mat-divider></mat-divider>
+
+    <h3 class="m1">日付ピッカー</h3>
+    <foundation-datepicker
+      formControlName="test_date"
+      class="m1"
+    ></foundation-datepicker>
+    <mat-divider></mat-divider>
+
+    <h3 class="m1">ボタン</h3>
+    <foundation-button
+      *ngFor="let button of buttons"
+      [buttonParam]="button"
+    ></foundation-button>
+  </div>
 </form>

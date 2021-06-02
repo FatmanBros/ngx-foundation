@@ -17,11 +17,12 @@ import { DateUtils } from '../utils/date-utils';
 })
 export class NormalComponent implements OnInit {
   color = MatColor;
-  rightButtons: ButtonParam[] = [
+  buttons: ButtonParam[] = [
     {
       label: 'ボタン1',
       type: ButtonType.basic,
       tooltip: 'button 1',
+      color: MatColor.primary,
       onClick: () => {
         this
       },
@@ -31,6 +32,7 @@ export class NormalComponent implements OnInit {
       type: ButtonType.icon,
       icon: 'home',
       tooltip: 'button 2',
+      color: MatColor.success,
       onClick: () => {
         this
         
@@ -40,6 +42,17 @@ export class NormalComponent implements OnInit {
       label: 'ボタン3',
       type: ButtonType.flat,
       tooltip: 'button 3',
+      color: MatColor.warn,
+      onClick: () => {
+        this
+        
+      },
+    },
+    {
+      label: 'ボタン4',
+      type: ButtonType.raised,
+      tooltip: 'button 4',
+      color: MatColor.accent,
       onClick: () => {
         this
         

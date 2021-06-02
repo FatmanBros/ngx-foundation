@@ -1,4 +1,4 @@
-<mat-label *ngIf="dir === labelDirection.left">{{ labelText }}</mat-label>
+<mat-label *ngIf="labelDir === labelDirection.left">{{ labelText }}</mat-label>
 <mat-checkbox
   [formControl]="control"
   [id]="ctlName"
@@ -7,4 +7,4 @@
   (blur)="onBlur()"
   (change)="onChange()"
 ></mat-checkbox>
-<mat-label *ngIf="dir === labelDirection.right">{{ labelText }}</mat-label>
+<mat-label *ngIf="labelDir === labelDirection.right">{{ labelText }}</mat-label>

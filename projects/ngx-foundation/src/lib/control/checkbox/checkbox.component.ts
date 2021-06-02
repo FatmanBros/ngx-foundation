@@ -23,7 +23,7 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends BaseControlComponent {
-  @Input() dir: LabelDirection = LabelDirection.left;
+  @Input() labelDir: LabelDirection = LabelDirection.left;
   labelDirection = LabelDirection;
 
   constructor(injector: Injector) {

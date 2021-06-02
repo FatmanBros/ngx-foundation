@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 const modules = [
   MatFormFieldModule,
@@ -23,6 +24,7 @@ const modules = [
   MatToolbarModule,
   MatTooltipModule,
   MatIconModule,
+  MatDividerModule,
 ];
 
 @NgModule({
