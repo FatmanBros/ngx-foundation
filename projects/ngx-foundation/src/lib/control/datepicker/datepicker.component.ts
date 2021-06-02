@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Injector
+  Injector,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControlComponent } from '../base-control.component';
@@ -10,7 +10,7 @@ import { BaseControlComponent } from '../base-control.component';
 @Component({
   selector: 'foundation-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.css'],
+  styleUrls: ['../../css/styles.scss', './datepicker.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

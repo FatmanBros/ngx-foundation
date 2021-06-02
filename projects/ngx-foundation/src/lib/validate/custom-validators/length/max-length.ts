@@ -23,7 +23,7 @@ export class MaxLength extends BaseValidator {
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (control.value?.length < maxLength) {
+      if (control.value?.length <= maxLength) {
         return null;
       }
 

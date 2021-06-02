@@ -22,13 +22,13 @@ export class MinLength extends BaseValidator {
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (control.value?.length > minLength) {
+      if (control.value?.length >= minLength) {
         return null;
       }
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.maxLength],
+          BaseValidator.options.messages[Validation.minLength],
           minLength + ''
         ),
       };

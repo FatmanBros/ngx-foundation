@@ -3,7 +3,7 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input
+  Input,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Autocomplete } from '../../enum/enums';
@@ -12,7 +12,7 @@ import { BaseControlComponent } from '../base-control.component';
 @Component({
   selector: 'foundation-textbox',
   templateUrl: './textbox.component.html',
-  styleUrls: ['./textbox.component.css'],
+  styleUrls: ['../../css/styles.scss', './textbox.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

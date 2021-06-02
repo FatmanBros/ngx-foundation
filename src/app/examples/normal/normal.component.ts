@@ -24,7 +24,7 @@ export class NormalComponent implements OnInit {
       tooltip: 'button 1',
       color: MatColor.primary,
       onClick: () => {
-        this
+        this;
       },
     },
     {
@@ -34,8 +34,7 @@ export class NormalComponent implements OnInit {
       tooltip: 'button 2',
       color: MatColor.success,
       onClick: () => {
-        this
-        
+        this;
       },
     },
     {
@@ -44,8 +43,7 @@ export class NormalComponent implements OnInit {
       tooltip: 'button 3',
       color: MatColor.warn,
       onClick: () => {
-        this
-        
+        this;
       },
     },
     {
@@ -54,8 +52,7 @@ export class NormalComponent implements OnInit {
       tooltip: 'button 4',
       color: MatColor.accent,
       onClick: () => {
-        this
-        
+        this;
       },
     },
   ];
@@ -79,7 +76,7 @@ export class NormalComponent implements OnInit {
       ],
     }),
     test_numeric: new CustomFormControl({
-      labelText: 'テスト 数字',
+      labelText: 'テスト 数値',
       value: '',
       validators: [
         CustomValidators.required(),

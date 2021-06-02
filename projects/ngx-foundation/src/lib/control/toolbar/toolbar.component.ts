@@ -5,7 +5,7 @@ import { ButtonParam } from '../../interface/interface';
 @Component({
   selector: 'foundation-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css'],
+  styleUrls: ['../../css/styles.scss', './toolbar.component.css'],
 })
 export class ToolbarComponent implements OnInit {
   @Input() color: MatColor = MatColor.primary;

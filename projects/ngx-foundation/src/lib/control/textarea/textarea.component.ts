@@ -3,7 +3,7 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Util } from '../../util/utils';
@@ -12,7 +12,7 @@ import { BaseControlComponent } from '../base-control.component';
 @Component({
   selector: 'foundation-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss'],
+  styleUrls: ['../../css/styles.scss', './textarea.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
