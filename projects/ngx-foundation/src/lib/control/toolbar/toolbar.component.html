@@ -1,0 +1,10 @@
+<p>
+  <mat-toolbar [color]="color">
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+    <foundation-button
+      *ngFor="let param of rightButtons"
+      [buttonParam]="param"
+    ></foundation-button>
+  </mat-toolbar>
+</p>

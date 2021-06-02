@@ -20,10 +20,26 @@ export enum Appearance {
   outline = 'outline',
 }
 
-
 export enum LabelDirection {
   top,
   left,
   right,
-  bottom
+  bottom,
+}
+
+export enum ButtonType {
+  basic,
+  raised,
+  stroked,
+  flat,
+  icon,
+  fab,
+  miniFab,
+}
+
+export enum MatColor {
+  primary = 'primary',
+  success = 'success',
+  accent = 'accent',
+  warn = 'warn',
 }

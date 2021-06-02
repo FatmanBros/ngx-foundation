@@ -1,1 +1,51 @@
-<p>button works!</p>
+<ng-container [ngSwitch]="buttonParam.type">
+  <a
+    *ngSwitchDefault
+    mat-button
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    >{{ buttonParam.label }}</a
+  >
+  <a
+    *ngSwitchCase="buttonType.raised"
+    mat-raised-button
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    >{{ buttonParam.label }}</a
+  >
+  <a
+    *ngSwitchCase="buttonType.stroked"
+    mat-stroked-button
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    >{{ buttonParam.label }}</a
+  >
+  <a
+    *ngSwitchCase="buttonType.flat"
+    mat-flat-button
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    >{{ buttonParam.label }}</a
+  >
+  <a
+    *ngSwitchCase="buttonType.icon"
+    mat-icon-button
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    ><mat-icon>{{ buttonParam.icon }}</mat-icon></a
+  >
+  <a
+    *ngSwitchCase="buttonType.fab"
+    mat-fab
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    ><mat-icon>{{ buttonParam.icon }}</mat-icon></a
+  >
+  <a
+    *ngSwitchCase="buttonType.miniFab"
+    mat-mini-fab
+    [color]="buttonParam.color"
+    [matTooltip]="buttonParam.tooltip ?? ''"
+    ><mat-icon>{{ buttonParam.icon }}</mat-icon></a
+  >
+</ng-container>

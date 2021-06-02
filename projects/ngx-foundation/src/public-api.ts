@@ -15,6 +15,7 @@ export * from './lib/control/checkbox/checkbox.component';
 export * from './lib/control/radio/radio.component';
 export * from './lib/control/select/select.component';
 export * from './lib/control/datepicker/datepicker.component';
+export * from './lib/control/toolbar/toolbar.component';
 
 export * from './lib/validate/custom-validators';
 export * from './lib/control/custom-form-control';

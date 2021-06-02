@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {
+  MatColor,
   CustomFormControl,
   CustomValidators,
   LabelDirection,
+  ButtonType,
 } from '@ngx-foundation/ngx-foundation';
+import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
 import { DateUtils } from '../utils/date-utils';
 
 @Component({
@@ -13,6 +16,36 @@ import { DateUtils } from '../utils/date-utils';
   styleUrls: ['./normal.component.scss'],
 })
 export class NormalComponent implements OnInit {
+  color = MatColor;
+  rightButtons: ButtonParam[] = [
+    {
+      label: 'ボタン1',
+      type: ButtonType.basic,
+      tooltip: 'button 1',
+      onClick: () => {
+        this
+      },
+    },
+    {
+      label: 'ボタン2',
+      type: ButtonType.icon,
+      icon: 'home',
+      tooltip: 'button 2',
+      onClick: () => {
+        this
+        
+      },
+    },
+    {
+      label: 'ボタン3',
+      type: ButtonType.flat,
+      tooltip: 'button 3',
+      onClick: () => {
+        this
+        
+      },
+    },
+  ];
   labelDir = LabelDirection;
 
   radioOptions = [
@@ -65,15 +98,11 @@ export class NormalComponent implements OnInit {
     test_date: new CustomFormControl({
       labelText: 'テスト 日付',
       value: new Date(),
-      validators: [
-        CustomValidators.minDate(DateUtils.getToday())
-      ]
+      validators: [CustomValidators.minDate(DateUtils.getToday())],
     }),
   });
 
-  constructor(
-    private fb: FormBuilder,
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
 }

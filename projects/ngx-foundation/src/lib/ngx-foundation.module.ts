@@ -15,11 +15,12 @@ import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS
+  NGX_FOUNDATION_OPTIONS,
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
 import { BaseValidator } from './validate/base-validator';
+import { ToolbarComponent } from './control/toolbar/toolbar.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -50,6 +51,7 @@ export const defaultOptions: ngxFoundationOptions = {
     LabelComponent,
     DatepickerComponent,
     NumberWithCommasPipe,
+    ToolbarComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, UiModule],
   exports: [
@@ -62,6 +64,8 @@ export const defaultOptions: ngxFoundationOptions = {
     ButtonComponent,
     LabelComponent,
     DatepickerComponent,
+    NumberWithCommasPipe,
+    ToolbarComponent,
   ],
   providers: [
     {
@@ -82,7 +86,7 @@ export class NgxFoundationModule {
       op.appearance = options.appearance;
     }
     BaseValidator.options = op;
-    
+
     return {
       ngModule: NgxFoundationModule,
       providers: [{ provide: NGX_FOUNDATION_OPTIONS, useValue: options }],
