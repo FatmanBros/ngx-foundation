@@ -59,3 +59,16 @@ body {
   color: #1e2124;
   background: #f7f7f7;
 }
+
+@import "../projects/ngx-foundation/src/lib/css/custom-theme2.scss";
+@import "./custom-palette.scss";
+
+@include setTheme(
+  $my-primary-color,
+  $my-accent-color,
+  $my-warn-color,
+  (
+    secondary: $my-secondary-color,
+    tertiary: $my-tertiary-color,
+  )
+);
