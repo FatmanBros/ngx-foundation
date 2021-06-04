@@ -1,11 +1,10 @@
-import { Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
+import { NgxFoundationModule } from '../../ngx-foundation.module';
 import { Util } from '../../util/utils';
-import { BaseValidator } from '../base-validator';
 import { Validation, Validations } from '../validation';
 
-export class Required extends BaseValidator {
+export class Required  {
   public static validator() {
     return {
       [Validation.required]: {
@@ -26,7 +25,7 @@ export class Required extends BaseValidator {
       if (Validations.isBlank(control.value)) {
         return {
           [validatorKey]: Util.message(
-            BaseValidator.options.messages[Validation.required],
+            NgxFoundationModule.options.messages[Validation.required],
             control.labelText
           ),
         };

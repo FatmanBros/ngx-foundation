@@ -1,11 +1,10 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundationModule } from '../../../ngx-foundation.module';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
-export class MaxValue extends BaseValidator {
+export class MaxValue {
   public static validator(vl: number) {
     return {
       [Validation.maxValue]: {
@@ -33,7 +32,7 @@ export class MaxValue extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.maxValue],
+          NgxFoundationModule.options.messages[Validation.maxValue],
           maxValue + ''
         ),
       };

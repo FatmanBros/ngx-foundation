@@ -1,9 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import * as _moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundationModule } from '../../../ngx-foundation.module';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
 const moment = _moment;
@@ -11,7 +11,7 @@ const moment = _moment;
 @Injectable({
   providedIn: 'root',
 })
-export class MinDate extends BaseValidator {
+export class MinDate {
   public static validator(date: Date) {
     return {
       [Validation.minDate]: {
@@ -34,7 +34,7 @@ export class MinDate extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.minDate],
+          NgxFoundationModule.options.messages[Validation.minDate],
           moment(date).format('l')
         ),
       };

@@ -1,11 +1,10 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundationModule } from '../../../ngx-foundation.module';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
-export class Numeric extends BaseValidator {
+export class Numeric  {
   public static validator = () => {
     return {
       [Validation.numeric]: {
@@ -29,7 +28,7 @@ export class Numeric extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.numeric]
+          NgxFoundationModule.options.messages[Validation.numeric]
         ),
       };
     };

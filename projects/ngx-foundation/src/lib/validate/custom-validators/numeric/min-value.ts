@@ -1,11 +1,10 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundationModule } from '../../../ngx-foundation.module';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
-export class MinValue extends BaseValidator {
+export class MinValue {
   public static validator(vl: number) {
     return {
       [Validation.minValue]: {
@@ -33,7 +32,7 @@ export class MinValue extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.minValue],
+          NgxFoundationModule.options.messages[Validation.minValue],
           minValue + ''
         ),
       };

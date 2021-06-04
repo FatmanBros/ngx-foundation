@@ -10,17 +10,16 @@ import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
 import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
+import { ToolbarComponent } from './control/toolbar/toolbar.component';
 import { Appearance } from './enum/enums';
 import { UiModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS,
+  NGX_FOUNDATION_OPTIONS
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
-import { BaseValidator } from './validate/base-validator';
-import { ToolbarComponent } from './control/toolbar/toolbar.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -75,6 +74,7 @@ export const defaultOptions: ngxFoundationOptions = {
   ],
 })
 export class NgxFoundationModule {
+  public static options: ngxFoundationOptions;
   static init(
     options: ngxFoundationOptions
   ): ModuleWithProviders<NgxFoundationModule> {
@@ -85,7 +85,7 @@ export class NgxFoundationModule {
     if (options.appearance) {
       op.appearance = options.appearance;
     }
-    BaseValidator.options = op;
+    this.options = op;
 
     return {
       ngModule: NgxFoundationModule,

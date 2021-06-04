@@ -1,13 +1,12 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import * as _moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundationModule } from '../../../ngx-foundation.module';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
 const moment = _moment;
-export class MaxDate extends BaseValidator {
+export class MaxDate {
   public static validator(dt: Date) {
     return {
       [Validation.maxDate]: {
@@ -31,7 +30,7 @@ export class MaxDate extends BaseValidator {
 
       return {
         [validatorKey]: Util.message(
-          BaseValidator.options.messages[Validation.maxLength],
+          NgxFoundationModule.options.messages[Validation.maxLength],
           moment(date).format('l')
         ),
       };
