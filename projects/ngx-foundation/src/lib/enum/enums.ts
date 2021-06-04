@@ -39,6 +39,8 @@ export enum ButtonType {
 
 export enum MatColor {
   primary = 'primary',
+  secondary = 'secondary',
+  tertiary = 'tertiary',
   success = 'success',
   accent = 'accent',
   warn = 'warn',

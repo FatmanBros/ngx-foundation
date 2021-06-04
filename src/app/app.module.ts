@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -27,6 +28,7 @@ import { NormalComponent } from './examples/normal/normal.component';
     FormsModule,
     ReactiveFormsModule,
     UiModule,
+    FlexLayoutModule,
     NgxFoundationModule.init({
       messages: {
         required: '必須です。',

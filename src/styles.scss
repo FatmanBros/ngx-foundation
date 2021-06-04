@@ -46,7 +46,6 @@ select {
 
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "../projects/ngx-foundation/src/lib/css/custom-theme.scss";
 
 .spacer {
   flex: 1 1 auto;
@@ -54,4 +53,9 @@ select {
 
 .m1 {
   margin: 1em;
+}
+
+body {
+  color: #1e2124;
+  background: #f7f7f7;
 }

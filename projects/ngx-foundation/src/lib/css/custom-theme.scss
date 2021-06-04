@@ -3,7 +3,7 @@
 
 $custom-collection: (
   warning: #ffc116,
-  success: #89f38e,
+  success: mat-color($mat-green, A100),
   danger: #c00000,
   contrast: (
     warning: #000000,

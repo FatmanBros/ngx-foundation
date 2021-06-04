@@ -1,61 +1,64 @@
-<foundation-toolbar
-  [title]="'test'"
-  [rightButtons]="buttons"
-></foundation-toolbar>
-<form [formGroup]="form">
-  <div class="m1">
-    <h3 class="m1">テキストボックス</h3>
-    <foundation-textbox
-      formControlName="test_textbox"
-      class="m1"
-    ></foundation-textbox>
-    <foundation-textbox
-      formControlName="test_numeric"
-      class="m1"
-    ></foundation-textbox>
-    <mat-divider></mat-divider>
-
-    <h3 class="m1">テキストエリア</h3>
-    <div style="width: 30em;">
-      <foundation-textarea
-        formControlName="test_textarea"
+<div fxLayout="column">
+  <foundation-toolbar
+    [title]="'テストタイトル　Test Title'"
+    [rightButtons]="buttons"
+    [color]="color.secondary"
+  ></foundation-toolbar>
+  <form [formGroup]="form" style="overflow-y: auto;">
+    <div class="m1">
+      <h3 class="m1">テキストボックス</h3>
+      <foundation-textbox
+        formControlName="test_textbox"
         class="m1"
-      ></foundation-textarea>
+      ></foundation-textbox>
+      <foundation-textbox
+        formControlName="test_numeric"
+        class="m1"
+      ></foundation-textbox>
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">テキストエリア</h3>
+      <div style="width: 30em">
+        <foundation-textarea
+          formControlName="test_textarea"
+          class="m1"
+        ></foundation-textarea>
+      </div>
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">チェックボックス</h3>
+      <foundation-checkbox
+        formControlName="test_check1"
+        [labelDir]="labelDir.right"
+        class="m1"
+      ></foundation-checkbox>
+      <foundation-checkbox
+        formControlName="test_check2"
+        class="m1"
+      ></foundation-checkbox>
+
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">ラジオボタン</h3>
+      <foundation-radio
+        formControlName="test_radio"
+        [radioOptions]="radioOptions"
+        class="m1"
+      ></foundation-radio>
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">日付ピッカー</h3>
+      <foundation-datepicker
+        formControlName="test_date"
+        class="m1"
+      ></foundation-datepicker>
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">ボタン</h3>
+      <foundation-button
+        *ngFor="let button of buttons"
+        [buttonParam]="button"
+      ></foundation-button>
     </div>
-    <mat-divider></mat-divider>
-
-    <h3 class="m1">チェックボックス</h3>
-    <foundation-checkbox
-      formControlName="test_check1"
-      [labelDir]="labelDir.right"
-      class="m1"
-    ></foundation-checkbox>
-    <foundation-checkbox
-      formControlName="test_check2"
-      class="m1"
-    ></foundation-checkbox>
-
-    <mat-divider></mat-divider>
-
-    <h3 class="m1">ラジオボタン</h3>
-    <foundation-radio
-      formControlName="test_radio"
-      [radioOptions]="radioOptions"
-      class="m1"
-    ></foundation-radio>
-    <mat-divider></mat-divider>
-
-    <h3 class="m1">日付ピッカー</h3>
-    <foundation-datepicker
-      formControlName="test_date"
-      class="m1"
-    ></foundation-datepicker>
-    <mat-divider></mat-divider>
-
-    <h3 class="m1">ボタン</h3>
-    <foundation-button
-      *ngFor="let button of buttons"
-      [buttonParam]="button"
-    ></foundation-button>
-  </div>
-</form>
+  </form>
+</div>
