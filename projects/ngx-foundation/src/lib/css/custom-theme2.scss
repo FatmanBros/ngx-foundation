@@ -7,11 +7,21 @@
 // Angular Material の共通スタイルをインクルード
 @include mat-core();
 
+@function toPalette($val, $code: 500) {
+  $theme: (
+    $code: map-get($val, "color"),
+    contrast: (
+      $code: map-get($val, "contrast"),
+    ),
+  );
+  @return mat-palette($theme, $code);
+}
+
 @mixin setTheme($primary, $accent, $warn, $other: ()) {
   // 色定義： オプションは hue カラーパレットで色コード指定, 参照: https://material.io/design/color/ and https://material.io/tools/color/
-  $my-app-primary: mat-palette($primary, 500);
-  $my-app-accent: mat-palette($accent, 500);
-  $my-app-warn: mat-palette($warn, 500);
+  $my-app-primary: toPalette($primary);
+  $my-app-accent: toPalette($accent);
+  $my-app-warn: toPalette($warn);
 
   // テーマとして色定義をまとめる
   $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
@@ -19,16 +29,10 @@
   // カスタムテーマを適用
   @include angular-material-theme($my-app-theme);
 
-  /* ::::: アプリ全体のスタイルを以下に指定 ::::: */
-  // @mixin get-color($color, $code) {
-  //   background-color: map-get($color, $code);
-  //   color: map-get(map-get($color, contrast), $code);
-  // }
-
   @each $key, $val in $other {
     .mat-#{$key} {
-      background-color: map-get($val, 'color');
-      color: map-get($val, 'contrast');
+      background-color: map-get($val, "color");
+      color: map-get($val, "contrast");
     }
   }
 } ;

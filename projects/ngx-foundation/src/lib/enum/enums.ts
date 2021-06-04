@@ -44,4 +44,5 @@ export enum MatColor {
   success = 'success',
   accent = 'accent',
   warn = 'warn',
+  white = 'white',
 }
