@@ -7,6 +7,7 @@ import {
   LabelDirection,
   ButtonType,
 } from '@ngx-foundation/ngx-foundation';
+import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
 import { DateUtils } from '../utils/date-utils';
 
@@ -66,6 +67,29 @@ export class NormalComponent implements OnInit {
   ];
 
   public form: FormGroup = this.fb.group({
+    test_card: new CustomFormControl<CardValues>({
+      labelText: '',
+      value: {
+        title: 'テストカード　タイトル',
+        subtitle: 'テストカード　サブタイトル',
+        content: 'カードのコンテンツを表示します。',
+        imgUrls: [
+          {
+            image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+            thumbImage:
+              'https://material.angular.io/assets/img/examples/shiba2.jpg',
+          },
+          {
+            image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+            thumbImage:
+              'https://material.angular.io/assets/img/examples/shiba2.jpg',
+          },
+          {
+            video: 'https://www.youtube.com/watch?v=GJkLmB1y4Do',
+          },
+        ],
+      },
+    }),
     test_textbox: new CustomFormControl({
       labelText: 'テスト テキストボックス',
       value: '',

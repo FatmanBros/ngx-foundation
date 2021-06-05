@@ -4,11 +4,11 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, VirtualTimeScheduler } from 'rxjs';
 import { CustomValidatorFn } from '../validate/custom-validators';
 import { Validation } from '../validate/validation';
 
-export class CustomFormControl extends FormControl {
+export class CustomFormControl<T = any> extends FormControl {
   public validators?: { [key: string]: CustomValidatorFn }[];
   public viewUpdate$ = new Subject();
   public args: { [key: string]: any } = {};
@@ -18,11 +18,11 @@ export class CustomFormControl extends FormControl {
   public maxLength!: number;
   public decimalDigitLength?: number;
 
-  constructor(customForm: CustomForm) {
+  constructor(customForm: CustomForm<T>) {
     super(customForm.formState);
-    
+
     this.setValue(customForm.value);
-    
+
     this.labelText = customForm.labelText;
 
     this.validators = customForm.validators;
@@ -83,9 +83,9 @@ export class CustomFormControl extends FormControl {
   }
 }
 
-export interface CustomForm {
+export interface CustomForm<T = any> {
   labelText: string;
-  value: any;
+  value: T;
   formState?: any;
   validators?: { [key: string]: CustomValidatorFn }[];
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;

@@ -26,7 +26,7 @@ import { CustomFormControl } from './custom-form-control';
 @Component({
   template: '',
 })
-export abstract class BaseControlComponent
+export abstract class BaseControlComponent<T = any>
   extends BaseComponent
   implements OnInit, AfterViewInit, ControlValueAccessor
 {
@@ -34,12 +34,16 @@ export abstract class BaseControlComponent
   @Input() appearance: Appearance = Appearance.standard;
   isNumeric: boolean = false;
 
-  @Output() focus = new EventEmitter<CustomFormControl>();
-  @Output() blur = new EventEmitter<CustomFormControl>();
-  @Output() change = new EventEmitter<CustomFormControl>();
+  @Output() focus = new EventEmitter<CustomFormControl<T>>();
+  @Output() blur = new EventEmitter<CustomFormControl<T>>();
+  @Output() change = new EventEmitter<CustomFormControl<T>>();
 
   public ngControl!: NgControl;
-  public control!: CustomFormControl;
+  public control!: CustomFormControl<T>;
+  get value(): T {
+    return this.control.value as T;
+  }
+
 
   public matcher = new CustomErrorStateMatcher();
 
@@ -65,7 +69,7 @@ export abstract class BaseControlComponent
   }
 
   ngAfterContentInit(): void {
-    this.control = this.ngControl.control as CustomFormControl;
+    this.control = this.ngControl.control as CustomFormControl<T>;
     this.labelText = this.control.labelText;
   }
 

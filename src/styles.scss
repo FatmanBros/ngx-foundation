@@ -56,8 +56,8 @@ select {
 }
 
 @import "../projects/ngx-foundation/src/lib/css/custom-theme2.scss";
-// @import "./custom-palette.scss";
-@import "./custom-palette2.scss";
+@import "./custom-palette.scss";
+// @import "./custom-palette2.scss";
 
 $base: map-get($custom-colors, base);
 body {

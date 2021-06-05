@@ -2,8 +2,14 @@
   <foundation-toolbar
     [title]="'テストタイトル　Test Title'"
     [rightButtons]="buttons"
+    [color]="color.base"
   ></foundation-toolbar>
-  <form [formGroup]="form" style="overflow-y: auto;">
+  <form [formGroup]="form" style="overflow-y: auto">
+    <div class="m1">
+      <h3 class="m1">カード</h3>
+      <foundation-card formControlName="test_card"></foundation-card>
+    </div>
+    <mat-divider></mat-divider>
     <div class="m1">
       <h3 class="m1">テキストボックス</h3>
       <foundation-textbox

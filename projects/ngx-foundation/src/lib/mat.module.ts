@@ -11,6 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 const modules = [
   MatFormFieldModule,
@@ -25,9 +27,11 @@ const modules = [
   MatTooltipModule,
   MatIconModule,
   MatDividerModule,
+  MatCardModule,
+  NgImageSliderModule,
 ];
 
 @NgModule({
   exports: [...modules],
 })
-export class UiModule {}
+export class MaterialModule {}

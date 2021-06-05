@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ButtonComponent } from './control/button/button.component';
+import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
 import { LabelComponent } from './control/label/label.component';
@@ -12,7 +13,7 @@ import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
 import { ToolbarComponent } from './control/toolbar/toolbar.component';
 import { Appearance } from './enum/enums';
-import { UiModule } from './mat.module';
+import { MaterialModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
@@ -51,8 +52,14 @@ export const defaultOptions: ngxFoundationOptions = {
     DatepickerComponent,
     NumberWithCommasPipe,
     ToolbarComponent,
+    CardComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, UiModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ],
   exports: [
     NgxFoundationComponent,
     TextboxComponent,
@@ -65,6 +72,7 @@ export const defaultOptions: ngxFoundationOptions = {
     DatepickerComponent,
     NumberWithCommasPipe,
     ToolbarComponent,
+    CardComponent,
   ],
   providers: [
     {

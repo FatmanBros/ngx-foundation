@@ -13,3 +13,18 @@ export interface ButtonParam {
 export const defaultParam: ButtonParam = {
   type: ButtonType.basic,
 };
+
+export interface NgImageSliderImage {
+  image: string;
+  thumbImage: string;
+  alt?: string;
+  title?: string;
+  order?: number;
+}
+
+export interface NgImageSliderVideo {
+  video: string,
+  posterImage?: string;
+  alt?: string;
+  title?: string;
+}

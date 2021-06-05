@@ -10,10 +10,10 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxFoundationModule, UiModule } from '@ngx-foundation/ngx-foundation';
+import { NgxFoundationModule, MaterialModule } from '@ngx-foundation/ngx-foundation';
 import { Appearance } from 'projects/ngx-foundation/src/lib/enum/enums';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,8 +27,9 @@ import { NormalComponent } from './examples/normal/normal.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UiModule,
+    MaterialModule,
     FlexLayoutModule,
+    MatFormFieldModule,
     NgxFoundationModule.init({
       messages: {
         required: '必須です。',
