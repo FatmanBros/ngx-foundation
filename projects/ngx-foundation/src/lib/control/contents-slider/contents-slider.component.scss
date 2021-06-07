@@ -1,0 +1,9 @@
+.outer {
+  user-select: none;
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+}

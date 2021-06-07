@@ -5,9 +5,30 @@
     [color]="color.base"
   ></foundation-toolbar>
   <form [formGroup]="form" style="overflow-y: auto">
+    <foundation-contents-slider [width]="'60em'">
+      <foundation-card
+        formControlName="test_card"
+        [color]="color.primary"
+      ></foundation-card>
+      <foundation-card
+        formControlName="test_card"
+        [color]="color.primary"
+      ></foundation-card>
+      <foundation-card
+        formControlName="test_card"
+        [color]="color.primary"
+      ></foundation-card>
+      <foundation-card
+        formControlName="test_card"
+        [color]="color.primary"
+      ></foundation-card>
+    </foundation-contents-slider>
     <div class="m1">
       <h3 class="m1">カード</h3>
-      <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
+      <foundation-card
+        formControlName="test_card"
+        [color]="color.primary"
+      ></foundation-card>
     </div>
     <mat-divider></mat-divider>
     <div class="m1">

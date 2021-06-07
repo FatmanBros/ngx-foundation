@@ -1,3 +1,13 @@
-<div>
-  <ng-content></ng-content>
+<div class="outer" [ngStyle]="outerStyles">
+  <div
+    class="inner"
+    [ngClass]="innerStyles"
+    [ngStyle]="{ 'margin-left': left }"
+    (mousedown)="dragStart($event)"
+    (mouseup)="dragEnd($event)"
+    (mouseleave)="dragEnd($event)"
+    (mousemove)="drag($event)"
+  >
+    <ng-content></ng-content>
+  </div>
 </div>
