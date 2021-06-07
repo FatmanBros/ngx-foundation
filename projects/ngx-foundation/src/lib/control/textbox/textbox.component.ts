@@ -12,7 +12,7 @@ import { BaseControlComponent } from '../base-control.component';
 @Component({
   selector: 'foundation-textbox',
   templateUrl: './textbox.component.html',
-  styleUrls: ['../../css/styles.scss', './textbox.component.css'],
+  styleUrls: ['../../css/styles.scss', './textbox.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

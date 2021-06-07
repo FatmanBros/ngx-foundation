@@ -55,9 +55,10 @@ select {
   margin: 1em;
 }
 
-@import "../projects/ngx-foundation/src/lib/css/custom-theme2.scss";
-@import "./custom-palette.scss";
+@import "../projects/ngx-foundation/src/lib/css/custom-theme.scss";
+// @import "./custom-palette.scss";
 // @import "./custom-palette2.scss";
+@import "./custom-palette3.scss";
 
 $base: map-get($custom-colors, base);
 body {

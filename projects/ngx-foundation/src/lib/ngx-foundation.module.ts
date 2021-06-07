@@ -5,7 +5,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ButtonComponent } from './control/button/button.component';
 import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
+import { ContentsSliderComponent } from './control/contents-slider/contents-slider.component';
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
+import { ImageSliderComponent } from './control/image-slider/image-slider.component';
 import { LabelComponent } from './control/label/label.component';
 import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
@@ -53,13 +55,10 @@ export const defaultOptions: ngxFoundationOptions = {
     NumberWithCommasPipe,
     ToolbarComponent,
     CardComponent,
+    ImageSliderComponent,
+    ContentsSliderComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [
     NgxFoundationComponent,
     TextboxComponent,
@@ -73,6 +72,8 @@ export const defaultOptions: ngxFoundationOptions = {
     NumberWithCommasPipe,
     ToolbarComponent,
     CardComponent,
+    ImageSliderComponent,
+    ContentsSliderComponent,
   ],
   providers: [
     {

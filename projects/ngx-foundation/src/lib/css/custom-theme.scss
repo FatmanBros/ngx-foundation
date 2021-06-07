@@ -1,38 +1,38 @@
-@import '~@angular/material/theming';
+/* ::::: テーマカラーのカスタマイズ ::::: */
+
+// テーマ操作関数をライブラリからインポート
+@import "~@angular/material/theming";
+@import "./custom-palette.scss";
+
+// Angular Material の共通スタイルをインクルード
 @include mat-core();
 
-$custom-collection: (
-  warning: #ffc116,
-  success: mat-color($mat-green, A100),
-  danger: #c00000,
-  contrast: (
-    warning: #000000,
-    success: #ffffff,
-    danger: #ffffff,
-  ),
-);
-
-// 色定義： オプションは hue カラーパレットで色コード指定, 参照: https://material.io/design/color/ and https://material.io/tools/color/
-$my-app-primary: mat-palette($mat-light-blue, 800);
-$my-app-accent:  mat-palette($mat-cyan, 600);
-$my-app-warn:    mat-palette($mat-pink, 500, 900, A100);
-
-$my-app-custom: mat-palette($custom-collection, custom);
-$my-app-theme: mat-light-theme(
-  $my-app-primary,
-  $my-app-accent,
-  $my-app-warn
-); // this row your should have already in your code where you select palettes for primary, accent and warn
-
-$my-app-theme: map_merge(
-  $my-app-theme,
-  (
-    custom: $my-app-custom,
-  )
-);
-$custom: map-get($my-app-theme, custom);
-
-.mat-success {
-  background-color: mat-color($custom, success);
-  color: mat-color($custom, success-contrast);
+@function toPalette($val, $code: 500) {
+  $theme: (
+    $code: map-get($val, "color"),
+    contrast: (
+      $code: map-get($val, "contrast"),
+    ),
+  );
+  @return mat-palette($theme, $code);
 }
+
+@mixin setTheme($primary, $accent, $warn, $other: ()) {
+  // 色定義： オプションは hue カラーパレットで色コード指定, 参照: https://material.io/design/color/ and https://material.io/tools/color/
+  $my-app-primary: toPalette($primary);
+  $my-app-accent: toPalette($accent);
+  $my-app-warn: toPalette($warn);
+
+  // テーマとして色定義をまとめる
+  $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+  // カスタムテーマを適用
+  @include angular-material-theme($my-app-theme);
+
+  @each $key, $val in $other {
+    .mat-#{$key} {
+      background-color: map-get($val, "color");
+      color: map-get($val, "contrast");
+    }
+  }
+} ;

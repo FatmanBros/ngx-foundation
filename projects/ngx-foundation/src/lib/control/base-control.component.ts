@@ -12,7 +12,7 @@ import {
   NgControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Appearance } from '../enum/enums';
+import { Appearance, MatColor } from '../enum/enums';
 import {
   ngxFoundationOptions,
   NGX_FOUNDATION_OPTIONS,
@@ -32,6 +32,7 @@ export abstract class BaseControlComponent<T = any>
 {
   @Input() labelText: string = '';
   @Input() appearance: Appearance = Appearance.standard;
+  @Input() color?: MatColor;
   isNumeric: boolean = false;
 
   @Output() focus = new EventEmitter<CustomFormControl<T>>();
@@ -40,10 +41,10 @@ export abstract class BaseControlComponent<T = any>
 
   public ngControl!: NgControl;
   public control!: CustomFormControl<T>;
+
   get value(): T {
     return this.control.value as T;
   }
-
 
   public matcher = new CustomErrorStateMatcher();
 
@@ -123,5 +124,11 @@ export abstract class BaseControlComponent<T = any>
       (key) => (this.control.errors as ValidationErrors)[key]
     );
     return msg;
+  }
+
+  public get ngClass() {
+    return {
+      [`mat-${this.color}`]: true,
+    };
   }
 }
