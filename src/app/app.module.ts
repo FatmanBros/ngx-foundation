@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -10,10 +10,17 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
+import { MatIconRegistry } from '@angular/material/icon';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxFoundationModule, MaterialModule } from '@ngx-foundation/ngx-foundation';
+import {
+  NgxFoundationModule,
+  MaterialModule,
+} from '@ngx-foundation/ngx-foundation';
 import { Appearance } from 'projects/ngx-foundation/src/lib/enum/enums';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

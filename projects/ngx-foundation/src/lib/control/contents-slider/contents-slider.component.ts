@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ButtonType } from '../../enum/enums';
 
 @Component({
   selector: 'foundation-contents-slider',
@@ -18,9 +19,19 @@ export class ContentsSliderComponent implements OnInit {
 
   private currentNo: number = 0;
 
-  constructor(private elementRef: ElementRef) {}
+  public buttonType = ButtonType;
+
+  constructor(private elementRef: ElementRef) {
+    window.addEventListener('mouseup', (event) => this.dragEnd(event));
+    window.addEventListener('mousemove', (event) => this.drag(event));
+  }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    window.removeEventListener('mouseup', (event) => this.dragEnd(event));
+    window.removeEventListener('mousemove', (event) => this.drag(event));
+  }
 
   ngAfterViewInit() {
     const div: Element =
@@ -74,5 +85,13 @@ export class ContentsSliderComponent implements OnInit {
     } else {
       return -(this.currentNo * this.contentWidth) + 'px';
     }
+  }
+
+  onLeft() {
+    this.currentNo = this.currentNo - 1 < 0 ? 0 : this.currentNo - 1;
+  }
+
+  onRight() {
+    this.currentNo = this.currentNo >= this.contentCnt ? this.contentCnt : this.currentNo + 1;
   }
 }

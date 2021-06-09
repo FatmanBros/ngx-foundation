@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ButtonComponent } from './control/button/button.component';
 import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
@@ -100,5 +102,23 @@ export class NgxFoundationModule {
       ngModule: NgxFoundationModule,
       providers: [{ provide: NGX_FOUNDATION_OPTIONS, useValue: options }],
     };
+  }
+
+  constructor(domSanitizer: DomSanitizer, iconRegistry: MatIconRegistry) {
+    const icons = [
+      'arrow_back_ios',
+      'arrow_forward_ios',
+      'chevron_left',
+      'chevron_right',
+    ];
+
+    icons.forEach((icon) => {
+      iconRegistry.addSvgIcon(
+        icon,
+        domSanitizer.bypassSecurityTrustResourceUrl(
+          '/assets/icon/' + icon + '.svg'
+        )
+      );
+    });
   }
 }
