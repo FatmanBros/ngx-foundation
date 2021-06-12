@@ -1,5 +1,4 @@
 <mat-label>{{ labelText }}</mat-label>
-<br>
 <mat-radio-group
   [formControl]="control"
   [id]="ctlName"
@@ -9,6 +8,7 @@
   (change)="onChange()"
 >
   <mat-radio-button
+    class="radio-content"
     *ngFor="let option of radioOptions"
     [value]="option.value"
     >{{ option.label }}</mat-radio-button

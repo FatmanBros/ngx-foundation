@@ -47,3 +47,9 @@ export enum MatColor {
   white = 'white',
   base = 'base',
 }
+
+export enum ImageVideoContentType {
+  image,
+  video,
+  other,
+}

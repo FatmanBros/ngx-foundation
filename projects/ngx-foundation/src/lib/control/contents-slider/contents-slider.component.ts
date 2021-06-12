@@ -88,10 +88,16 @@ export class ContentsSliderComponent implements OnInit {
   }
 
   onLeft() {
-    this.currentNo = this.currentNo - 1 < 0 ? 0 : this.currentNo - 1;
+    this.currentNo--;
+    if (this.currentNo - 1 < 0) {
+      this.currentNo = 0;
+    }
   }
 
   onRight() {
-    this.currentNo = this.currentNo >= this.contentCnt ? this.contentCnt : this.currentNo + 1;
+    this.currentNo++;
+    if (this.currentNo >= this.contentCnt - 1) {
+      this.currentNo = this.contentCnt - 1;
+    }
   }
 }

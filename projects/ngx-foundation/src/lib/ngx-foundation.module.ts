@@ -25,6 +25,7 @@ import {
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
+import { ImageComponent } from './control/image/image.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -59,6 +60,7 @@ export const defaultOptions: ngxFoundationOptions = {
     CardComponent,
     ImageSliderComponent,
     ContentsSliderComponent,
+    ImageComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [

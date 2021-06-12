@@ -14,7 +14,7 @@ export const defaultParam: ButtonParam = {
   type: ButtonType.basic,
 };
 
-export interface NgImageSliderImage {
+export interface NgxFoundationImage {
   image: string;
   thumbImage: string;
   alt?: string;
@@ -22,7 +22,7 @@ export interface NgImageSliderImage {
   order?: number;
 }
 
-export interface NgImageSliderVideo {
+export interface NgxFoundationVideo {
   video: string,
   posterImage?: string;
   alt?: string;

@@ -3,13 +3,12 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatColor } from '../../enum/enums';
 import {
-  NgImageSliderImage,
-  NgImageSliderVideo,
+  NgxFoundationImage,
+  NgxFoundationVideo
 } from '../../interface/interface';
 import { BaseControlComponent } from '../base-control.component';
 
@@ -44,7 +43,7 @@ export interface CardValues {
   title: string;
   subtitle?: string;
   content: string;
-  imgUrls?: (NgImageSliderImage | NgImageSliderVideo)[];
+  imgUrls?: (NgxFoundationImage | NgxFoundationVideo)[];
   authorImgUrl?: string;
   author?: string;
 }
