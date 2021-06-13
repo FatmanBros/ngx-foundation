@@ -1,1 +1,5 @@
-<p>select works!</p>
+<ng-select [(ngModel)]="value" [placeholder]="placeholder">
+  <ng-option *ngFor="let item of listItems" [value]="item.code">{{
+    item.label
+  }}</ng-option>
+</ng-select>

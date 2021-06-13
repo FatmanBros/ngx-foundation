@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ButtonComponent } from './control/button/button.component';
 import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
 import { ContentsSliderComponent } from './control/contents-slider/contents-slider.component';
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
 import { ImageSliderComponent } from './control/image-slider/image-slider.component';
+import { ImageComponent } from './control/image/image.component';
 import { LabelComponent } from './control/label/label.component';
 import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
@@ -21,11 +23,10 @@ import { MaterialModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS
+  NGX_FOUNDATION_OPTIONS,
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
-import { ImageComponent } from './control/image/image.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -62,7 +63,13 @@ export const defaultOptions: ngxFoundationOptions = {
     ContentsSliderComponent,
     ImageComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    NgSelectModule,
+  ],
   exports: [
     NgxFoundationComponent,
     TextboxComponent,

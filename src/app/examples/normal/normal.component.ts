@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { getMatFormFieldPlaceholderConflictError } from '@angular/material/form-field';
 import {
   MatColor,
   CustomFormControl,
@@ -9,6 +10,7 @@ import {
 } from '@ngx-foundation/ngx-foundation';
 import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
+import { Authority } from '../constants';
 import { DateUtils } from '../utils/date-utils';
 
 @Component({
@@ -58,13 +60,6 @@ export class NormalComponent implements OnInit {
     },
   ];
   labelDir = LabelDirection;
-
-  radioOptions = [
-    { label: 'test1', value: '0' },
-    { label: 'test2', value: '1' },
-    { label: 'test3', value: '2' },
-    { label: 'test4', value: '3' },
-  ];
 
   public form: FormGroup = this.fb.group({
     test_card: new CustomFormControl<CardValues>({
@@ -128,11 +123,20 @@ export class NormalComponent implements OnInit {
     test_radio: new CustomFormControl({
       labelText: 'テスト ラジオボタン',
       value: '3',
+      listItems: Authority.getList(),
     }),
     test_date: new CustomFormControl({
       labelText: 'テスト 日付',
       value: new Date(),
       validators: [CustomValidators.minDate(DateUtils.getToday())],
+    }),
+    test_select: new CustomFormControl({
+      labelText: 'テスト セレクト',
+      value: Authority.general.code,
+      listItems: Authority.getList(),
+      options: {
+        placeholder: '権限を選択してください'
+      }
     }),
   });
 

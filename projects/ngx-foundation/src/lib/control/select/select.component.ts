@@ -21,6 +21,14 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends BaseControlComponent {
+  public set value(val: any) {
+    this.control.setValue(val);
+  }
+
+  public get value() {
+    return this.control.value;
+  }
+
   constructor(injector: Injector) {
     super(injector);
   }

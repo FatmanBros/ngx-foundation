@@ -12,6 +12,7 @@ import {
   NgControl,
   ValidationErrors,
 } from '@angular/forms';
+import { ListItem } from '../constants/constants';
 import { Appearance, MatColor } from '../enum/enums';
 import {
   ngxFoundationOptions,
@@ -44,6 +45,14 @@ export abstract class BaseControlComponent<T = any>
 
   get value(): T {
     return this.control.value as T;
+  }
+
+  get listItems(): ListItem[] {
+    if (this.control.listItems) {
+      return this.control.listItems;
+    } else {
+      return [];
+    }
   }
 
   public matcher = new CustomErrorStateMatcher();
@@ -130,5 +139,13 @@ export abstract class BaseControlComponent<T = any>
     return {
       [`mat-${this.color}`]: true,
     };
+  }
+
+  public get placeholder() {
+    if (!this.control.options) {
+      return '';
+    } else {
+      return this.control.options.placeholder;
+    }
   }
 }

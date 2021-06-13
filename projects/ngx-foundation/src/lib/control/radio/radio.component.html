@@ -9,8 +9,8 @@
 >
   <mat-radio-button
     class="radio-content"
-    *ngFor="let option of radioOptions"
-    [value]="option.value"
+    *ngFor="let option of listItems"
+    [value]="option.code"
     >{{ option.label }}</mat-radio-button
   >
 </mat-radio-group>

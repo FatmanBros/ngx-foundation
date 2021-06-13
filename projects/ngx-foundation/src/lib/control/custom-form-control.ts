@@ -4,7 +4,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Subject, VirtualTimeScheduler } from 'rxjs';
+import { Subject } from 'rxjs';
+import { ListItem } from '../constants/constants';
 import { CustomValidatorFn } from '../validate/custom-validators';
 import { Validation } from '../validate/validation';
 
@@ -17,15 +18,16 @@ export class CustomFormControl<T = any> extends FormControl {
   public required!: boolean;
   public maxLength!: number;
   public decimalDigitLength?: number;
+  public listItems?: ListItem[];
+  public options?: CustomFormOptions;
 
   constructor(customForm: CustomForm<T>) {
     super(customForm.formState);
-
     this.setValue(customForm.value);
-
     this.labelText = customForm.labelText;
-
     this.validators = customForm.validators;
+    this.listItems = customForm.listItems;
+    this.options = customForm.options;
 
     const customValidators = this.createCustomValidatorFns(
       customForm.validators
@@ -87,6 +89,11 @@ export interface CustomForm<T = any> {
   labelText: string;
   value: T;
   formState?: any;
+  listItems?: ListItem[];
   validators?: { [key: string]: CustomValidatorFn }[];
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;
+  options?: CustomFormOptions;
+}
+export interface CustomFormOptions {
+  placeholder: string;
 }

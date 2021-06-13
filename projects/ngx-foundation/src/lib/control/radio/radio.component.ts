@@ -23,8 +23,6 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioComponent extends BaseControlComponent {
-  @Input() radioOptions: ListItem[] = [];
-
   constructor(injector: Injector) {
     super(injector);
   }

@@ -71,9 +71,8 @@
       <h3 class="m1">ラジオボタン</h3>
       <foundation-radio
         formControlName="test_radio"
-        [radioOptions]="radioOptions"
         class="m1"
-        style="width: 20em;"
+        style="width: 20em"
       ></foundation-radio>
       <mat-divider></mat-divider>
 
@@ -89,6 +88,16 @@
         *ngFor="let button of buttons"
         [buttonParam]="button"
       ></foundation-button>
+
+      <mat-divider></mat-divider>
+
+      <h3 class="m1">セレクト</h3>
+      <div style="width: 20em">
+        <foundation-select
+          formControlName="test_select"
+          class="m1"
+        ></foundation-select>
+      </div>
     </div>
   </form>
 </div>
