@@ -1,12 +1,12 @@
 <div class="outer">
   <div class="inner">
     <header>
-      {{ title }}
+      <label class="title-label">{{ title }}</label>
     </header>
     <section class="form-area">
       <form [formGroup]="form" class="form">
-        <foundation-textbox formControlName="id"></foundation-textbox>
-        <foundation-textbox formControlName="password"></foundation-textbox>
+        <foundation-textbox formControlName="id" class="content"></foundation-textbox>
+        <foundation-textbox formControlName="password" class="content"></foundation-textbox>
       </form>
     </section>
     <footer>
