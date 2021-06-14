@@ -22,6 +22,7 @@ import { TextboxComponent } from './control/textbox/textbox.component';
 import { ToolbarComponent } from './control/toolbar/toolbar.component';
 import { Appearance } from './enum/enums';
 import { MaterialModule } from './mat.module';
+import { NgxFoundation } from './ngx-foundation-options';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
@@ -101,7 +102,6 @@ export const defaultOptions: ngxFoundationOptions = {
   ],
 })
 export class NgxFoundationModule {
-  public static options: ngxFoundationOptions;
   static init(
     options: ngxFoundationOptions
   ): ModuleWithProviders<NgxFoundationModule> {
@@ -112,7 +112,7 @@ export class NgxFoundationModule {
     if (options.appearance) {
       op.appearance = options.appearance;
     }
-    this.options = op;
+    NgxFoundation.options = op;
 
     return {
       ngModule: NgxFoundationModule,

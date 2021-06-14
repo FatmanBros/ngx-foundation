@@ -1,5 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output
+} from '@angular/core';
+import { FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
 import { FormGroupUtils } from '../../util/form-group-utils';
 import { CustomValidators } from '../../validate/custom-validators';
@@ -9,6 +16,14 @@ import { CommonFormComponent } from '../common-form.component';
   selector: 'foundation-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['./sign-up-form.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SignUpFormComponent),
+      multi: true,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpFormComponent extends CommonFormComponent {
   @Input() title: string = '';

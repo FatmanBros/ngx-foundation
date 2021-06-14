@@ -1,7 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 import * as _moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
-import { NgxFoundationModule } from '../../../ngx-foundation.module';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Util } from '../../../util/utils';
 import { Validation, Validations } from '../../validation';
 
@@ -30,7 +30,7 @@ export class MaxDate {
 
       return {
         [validatorKey]: Util.message(
-          NgxFoundationModule.options.messages[Validation.maxLength],
+          NgxFoundation.options.messages[Validation.maxLength],
           moment(date).format('l')
         ),
       };

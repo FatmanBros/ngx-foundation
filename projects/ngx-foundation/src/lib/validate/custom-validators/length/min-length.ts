@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../../control/custom-form-control';
-import { NgxFoundationModule } from '../../../ngx-foundation.module';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Util } from '../../../util/utils';
 import { Validation, Validations } from '../../validation';
 
@@ -27,7 +27,7 @@ export class MinLength {
 
       return {
         [validatorKey]: Util.message(
-          NgxFoundationModule.options.messages[Validation.minLength],
+          NgxFoundation.options.messages[Validation.minLength],
           minLength + ''
         ),
       };

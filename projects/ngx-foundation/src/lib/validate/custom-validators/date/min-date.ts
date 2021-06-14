@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import * as _moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
-import { NgxFoundationModule } from '../../../ngx-foundation.module';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Util } from '../../../util/utils';
 import { Validation, Validations } from '../../validation';
 
@@ -34,7 +34,7 @@ export class MinDate {
 
       return {
         [validatorKey]: Util.message(
-          NgxFoundationModule.options.messages[Validation.minDate],
+          NgxFoundation.options.messages[Validation.minDate],
           moment(date).format('l')
         ),
       };

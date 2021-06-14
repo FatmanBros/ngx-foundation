@@ -1,8 +1,7 @@
 import { AbstractControl } from '@angular/forms';
-import * as _moment from 'moment';
 import { emailRegex } from '../../../constants/constants';
 import { CustomFormControl } from '../../../control/custom-form-control';
-import { NgxFoundationModule } from '../../../ngx-foundation.module';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Validation, Validations } from '../../validation';
 
 export class FoundationEmailValidator {
@@ -29,7 +28,7 @@ export class FoundationEmailValidator {
       }
 
       return {
-        [validatorKey]: NgxFoundationModule.options.messages[Validation.email],
+        [validatorKey]: NgxFoundation.options.messages[Validation.email],
       };
     };
   }
