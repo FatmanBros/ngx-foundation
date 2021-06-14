@@ -6,7 +6,7 @@ import {
   Input,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ButtonType } from '../../enum/enums';
+import { ButtonType, MatColor } from '../../enum/enums';
 import { ButtonParam, defaultParam } from '../../interface/interface';
 
 @Component({
@@ -24,6 +24,9 @@ import { ButtonParam, defaultParam } from '../../interface/interface';
 })
 export class ButtonComponent {
   buttonType = ButtonType;
+  @Input() type: ButtonType = ButtonType.basic;
+  @Input() color: string = 'primary';
+  @Input() label: string = 'Button';
   @Input() buttonParam: ButtonParam = defaultParam;
 
   constructor(elementRef: ElementRef) {

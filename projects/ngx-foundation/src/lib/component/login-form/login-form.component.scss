@@ -1,0 +1,23 @@
+.outer {
+  text-align: center;
+  margin-top: 10em;
+}
+
+.inner {
+  display: inline-block;
+  background-color: white;
+  min-width: 20em;
+  max-width: 30em;
+  padding: 2em;
+  border-radius: .2em;
+}
+
+header {
+  height: 3em;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}

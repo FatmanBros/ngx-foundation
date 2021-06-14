@@ -5,6 +5,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { LoginFormComponent } from './component/login-form/login-form.component';
+import { SignUpFormComponent } from './component/sign-up-form/sign-up-form.component';
 import { ButtonComponent } from './control/button/button.component';
 import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
@@ -23,7 +25,7 @@ import { MaterialModule } from './mat.module';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS,
+  NGX_FOUNDATION_OPTIONS
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
@@ -62,6 +64,8 @@ export const defaultOptions: ngxFoundationOptions = {
     ImageSliderComponent,
     ContentsSliderComponent,
     ImageComponent,
+    LoginFormComponent,
+    SignUpFormComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +89,8 @@ export const defaultOptions: ngxFoundationOptions = {
     CardComponent,
     ImageSliderComponent,
     ContentsSliderComponent,
+    LoginFormComponent,
+    SignUpFormComponent,
   ],
   providers: [
     {

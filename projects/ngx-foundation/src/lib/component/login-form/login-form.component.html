@@ -1,0 +1,16 @@
+<div class="outer">
+  <div class="inner">
+    <header>
+      {{ title }}
+    </header>
+    <section class="form-area">
+      <form [formGroup]="form" class="form">
+        <foundation-textbox formControlName="id"></foundation-textbox>
+        <foundation-textbox formControlName="password"></foundation-textbox>
+      </form>
+    </section>
+    <footer>
+      <foundation-button [label]="buttonLabel" (click)="submit()"></foundation-button>
+    </footer>
+  </div>
+</div>

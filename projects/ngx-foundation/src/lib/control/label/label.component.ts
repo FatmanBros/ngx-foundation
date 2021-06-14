@@ -8,7 +8,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
-  selector: 'faundation-label',
+  selector: 'foundation-label',
   templateUrl: './label.component.html',
   styleUrls: ['../../css/styles.scss', './label.component.scss'],
   providers: [

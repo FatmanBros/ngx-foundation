@@ -23,9 +23,10 @@ import { Appearance } from 'projects/ngx-foundation/src/lib/enum/enums';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NormalComponent } from './examples/normal/normal.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, NormalComponent],
+  declarations: [AppComponent, NormalComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
