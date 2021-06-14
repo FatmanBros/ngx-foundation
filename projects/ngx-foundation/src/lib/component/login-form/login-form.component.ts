@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { TransitionCheckState } from '@angular/material/checkbox';
 import { CustomFormControl } from '../../control/custom-form-control';
 import { FormGroupUtils } from '../../util/form-group-utils';
 import { CustomValidators } from '../../validate/custom-validators';
+import { CommonFormComponent } from '../common-form.component';
 
 @Component({
   selector: 'foundation-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent extends CommonFormComponent {
   @Input() title: string = '';
   @Input() buttonLabel: string = '';
 
@@ -28,7 +28,10 @@ export class LoginFormComponent implements OnInit {
       validators: [CustomValidators.required()],
     }),
   });
-  constructor(private fb: FormBuilder) {}
+
+  constructor(private fb: FormBuilder) {
+    super();
+  }
 
   ngOnInit(): void {}
 

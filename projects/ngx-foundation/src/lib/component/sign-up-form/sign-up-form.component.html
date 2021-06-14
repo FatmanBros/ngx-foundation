@@ -1,1 +1,36 @@
-<p>sign-up-form works!</p>
+<div class="outer">
+  <div class="inner">
+    <header>
+      <label class="title-label">{{ title }}</label>
+    </header>
+    <section class="form-area">
+      <form [formGroup]="form" class="form">
+        <foundation-textbox
+          formControlName="userName"
+          class="content"
+        ></foundation-textbox>
+        <foundation-textbox
+          formControlName="email"
+          class="content"
+        ></foundation-textbox>
+        <foundation-textbox
+          formControlName="id"
+          class="content"
+        ></foundation-textbox>
+        <foundation-textbox
+          formControlName="password"
+          class="content"
+          [type]="'password'"
+        ></foundation-textbox>
+      </form>
+    </section>
+    <footer>
+      <foundation-button
+        [label]="buttonLabel"
+        [type]="buttonType.raised"
+        (click)="submit()"
+        class="none-radius"
+        ></foundation-button>
+    </footer>
+  </div>
+</div>

@@ -5,12 +5,25 @@
     </header>
     <section class="form-area">
       <form [formGroup]="form" class="form">
-        <foundation-textbox formControlName="id" class="content"></foundation-textbox>
-        <foundation-textbox formControlName="password" class="content"></foundation-textbox>
+        <foundation-textbox
+          formControlName="id"
+          class="content"
+        ></foundation-textbox>
+        <foundation-textbox
+          formControlName="password"
+          class="content"
+          [type]="'password'"
+        ></foundation-textbox>
       </form>
     </section>
     <footer>
-      <foundation-button [label]="buttonLabel" (click)="submit()"></foundation-button>
+      <foundation-button
+        [label]="buttonLabel"
+        [type]="buttonType.raised"
+        [color]="'primary'"
+        (click)="submit()"
+        class="none-radius"
+      ></foundation-button>
     </footer>
   </div>
 </div>

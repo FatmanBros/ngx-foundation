@@ -1,11 +1,15 @@
 <div fxLayout="column">
-  <a routerLink="/login">Login</a>
   <foundation-toolbar
     [title]="'テストタイトル　Test Title'"
     [rightButtons]="buttons"
-    [color]="color.base"
+    [color]="color.primary"
   ></foundation-toolbar>
   <form [formGroup]="form" style="overflow-y: auto">
+    <div class="m1">
+      <a routerLink="/login">Login</a><br />
+      <a routerLink="/sign-up">sign-up</a>
+    </div>
+    <mat-divider></mat-divider>
     <div class="m1">
       <h3 class="m1">スライダー</h3>
       <foundation-contents-slider [width]="'100%'">
@@ -27,6 +31,7 @@
         ></foundation-card>
       </foundation-contents-slider>
     </div>
+    <mat-divider></mat-divider>
     <div class="m1">
       <h3 class="m1">カード</h3>
       <foundation-card

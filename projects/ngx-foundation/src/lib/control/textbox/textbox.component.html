@@ -3,6 +3,7 @@
   <input
     matInput
     [formControl]="control"
+    [type]="hide ? type : 'text'"
     [id]="ctlName"
     [name]="ctlName"
     [autocomplete]="autocomplete"
@@ -12,7 +13,16 @@
     (change)="onChange()"
     [errorStateMatcher]="matcher"
   />
+  <foundation-button
+    *ngIf="type === 'password'"
+    [type]="buttonType.icon"
+    matSuffix
+    (click)="hide = !hide"
+    [label]="hide ? 'visibility_off' : 'visibility'"
+    [tabindex]="-1"
+  >
+  </foundation-button>
   <mat-hint *ngIf="!isNumeric">{{ hint }}</mat-hint>
-  <mat-hint *ngIf="isNumeric">{{ control.value | numberWithCommas}}</mat-hint>
+  <mat-hint *ngIf="isNumeric">{{ control.value | numberWithCommas }}</mat-hint>
   <mat-error *ngFor="let err of errorMessage">{{ err }}</mat-error>
 </mat-form-field>

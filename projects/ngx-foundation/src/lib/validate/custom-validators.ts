@@ -3,6 +3,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomFormControl } from '../control/custom-form-control';
 import { MaxDate } from './custom-validators/date/max-date';
 import { MinDate } from './custom-validators/date/min-date';
+import { FoundationEmailValidator } from './custom-validators/email/email';
 import { MaxLength } from './custom-validators/length/max-length';
 import { MinLength } from './custom-validators/length/min-length';
 import { MaxValue } from './custom-validators/numeric/max-value';
@@ -24,6 +25,7 @@ export class CustomValidators {
   public static maxLength = MaxLength.validator;
   public static minDate = MinDate.validator;
   public static maxDate = MaxDate.validator;
+  public static email = FoundationEmailValidator.validator;
 }
 
 export class CustomErrorStateMatcher implements ErrorStateMatcher {

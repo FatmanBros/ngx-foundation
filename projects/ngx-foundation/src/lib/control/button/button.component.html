@@ -1,51 +1,58 @@
 <ng-container [ngSwitch]="type">
-  <a
+  <button
     *ngSwitchDefault
     mat-button
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    >{{ label }}</a
+    [tabindex]="tabindex"
+    >{{ label }}</button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.raised"
     mat-raised-button
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    >{{ label }}</a
+    [tabindex]="tabindex"
+    >{{ label }}</button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.stroked"
     mat-stroked-button
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    >{{ label }}</a
+    [tabindex]="tabindex"
+    >{{ label }}</button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.flat"
     mat-flat-button
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    >{{ label }}</a
+    [tabindex]="tabindex"
+    >{{ label }}</button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.icon"
     mat-icon-button
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    ><mat-icon>{{ label }}</mat-icon></a
+    [tabindex]="tabindex"
+    ><mat-icon>{{ label }}</mat-icon></button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.fab"
     mat-fab
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    ><mat-icon>{{ label }}</mat-icon></a
+    [tabindex]="tabindex"
+    ><mat-icon>{{ label }}</mat-icon></button
   >
-  <a
+  <button
     *ngSwitchCase="buttonType.miniFab"
     mat-mini-fab
-    [color]="buttonParam.color"
+    [color]="color"
     [matTooltip]="buttonParam.tooltip ?? ''"
-    ><mat-icon>{{ label }}</mat-icon></a
+    [tabindex]="tabindex"
+    ><mat-icon>{{ label }}</mat-icon></button
   >
 </ng-container>

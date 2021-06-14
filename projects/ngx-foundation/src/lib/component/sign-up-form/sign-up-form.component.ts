@@ -1,15 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { CustomFormControl } from '../../control/custom-form-control';
+import { FormGroupUtils } from '../../util/form-group-utils';
+import { CustomValidators } from '../../validate/custom-validators';
+import { CommonFormComponent } from '../common-form.component';
 
 @Component({
-  selector: 'lib-sign-up-form',
+  selector: 'foundation-sign-up-form',
   templateUrl: './sign-up-form.component.html',
-  styleUrls: ['./sign-up-form.component.scss']
+  styleUrls: ['./sign-up-form.component.scss'],
 })
-export class SignUpFormComponent implements OnInit {
+export class SignUpFormComponent extends CommonFormComponent {
+  @Input() title: string = '';
+  @Input() buttonLabel: string = '';
 
-  constructor() { }
+  @Output() onSubmit = new EventEmitter<SignUpParameter>();
 
-  ngOnInit(): void {
+  public form = this.fb.group({
+    userName: new CustomFormControl({
+      value: '',
+      labelText: 'ユーザー名',
+      validators: [CustomValidators.required(), CustomValidators.maxLength(50)],
+    }),
+    email: new CustomFormControl({
+      value: '',
+      labelText: 'メールアドレス',
+      validators: [CustomValidators.required(), CustomValidators.email()],
+    }),
+    id: new CustomFormControl({
+      value: '',
+      labelText: 'ID',
+      validators: [CustomValidators.required()],
+    }),
+    password: new CustomFormControl({
+      value: '',
+      labelText: 'パスワード',
+      validators: [CustomValidators.required()],
+    }),
+  });
+
+  constructor(private fb: FormBuilder) {
+    super();
   }
 
+  ngOnInit(): void {}
+
+  submit() {
+    FormGroupUtils.markTouched(this.form);
+    if (this.form.invalid) {
+      return;
+    }
+    this.onSubmit.emit(this.form.value);
+  }
+}
+
+export interface SignUpParameter {
+  id: string;
+  password: string;
 }

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Autocomplete } from '../../enum/enums';
+import { Validation } from '../../validate/validation';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
@@ -25,8 +26,26 @@ import { BaseControlComponent } from '../base-control.component';
 export class TextboxComponent extends BaseControlComponent {
   @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
   @Input() hint: string = '';
+  @Input() type: string = '';
+  isNumeric: boolean = false;
+  hide: boolean = true;
 
   constructor(injector: Injector) {
     super(injector);
+  }
+
+  mainNgAfterViewInit() {
+    // emailタイプの自動判定
+    if (
+      !!this.control.validators?.some((validator) =>
+        Object.keys(validator).some((key) => key === Validation.email)
+      )
+    ) {
+      this.type = 'email';
+    }
+
+    this.isNumeric = !!this.control.validators?.some((validator) =>
+      Object.keys(validator).some((key) => key === Validation.numeric)
+    );
   }
 }

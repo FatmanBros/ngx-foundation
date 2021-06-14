@@ -34,7 +34,6 @@ export abstract class BaseControlComponent<T = any>
   @Input() labelText: string = '';
   @Input() appearance: Appearance = Appearance.standard;
   @Input() color?: MatColor;
-  isNumeric: boolean = false;
 
   @Output() focus = new EventEmitter<CustomFormControl<T>>();
   @Output() blur = new EventEmitter<CustomFormControl<T>>();
@@ -83,16 +82,16 @@ export abstract class BaseControlComponent<T = any>
     this.labelText = this.control.labelText;
   }
 
+  protected mainNgAfterViewInit() {}
+
   ngAfterViewInit() {
-    this.isNumeric = !!this.control.validators?.some((validator) =>
-      Object.keys(validator).some((key) => key === Validation.numeric)
-    );
     // ビュー更新
     this.subscriptions.push(
       this.control.viewUpdate$.subscribe(() => {
         this.detectorRef.markForCheck();
       })
     );
+    this.mainNgAfterViewInit();
   }
 
   protected _onChangeCallback = (_: any) => {};

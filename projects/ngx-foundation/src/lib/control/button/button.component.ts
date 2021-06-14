@@ -28,6 +28,7 @@ export class ButtonComponent {
   @Input() color: string = 'primary';
   @Input() label: string = 'Button';
   @Input() buttonParam: ButtonParam = defaultParam;
+  @Input() tabindex?: number;
 
   constructor(elementRef: ElementRef) {
     elementRef.nativeElement.addEventListener('click', () => {
@@ -37,4 +38,7 @@ export class ButtonComponent {
     });
   }
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+  }
 }
