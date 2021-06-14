@@ -1,12 +1,3 @@
-/* ::::: テーマカラーのカスタマイズ ::::: */
-
-// テーマ操作関数をライブラリからインポート
-@import "~@angular/material/theming";
-@import "./custom-palette.scss";
-
-// Angular Material の共通スタイルをインクルード
-@include mat-core();
-
 @function toPalette($val, $code: 500) {
   $theme: (
     $code: map-get($val, "color"),

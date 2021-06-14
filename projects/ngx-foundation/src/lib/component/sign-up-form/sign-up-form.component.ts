@@ -4,7 +4,7 @@ import {
   EventEmitter,
   forwardRef,
   Input,
-  Output
+  Output,
 } from '@angular/core';
 import { FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
@@ -70,6 +70,8 @@ export class SignUpFormComponent extends CommonFormComponent {
 }
 
 export interface SignUpParameter {
+  userName: string;
+  email: string;
   id: string;
   password: string;
 }

@@ -8,10 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build_lib": "ng build ngx-foundation",
+    "build:themes": "sass projects/ngx-foundation/src/lib/css:dist/ngx-foundation/theme --style compressed",
     "copy_license": "copy .\\LICENSE .\\dist\\ngx-foundation",
     "copy_files": "npm run copy_license",
     "npm_pack": "cd dist/ngx-foundation && npm pack",
-    "package": "npm run build_lib && npm run copy_files && npm run npm_pack"
+    "package": "npm run build_lib && npm run copy_files && npm run build:themes && npm run npm_pack"
   },
   "private": true,
   "dependencies": {
