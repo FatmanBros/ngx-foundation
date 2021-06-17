@@ -48,8 +48,8 @@ select {
 
 /* angular material reset */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "./custom-theme.scss";
-@import "./custom-palette.scss";
+// @import "./custom-theme.scss";
+// @import "./custom-palette.scss";
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0.5em 0 !important;

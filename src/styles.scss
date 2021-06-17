@@ -1,26 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.m1 {
-  margin: 1em;
-}
-
-@import "../projects/ngx-foundation/src/lib/css/foundation-default.scss";
-@import "./custom-palette.scss";
-
-
-$base: map-get($custom-colors, base);
-body {
-  color: map-get($base, contrast);
-  background: map-get($base, color);
-}
-
-@include setTheme(
-  $my-primary-color,
-  $my-accent-color,
-  $my-warn-color,
-  $custom-colors
-);
+// styles.scss
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+ 

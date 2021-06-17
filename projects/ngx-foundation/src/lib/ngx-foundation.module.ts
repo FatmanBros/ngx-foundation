@@ -26,10 +26,13 @@ import { NgxFoundation } from './ngx-foundation-options';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS
+  NGX_FOUNDATION_OPTIONS,
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
+import { NavbarComponent } from './control/navbar/navbar.component';
+import { SidebarComponent } from './control/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -68,8 +71,11 @@ export const defaultOptions: ngxFoundationOptions = {
     ImageComponent,
     LoginFormComponent,
     SignUpFormComponent,
+    NavbarComponent,
+    SidebarComponent,
   ],
   imports: [
+    RouterModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -93,6 +99,8 @@ export const defaultOptions: ngxFoundationOptions = {
     ContentsSliderComponent,
     LoginFormComponent,
     SignUpFormComponent,
+    NavbarComponent,
+    SidebarComponent,
   ],
   providers: [
     {
