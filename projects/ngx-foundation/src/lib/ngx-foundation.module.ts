@@ -33,6 +33,7 @@ import { Validation } from './validate/validation';
 import { NavbarComponent } from './control/navbar/navbar.component';
 import { SidebarComponent } from './control/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { AvatarComponent } from './control/avatar/avatar.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -73,6 +74,7 @@ export const defaultOptions: ngxFoundationOptions = {
     SignUpFormComponent,
     NavbarComponent,
     SidebarComponent,
+    AvatarComponent,
   ],
   imports: [
     RouterModule,

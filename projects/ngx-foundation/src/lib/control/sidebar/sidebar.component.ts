@@ -14,16 +14,9 @@ declare interface RouteInfo {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  
   @Input() menuItems: RouteInfo[] = [];
 
   constructor() {}
 
   ngOnInit() {}
-  isMobileMenu() {
-    if ($(window).width() > 991) {
-      return false;
-    }
-    return true;
-  }
 }

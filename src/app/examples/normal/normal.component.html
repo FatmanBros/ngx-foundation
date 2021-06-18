@@ -1,9 +1,6 @@
 <div fxLayout="column">
-  <foundation-toolbar
-    [title]="'テストタイトル　Test Title'"
-    [rightButtons]="buttons"
-    [color]="color.primary"
-  ></foundation-toolbar>
+  <foundation-toolbar [title]="'テストタイトル　Test Title'" [rightButtons]="buttons" [color]="color.primary">
+  </foundation-toolbar>
   <form [formGroup]="form" style="overflow-y: auto">
     <div class="m1">
       <a routerLink="/login">Login</a><br />
@@ -13,96 +10,52 @@
     <div class="m1">
       <h3 class="m1">スライダー</h3>
       <foundation-contents-slider [width]="'100%'">
-        <foundation-card
-          formControlName="test_card"
-          [color]="color.primary"
-        ></foundation-card>
-        <foundation-card
-          formControlName="test_card"
-          [color]="color.primary"
-        ></foundation-card>
-        <foundation-card
-          formControlName="test_card"
-          [color]="color.primary"
-        ></foundation-card>
-        <foundation-card
-          formControlName="test_card"
-          [color]="color.primary"
-        ></foundation-card>
+        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
+        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
+        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
+        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
       </foundation-contents-slider>
     </div>
     <mat-divider></mat-divider>
     <div class="m1">
       <h3 class="m1">カード</h3>
-      <foundation-card
-        formControlName="test_card"
-        [color]="color.primary"
-      ></foundation-card>
+      <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
     </div>
     <mat-divider></mat-divider>
     <div class="m1">
       <h3 class="m1">テキストボックス</h3>
-      <foundation-textbox
-        formControlName="test_textbox"
-        class="m1"
-      ></foundation-textbox>
-      <foundation-textbox
-        formControlName="test_numeric"
-        class="m1"
-      ></foundation-textbox>
+      <foundation-textbox formControlName="test_textbox" class="m1"></foundation-textbox>
+      <foundation-textbox formControlName="test_numeric" class="m1"></foundation-textbox>
       <mat-divider></mat-divider>
 
       <h3 class="m1">テキストエリア</h3>
       <div style="width: 30em">
-        <foundation-textarea
-          formControlName="test_textarea"
-          class="m1"
-        ></foundation-textarea>
+        <foundation-textarea formControlName="test_textarea" class="m1"></foundation-textarea>
       </div>
       <mat-divider></mat-divider>
 
       <h3 class="m1">チェックボックス</h3>
-      <foundation-checkbox
-        formControlName="test_check1"
-        [labelDir]="labelDir.right"
-        class="m1"
-      ></foundation-checkbox>
-      <foundation-checkbox
-        formControlName="test_check2"
-        class="m1"
-      ></foundation-checkbox>
+      <foundation-checkbox formControlName="test_check1" [labelDir]="labelDir.right" class="m1"></foundation-checkbox>
+      <foundation-checkbox formControlName="test_check2" class="m1"></foundation-checkbox>
 
       <mat-divider></mat-divider>
 
       <h3 class="m1">ラジオボタン</h3>
-      <foundation-radio
-        formControlName="test_radio"
-        class="m1"
-        style="width: 20em"
-      ></foundation-radio>
+      <foundation-radio formControlName="test_radio" class="m1" style="width: 20em"></foundation-radio>
       <mat-divider></mat-divider>
 
       <h3 class="m1">日付ピッカー</h3>
-      <foundation-datepicker
-        formControlName="test_date"
-        class="m1"
-      ></foundation-datepicker>
+      <foundation-datepicker formControlName="test_date" class="m1"></foundation-datepicker>
       <mat-divider></mat-divider>
 
       <h3 class="m1">ボタン</h3>
-      <foundation-button
-        *ngFor="let button of buttons"
-        [buttonParam]="button"
-      ></foundation-button>
+      <foundation-button *ngFor="let button of buttons" [buttonParam]="button"></foundation-button>
 
       <mat-divider></mat-divider>
 
       <h3 class="m1">セレクト</h3>
       <div style="width: 20em">
-        <foundation-select
-          formControlName="test_select"
-          class="m1"
-        ></foundation-select>
+        <foundation-select formControlName="test_select" class="m1"></foundation-select>
       </div>
     </div>
   </form>
