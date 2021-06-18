@@ -4,19 +4,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginFormComponent } from './component/login-form/login-form.component';
 import { SignUpFormComponent } from './component/sign-up-form/sign-up-form.component';
+import { AvatarComponent } from './control/avatar/avatar.component';
 import { ButtonComponent } from './control/button/button.component';
 import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
 import { ContentsSliderComponent } from './control/contents-slider/contents-slider.component';
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
+import { DropdownComponent } from './control/dropdown/dropdown.component';
 import { ImageSliderComponent } from './control/image-slider/image-slider.component';
 import { ImageComponent } from './control/image/image.component';
 import { LabelComponent } from './control/label/label.component';
+import { NavbarComponent } from './control/navbar/navbar.component';
 import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
+import { SidebarComponent } from './control/sidebar/sidebar.component';
 import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
 import { ToolbarComponent } from './control/toolbar/toolbar.component';
@@ -26,14 +31,10 @@ import { NgxFoundation } from './ngx-foundation-options';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS,
+  NGX_FOUNDATION_OPTIONS
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
-import { NavbarComponent } from './control/navbar/navbar.component';
-import { SidebarComponent } from './control/sidebar/sidebar.component';
-import { RouterModule } from '@angular/router';
-import { AvatarComponent } from './control/avatar/avatar.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -75,6 +76,7 @@ export const defaultOptions: ngxFoundationOptions = {
     NavbarComponent,
     SidebarComponent,
     AvatarComponent,
+    DropdownComponent,
   ],
   imports: [
     RouterModule,
@@ -103,6 +105,7 @@ export const defaultOptions: ngxFoundationOptions = {
     SignUpFormComponent,
     NavbarComponent,
     SidebarComponent,
+    DropdownComponent,
   ],
   providers: [
     {

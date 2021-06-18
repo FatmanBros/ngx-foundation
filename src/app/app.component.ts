@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DropdownItem } from 'projects/ngx-foundation/src/lib/control/dropdown/dropdown.component';
 import { Link } from 'projects/ngx-foundation/src/lib/control/navbar/navbar.component';
 
 @Component({
@@ -46,4 +47,24 @@ export class AppComponent {
       class: 'active-pro',
     },
   ];
+
+  public userMenu: DropdownItem[][] = [
+    [
+      { title: 'test1', action: this.test },
+      { title: 'test2', action: this.test },
+    ],
+    [
+      { title: 'test3', action: this.test },
+      { title: 'test4', action: this.test },
+    ],
+    [
+      { title: 'test5', action: this.test },
+      { title: 'test6', action: this.test },
+    ],
+    [{ title: 'ログアウト', action: this.test }],
+  ];
+
+  private test() {
+    console.log(this)
+  }
 }
