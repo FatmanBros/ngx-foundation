@@ -14,6 +14,10 @@ import { CardComponent } from './control/card/card.component';
 import { CheckboxComponent } from './control/checkbox/checkbox.component';
 import { ContentsSliderComponent } from './control/contents-slider/contents-slider.component';
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
+import {
+  InfoDialogComponent,
+  WarnDialogComponent,
+} from './control/dialog/dialog.component';
 import { DropdownComponent } from './control/dropdown/dropdown.component';
 import { ImageSliderComponent } from './control/image-slider/image-slider.component';
 import { ImageComponent } from './control/image/image.component';
@@ -31,7 +35,7 @@ import { NgxFoundation } from './ngx-foundation-options';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS
+  NGX_FOUNDATION_OPTIONS,
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
@@ -77,6 +81,8 @@ export const defaultOptions: ngxFoundationOptions = {
     SidebarComponent,
     AvatarComponent,
     DropdownComponent,
+    WarnDialogComponent,
+    InfoDialogComponent,
   ],
   imports: [
     RouterModule,
@@ -106,6 +112,8 @@ export const defaultOptions: ngxFoundationOptions = {
     NavbarComponent,
     SidebarComponent,
     DropdownComponent,
+    WarnDialogComponent,
+    InfoDialogComponent,
   ],
   providers: [
     {

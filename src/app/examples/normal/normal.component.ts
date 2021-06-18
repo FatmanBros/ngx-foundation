@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { getMatFormFieldPlaceholderConflictError } from '@angular/material/form-field';
 import {
-  MatColor,
-  CustomFormControl,
+  ButtonType, CustomFormControl,
   CustomValidators,
-  LabelDirection,
-  ButtonType,
+  LabelDirection, MatColor
 } from '@ngx-foundation/ngx-foundation';
 import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
+import { DialogService } from 'projects/ngx-foundation/src/lib/service/dialog.service';
 import { Authority } from '../constants';
 import { DateUtils } from '../utils/date-utils';
 
@@ -140,7 +138,20 @@ export class NormalComponent implements OnInit {
     }),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private dialog: DialogService) {}
 
   ngOnInit() {}
+
+  showWarnDialog() {
+    this.dialog.showWarnDialog({data: {
+      title: 'テストタイトル',
+      content: 'コンテンツコンテンツコンテンツコンテンツコンテンツ'
+    }});
+  }
+  showInfoDialog() {
+    this.dialog.showInfoDialog({data: {
+      title: 'テストタイトル',
+      content: 'コンテンツコンテンツコンテンツコンテンツコンテンツ'
+    }});
+  }
 }

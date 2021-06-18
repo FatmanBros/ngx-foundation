@@ -1,6 +1,9 @@
 <div fxLayout="column">
   <foundation-toolbar [title]="'テストタイトル　Test Title'" [rightButtons]="buttons" [color]="color.primary">
   </foundation-toolbar>
+
+  <button (click)="showWarnDialog()">わ～ん</button>
+  <button (click)="showInfoDialog()">いんふぉ</button>
   <form [formGroup]="form" style="overflow-y: auto">
     <div class="m1">
       <a routerLink="/login">Login</a><br />

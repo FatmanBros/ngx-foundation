@@ -22,8 +22,14 @@ export * from './lib/control/toolbar/toolbar.component';
 export * from './lib/control/card/card.component';
 export * from './lib/control/contents-slider/contents-slider.component';
 export * from './lib/control/image-slider/image-slider.component';
+export * from './lib/control/dialog/dialog.component';
 export * from './lib/component/login-form/login-form.component';
 export * from './lib/component/sign-up-form/sign-up-form.component';
+
+/**
+ * service
+ */
+export * from './lib/service/dialog.service';
 
 /**
  * validators
