@@ -40,6 +40,8 @@ import {
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
 import { SocialMediaButtonsComponent } from './control/social-media-buttons/social-media-buttons.component';
+import { ImageChipComponent } from './control/image-chip/image-chip.component';
+import { IconButtonComponent } from './control/icon-button/icon-button.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -85,6 +87,8 @@ export const defaultOptions: ngxFoundationOptions = {
     WarnDialogComponent,
     InfoDialogComponent,
     SocialMediaButtonsComponent,
+    ImageChipComponent,
+    IconButtonComponent,
   ],
   imports: [
     RouterModule,
@@ -116,6 +120,8 @@ export const defaultOptions: ngxFoundationOptions = {
     DropdownComponent,
     WarnDialogComponent,
     InfoDialogComponent,
+    ImageChipComponent,
+    IconButtonComponent,
   ],
   providers: [
     {
@@ -149,6 +155,8 @@ export class NgxFoundationModule {
       'arrow_forward_ios',
       'chevron_left',
       'chevron_right',
+      'dark_mode',
+      'light_mode'
     ];
 
     icons.forEach((icon) => {

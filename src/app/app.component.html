@@ -1,13 +1,19 @@
-<app-navbar [title]="'テスト'" [avatar]="avatar" [links]="links" [userMenu]="userMenu"></app-navbar>
-<app-sidebar [menuItems]="menuItems"></app-sidebar>
-<div class="container fill">
-    <div class="row">
-        <div class="col-12 col-md-3 col-xl-3 py-3 py-md-4 bd-sidebar">
-        </div>
-        <main class="col-12 col-md-9 col-xl-8 py-3 py-md-4 pl-md-4 bd-content">
-            <div>
-                <router-outlet></router-outlet>
+<div [ngClass]="{'dark': isDarkMode}">
+    <div class="dark:bg-gray-800">
+        <app-navbar [title]="'テスト'" [avatar]="avatar" [links]="links" [userMenu]="userMenu"></app-navbar>
+        <foundation-icon-button [icon]="isDarkMode ? 'dark_mode' : 'light_mode'" (click)="isDarkMode = !isDarkMode">
+        </foundation-icon-button>
+        <app-sidebar [menuItems]="menuItems"></app-sidebar>
+        <div class="container fill">
+            <div class="row">
+                <div class="col-12 col-md-3 col-xl-3 py-3 py-md-4 bd-sidebar">
+                </div>
+                <main class="col-12 col-md-9 col-xl-8 py-3 py-md-4 pl-md-4 bd-content">
+                    <div>
+                        <router-outlet></router-outlet>
+                    </div>
+                </main>
             </div>
-        </main>
+        </div>
     </div>
 </div>

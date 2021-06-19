@@ -1,0 +1,13 @@
+<!-- component -->
+<div [ngStyle]="style" class="cursor-pointer">
+  <div
+    class="flex justify-center w-auto items-center m-1 font-medium py-1 px-1 bg-white hover:bg-gray-200 rounded-full border border-gray-200 dark:bg-gray-800 dark:hover:bg-gray-600 dark:text-gray-300">
+    <div slot="avatar">
+      <div class="flex relative w-10 h-10 bg-orange-500 justify-center items-center text-xs rounded-full">
+        <img class="rounded-full" alt="A" [src]="avatarSrc">
+      </div>
+    </div>
+    <div class="ml-5 text-xs font-normal leading-none max-w-full flex-initial">
+      {{label}}</div>
+  </div>
+</div>

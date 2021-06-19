@@ -60,4 +60,5 @@ export class DropdownComponent implements OnInit, OnDestroy {
 export interface DropdownItem {
   title: string;
   action: Function;
+  icon?: string;
 }

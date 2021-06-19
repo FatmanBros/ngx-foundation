@@ -8,6 +8,7 @@ import { Link } from 'projects/ngx-foundation/src/lib/control/navbar/navbar.comp
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isDarkMode:boolean = false;
   title = 'demo';
   public avatar =
     'https://images.generated.photos/Z5HfwR5L8Fez5uCqEcj3SbogJgJhBdfxJs73ZRGjWgE/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAwNzc4NzAuanBn.jpg';
@@ -50,7 +51,7 @@ export class AppComponent {
 
   public userMenu: DropdownItem[][] = [
     [
-      { title: 'test1', action: this.test },
+      { title: 'test1', action: this.test, icon: 'dark_mode' },
       { title: 'test2', action: this.test },
     ],
     [
