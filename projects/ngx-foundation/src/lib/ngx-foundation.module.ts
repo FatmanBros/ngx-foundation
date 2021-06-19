@@ -39,6 +39,7 @@ import {
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
+import { SocialMediaButtonsComponent } from './control/social-media-buttons/social-media-buttons.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -83,6 +84,7 @@ export const defaultOptions: ngxFoundationOptions = {
     DropdownComponent,
     WarnDialogComponent,
     InfoDialogComponent,
+    SocialMediaButtonsComponent,
   ],
   imports: [
     RouterModule,

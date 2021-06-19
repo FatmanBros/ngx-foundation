@@ -2,8 +2,8 @@
   <foundation-toolbar [title]="'テストタイトル　Test Title'" [rightButtons]="buttons" [color]="color.primary">
   </foundation-toolbar>
 
-  <button (click)="showWarnDialog()">わ～ん</button>
-  <button (click)="showInfoDialog()">いんふぉ</button>
+  <foundation-button [label]="'わーん'" [color]="'yellow'" (click)="showWarnDialog()"></foundation-button>
+  <foundation-button [label]="'いんふぉ'" [color]="'green'" (click)="showInfoDialog()"></foundation-button>
   <form [formGroup]="form" style="overflow-y: auto">
     <div class="m1">
       <a routerLink="/login">Login</a><br />
@@ -11,18 +11,8 @@
     </div>
     <mat-divider></mat-divider>
     <div class="m1">
-      <h3 class="m1">スライダー</h3>
-      <foundation-contents-slider [width]="'100%'">
-        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
-        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
-        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
-        <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
-      </foundation-contents-slider>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="m1">
       <h3 class="m1">カード</h3>
-      <foundation-card formControlName="test_card" [color]="color.primary"></foundation-card>
+      <foundation-card [title]="'タイトル'" [subTitle]="'サブタイトル'"></foundation-card>
     </div>
     <mat-divider></mat-divider>
     <div class="m1">

@@ -1,22 +1,46 @@
-<mat-card [style]="style" [ngClass]="ngClass">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{ value.title }}</mat-card-title>
-    <mat-card-subtitle>{{ value.subtitle }}</mat-card-subtitle>
-  </mat-card-header>
-  <!-- <foundation-contents-slider>
-    <foundation-image
-      *ngFor="let content of value.imgUrls"
-      [content]="content"
-    ></foundation-image>
-  </foundation-contents-slider> -->
-  <mat-card-content>
-    <p>
-      {{ value.content }}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+<div>
+  <a href="/component/wallet-app-layout"
+    class="relative block h-48 overflow-hidden bg-gray-100 rounded-lg shadow dark:bg-gray-800 xl:h-64">
+    <img class="w-full h-full object-cover" alt="tailwind Wallet App Layout" loading="" [src]="topImg">
+
+  </a>
+
+  <div class="flex items-center justify-between mt-4">
+    <div class="flex items-center space-x-4">
+      <a href="/u/papercore" class="flex-shrink-0 w-10 h-10 overflow-hidden rounded-full ">
+        <img class="object-cover w-full h-full" src="https://avatars0.githubusercontent.com/u/58584157?v=4"
+          alt="papercore">
+      </a>
+
+      <div class="flex flex-col space-y-1">
+        <a href="/component/wallet-app-layout"
+          class="font-semibold text-gray-800 dark:text-gray-200 sm:text-lg dark:hover:text-primary hover:text-primary hover:underline">{{title}}</a>
+
+        <a href="/u/papercore" class="text-sm text-gray-600 dark:text-gray-400 hover:underline">{{subTitle}}</a>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-2 text-gray-400">
+      <div class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z"
+            clip-rule="evenodd"></path>
+        </svg>
+
+        <span class="text-sm font-medium">2.0</span>
+      </div>
+
+      <div class="flex items-center space-x-2 ">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+            clip-rule="evenodd"></path>
+        </svg>
+
+        <span class="text-sm font-medium">0</span>
+      </div>
+    </div>
+
+  </div>
+</div>

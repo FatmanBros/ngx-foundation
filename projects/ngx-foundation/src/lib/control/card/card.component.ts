@@ -3,12 +3,12 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input
+  Input,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   NgxFoundationImage,
-  NgxFoundationVideo
+  NgxFoundationVideo,
 } from '../../interface/interface';
 import { BaseControlComponent } from '../base-control.component';
 
@@ -25,19 +25,16 @@ import { BaseControlComponent } from '../base-control.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent extends BaseControlComponent<CardValues> {
-  @Input() width: string = '30em';
+export class CardComponent {
+  @Input() topImg: string = '';
+  @Input() title: string = '';
+  @Input() subTitle: string = '';
+  @Input() auth: Auth = '';
 
-  constructor(injector: Injector) {
-    super(injector);
-  }
-
-  public get style() {
-    return {
-      width: this.width,
-    };
-  }
+  constructor(injector: Injector) {}
 }
+
+export interface Auth {}
 
 export interface CardValues {
   title: string;

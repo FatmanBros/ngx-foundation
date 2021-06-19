@@ -25,7 +25,7 @@ import { ButtonParam, defaultParam } from '../../interface/interface';
 export class ButtonComponent {
   buttonType = ButtonType;
   @Input() type: ButtonType = ButtonType.basic;
-  @Input() color: string = 'primary';
+  @Input() color: ButtonColorType = 'white';
   @Input() label: string = 'Button';
   @Input() buttonParam: ButtonParam = defaultParam;
   @Input() tabindex?: number;
@@ -39,6 +39,15 @@ export class ButtonComponent {
   }
   ngOnInit(): void {}
 
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 }
+
+export type ButtonColorType =
+  | 'blue'
+  | 'green'
+  | 'yellow'
+  | 'red'
+  | 'gray'
+  | 'purple'
+  | 'pink'
+  | 'white';
