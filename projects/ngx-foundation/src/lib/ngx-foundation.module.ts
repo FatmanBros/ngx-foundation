@@ -42,6 +42,7 @@ import { Validation } from './validate/validation';
 import { SocialMediaButtonsComponent } from './control/social-media-buttons/social-media-buttons.component';
 import { ImageChipComponent } from './control/image-chip/image-chip.component';
 import { IconButtonComponent } from './control/icon-button/icon-button.component';
+import { InfoCardComponent } from './control/info-card/info-card.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -89,6 +90,7 @@ export const defaultOptions: ngxFoundationOptions = {
     SocialMediaButtonsComponent,
     ImageChipComponent,
     IconButtonComponent,
+    InfoCardComponent,
   ],
   imports: [
     RouterModule,
@@ -122,6 +124,7 @@ export const defaultOptions: ngxFoundationOptions = {
     InfoDialogComponent,
     ImageChipComponent,
     IconButtonComponent,
+    InfoCardComponent,
   ],
   providers: [
     {
