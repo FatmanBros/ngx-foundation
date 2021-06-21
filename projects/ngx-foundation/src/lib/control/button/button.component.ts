@@ -29,6 +29,7 @@ export class ButtonComponent {
   @Input() label: string = 'Button';
   @Input() buttonParam: ButtonParam = defaultParam;
   @Input() tabindex?: number;
+  @Input() routerLink: string = '';
 
   constructor(elementRef: ElementRef) {
     elementRef.nativeElement.addEventListener('click', () => {
@@ -40,6 +41,54 @@ export class ButtonComponent {
   ngOnInit(): void {}
 
   ngAfterViewInit() {}
+
+  getClass() {
+    if (this.color === 'white') {
+      return [
+        `mt-3`,
+        `w-full`,
+        `inline-flex`,
+        `justify-center`,
+        `rounded-md`,
+        `border`,
+        `border-gray-300`,
+        `shadow-sm`,
+        `px-4`,
+        `py-2`,
+        `bg-white`,
+        `text-base`,
+        `font-medium`,
+        `text-gray-700`,
+        `hover:bg-gray-50`,
+        `focus:outline-none`,
+        `focus:ring-2`,
+        `focus:ring-offset-2`,
+        `focus:ring-gray-500`,
+        `sm:mt-0`,
+      ];
+    } else {
+      return [
+        `w-full`,
+        `inline-flex`,
+        `justify-center`,
+        `rounded-md`,
+        `border`,
+        `border-transparent`,
+        `shadow-sm`,
+        `px-4`,
+        `py-2`,
+        `bg-${this.color}-600`,
+        `text-base`,
+        `font-medium`,
+        `text-white`,
+        `hover:bg-${this.color}-500`,
+        `focus:outline-none`,
+        `focus:ring-2`,
+        `focus:ring-offset-2`,
+        `focus:ring-${this.color}-500`,
+      ];
+    }
+  }
 }
 
 export type ButtonColorType =

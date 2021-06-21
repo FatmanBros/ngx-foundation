@@ -1,28 +1,14 @@
-<mat-form-field>
-  <mat-label>{{ labelText }}</mat-label>
-  <input
-    matInput
-    [formControl]="control"
-    [type]="hide ? type : 'text'"
-    [id]="ctlName"
-    [name]="ctlName"
-    [autocomplete]="autocomplete"
-    [maxlength]="maxLength"
-    (focus)="onFocus()"
-    (blur)="onBlur()"
-    (change)="onChange()"
-    [errorStateMatcher]="matcher"
-  />
-  <foundation-button
-    *ngIf="type === 'password'"
-    [type]="buttonType.icon"
-    matSuffix
-    (click)="hide = !hide"
-    [label]="hide ? 'visibility_off' : 'visibility'"
-    [tabindex]="-1"
-  >
-  </foundation-button>
-  <mat-hint *ngIf="!isNumeric">{{ hint }}</mat-hint>
-  <mat-hint *ngIf="isNumeric">{{ control.value | numberWithCommas }}</mat-hint>
-  <mat-error *ngFor="let err of errorMessage">{{ err }}</mat-error>
-</mat-form-field>
+<div class="flex flex-col" [ngClass]="{'mb-6': !errorMessage.length}">
+  <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-300">
+    {{labelText}}
+  </label>
+  <input [placeholder]="placeholder" [formControl]="control" [type]="hide ? type : 'text'" [autocomplete]="autocomplete"
+    [maxlength]="maxLength" class="text-md block px-3 py-2 rounded-lg w-full
+bg-white  border-2 border-gray-300 focus:border-gray-600 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:outline-none
+  dark:bg-gray-700 dark:border-gray-500 dark:focus:border-gray-300 dark:placeholder-gray-300 dar
+" />
+  <span *ngFor="let err of errorMessage"
+    class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-5">
+    {{err}}
+  </span>
+</div>

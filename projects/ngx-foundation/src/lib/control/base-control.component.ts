@@ -124,6 +124,10 @@ export abstract class BaseControlComponent<T = any>
       return [];
     }
 
+    if (!this.control.dirty && !this.control.touched) {
+      return [];
+    }
+
     if (!this.control.errors) {
       return [];
     }

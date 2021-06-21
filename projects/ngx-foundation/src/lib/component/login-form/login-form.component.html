@@ -1,29 +1,18 @@
-<div class="outer">
-  <div class="inner">
-    <header>
-      <label class="title-label">{{ title }}</label>
-    </header>
-    <section class="form-area">
-      <form [formGroup]="form" class="form">
-        <foundation-textbox
-          formControlName="id"
-          class="content"
-        ></foundation-textbox>
-        <foundation-textbox
-          formControlName="password"
-          class="content"
-          [type]="'password'"
-        ></foundation-textbox>
-      </form>
-    </section>
-    <footer>
-      <!-- <foundation-button
-        [label]="buttonLabel"
-        [type]="buttonType.raised"
-        [color]="'primary'"
-        (click)="submit()"
-        class="none-radius"
-      ></foundation-button> -->
-    </footer>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+<div class="max-w-sm mx-auto px-6">
+  <div class="relative flex flex-wrap">
+    <div class="w-full relative">
+      <div class="md:mt-6">
+        <form class="mt-8" [formGroup]="form">
+          <div class="mx-auto max-w-lg ">
+            <foundation-textbox formControlName="id"></foundation-textbox>
+            <foundation-textbox formControlName="password"></foundation-textbox>
+
+            <foundation-button [label]="'ログイン'" [color]="'gray'"></foundation-button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
