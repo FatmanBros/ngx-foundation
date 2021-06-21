@@ -23,8 +23,16 @@ export * from './lib/control/card/card.component';
 export * from './lib/control/contents-slider/contents-slider.component';
 export * from './lib/control/image-slider/image-slider.component';
 export * from './lib/control/dialog/dialog.component';
+export * from './lib/control/navbar/navbar.component';
+export * from './lib/control/sidebar/sidebar.component';
+export * from './lib/control/dropdown/dropdown.component';
+export * from './lib/control/image-chip/image-chip.component';
+export * from './lib/control/info-card/info-card.component';
+export * from './lib/control/icon-button/icon-button.component';
+
 export * from './lib/component/login-form/login-form.component';
 export * from './lib/component/sign-up-form/sign-up-form.component';
+
 
 /**
  * service
