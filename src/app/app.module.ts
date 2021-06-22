@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { NormalComponent } from './examples/normal/normal.component';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NormalComponent } from './examples/normal/normal.component';
     MaterialModule,
     FlexLayoutModule,
     MatFormFieldModule,
+    SwiperModule,
     NgxFoundationModule.init({
       messages: {
         required: '必須です。',

@@ -44,6 +44,8 @@ import { ImageChipComponent } from './control/image-chip/image-chip.component';
 import { IconButtonComponent } from './control/icon-button/icon-button.component';
 import { InfoCardComponent } from './control/info-card/info-card.component';
 import { OverlayComponent } from './control/overlay/overlay.component';
+import { SwiperComponent } from './control/swiper/swiper.component';
+import { SwiperModule } from 'swiper/angular';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -61,8 +63,8 @@ export const defaultOptions: ngxFoundationOptions = {
     numberOfWords: '$0 / $1',
     overlay: {
       main: 'Loading...',
-      sub: 'This may take a few seconds, please don\'t close this page.',
-    }
+      sub: "This may take a few seconds, please don't close this page.",
+    },
   },
   appearance: Appearance.standard,
 };
@@ -97,6 +99,7 @@ export const defaultOptions: ngxFoundationOptions = {
     IconButtonComponent,
     InfoCardComponent,
     OverlayComponent,
+    SwiperComponent,
   ],
   imports: [
     RouterModule,
@@ -105,6 +108,7 @@ export const defaultOptions: ngxFoundationOptions = {
     ReactiveFormsModule,
     MaterialModule,
     NgSelectModule,
+    SwiperModule,
   ],
   exports: [
     NgxFoundationComponent,
@@ -131,6 +135,7 @@ export const defaultOptions: ngxFoundationOptions = {
     ImageChipComponent,
     IconButtonComponent,
     InfoCardComponent,
+    SwiperComponent,
   ],
   providers: [
     {
@@ -148,7 +153,7 @@ export class NgxFoundationModule {
       op.messages = options.messages;
     }
     if (options.option) {
-      if(options.option.numberOfWords) {
+      if (options.option.numberOfWords) {
         op.option.numberOfWords = options.option.numberOfWords;
       }
       if (options.option.overlay) {
@@ -173,7 +178,7 @@ export class NgxFoundationModule {
       'chevron_left',
       'chevron_right',
       'dark_mode',
-      'light_mode'
+      'light_mode',
     ];
 
     icons.forEach((icon) => {
