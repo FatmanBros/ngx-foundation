@@ -29,6 +29,7 @@ export * from './lib/control/dropdown/dropdown.component';
 export * from './lib/control/image-chip/image-chip.component';
 export * from './lib/control/info-card/info-card.component';
 export * from './lib/control/icon-button/icon-button.component';
+export * from './lib/control/overlay/overlay.component';
 
 export * from './lib/component/login-form/login-form.component';
 export * from './lib/component/sign-up-form/sign-up-form.component';
@@ -38,6 +39,8 @@ export * from './lib/component/sign-up-form/sign-up-form.component';
  * service
  */
 export * from './lib/service/dialog.service';
+export * from './lib/service/dom.service';
+export * from './lib/service/overlay.service';
 
 /**
  * validators

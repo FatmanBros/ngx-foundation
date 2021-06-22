@@ -7,7 +7,7 @@
         <form class="mt-8" [formGroup]="form" (ngSubmit)="submit()">
           <div class="mx-auto max-w-lg ">
             <foundation-textbox formControlName="id"></foundation-textbox>
-            <foundation-textbox formControlName="password"></foundation-textbox>
+            <foundation-textbox formControlName="password" [type]="'password'"></foundation-textbox>
 
             <foundation-button [label]="'ログイン'" [color]="'gray'" [type]="'submit'"></foundation-button>
           </div>

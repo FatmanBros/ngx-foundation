@@ -8,6 +8,7 @@ import {
 import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
 import { DialogService } from 'projects/ngx-foundation/src/lib/service/dialog.service';
+import { OverlayService } from 'projects/ngx-foundation/src/lib/service/overlay.service';
 import { Authority } from '../constants';
 import { DateUtils } from '../utils/date-utils';
 
@@ -134,7 +135,11 @@ export class NormalComponent implements OnInit {
     }),
   });
 
-  constructor(private fb: FormBuilder, private dialog: DialogService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private dialog: DialogService,
+    private overlayService: OverlayService,
+  ) {}
 
   ngOnInit() {}
 
@@ -149,5 +154,12 @@ export class NormalComponent implements OnInit {
       title: 'テストタイトル',
       content: 'コンテンツコンテンツコンテンツコンテンツコンテンツ'
     }});
+  }
+
+  overlay() {
+    this.overlayService.open('Loading...', 'Please wait a moment.');
+    setTimeout(() => {
+      this.overlayService.close();
+    }, 3000);
   }
 }

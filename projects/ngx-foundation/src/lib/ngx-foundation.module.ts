@@ -43,6 +43,7 @@ import { SocialMediaButtonsComponent } from './control/social-media-buttons/soci
 import { ImageChipComponent } from './control/image-chip/image-chip.component';
 import { IconButtonComponent } from './control/icon-button/icon-button.component';
 import { InfoCardComponent } from './control/info-card/info-card.component';
+import { OverlayComponent } from './control/overlay/overlay.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -58,6 +59,10 @@ export const defaultOptions: ngxFoundationOptions = {
   },
   option: {
     numberOfWords: '$0 / $1',
+    overlay: {
+      main: 'Loading...',
+      sub: 'This may take a few seconds, please don\'t close this page.',
+    }
   },
   appearance: Appearance.standard,
 };
@@ -91,6 +96,7 @@ export const defaultOptions: ngxFoundationOptions = {
     ImageChipComponent,
     IconButtonComponent,
     InfoCardComponent,
+    OverlayComponent,
   ],
   imports: [
     RouterModule,
@@ -140,6 +146,14 @@ export class NgxFoundationModule {
     let op = defaultOptions;
     if (options.messages) {
       op.messages = options.messages;
+    }
+    if (options.option) {
+      if(options.option.numberOfWords) {
+        op.option.numberOfWords = options.option.numberOfWords;
+      }
+      if (options.option.overlay) {
+        op.option.overlay = options.option.overlay;
+      }
     }
     if (options.appearance) {
       op.appearance = options.appearance;

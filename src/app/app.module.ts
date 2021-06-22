@@ -53,10 +53,11 @@ import { NormalComponent } from './examples/normal/normal.component';
         maxValue: '$0以下の値を入力してください。',
         minValue: '$0以上の値を入力してください。',
         numeric: '数値を入力してください。',
-        email: 'メールアドレスの形式で入力してください。'
+        email: 'メールアドレスの形式で入力してください。',
       },
       option: {
         numberOfWords: '残り$0文字',
+        overlay: { main: '通信中です', sub: 'しばらくお待ち下さい。' },
       },
     }),
   ],

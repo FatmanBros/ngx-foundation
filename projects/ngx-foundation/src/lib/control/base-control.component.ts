@@ -151,4 +151,10 @@ export abstract class BaseControlComponent<T = any>
       return this.control.options.placeholder;
     }
   }
+
+  protected existValidation(key: string): boolean {
+    return !!this.control.validators?.some((validator) =>
+      Object.keys(validator).some((k) => k === key)
+    );
+  }
 }

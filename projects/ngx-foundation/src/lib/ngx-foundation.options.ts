@@ -21,6 +21,7 @@ export interface ngxFoundationOptions {
 
   option: {
     numberOfWords: string;
+    overlay?: { main: string; sub: string };
   };
   appearance?: Appearance;
 }

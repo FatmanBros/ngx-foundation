@@ -3,11 +3,11 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Autocomplete } from '../../enum/enums';
-import { Validation } from '../../validate/validation';
+import { Validation, Validations } from '../../validate/validation';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
@@ -36,16 +36,13 @@ export class TextboxComponent extends BaseControlComponent {
 
   mainNgAfterViewInit() {
     // emailタイプの自動判定
-    if (
-      !!this.control.validators?.some((validator) =>
-        Object.keys(validator).some((key) => key === Validation.email)
-      )
-    ) {
+    if (this.existValidation(Validation.email)) {
       this.type = 'email';
     }
 
     this.isNumeric = !!this.control.validators?.some((validator) =>
       Object.keys(validator).some((key) => key === Validation.numeric)
     );
+
   }
 }
