@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ButtonColorType } from '../button/button.component';
+import { ColorType } from '../../types/types';
+
 
 @Component({
   selector: 'foundation-icon-button',
@@ -8,7 +9,7 @@ import { ButtonColorType } from '../button/button.component';
 })
 export class IconButtonComponent implements OnInit {
   @Input() icon: string = '';
-  @Input() color: ButtonColorType = 'gray';
+  @Input() color: ColorType = 'gray';
   constructor() {}
 
   ngOnInit(): void {}

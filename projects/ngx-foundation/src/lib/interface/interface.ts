@@ -1,18 +1,13 @@
-import { ButtonType, MatColor } from '../enum/enums';
+import { MatColor } from '../enum/enums';
 
 export interface ButtonParam {
   label?: string;
-  type: ButtonType;
   tooltip?: string;
   color?: MatColor;
   icon?: string;
   routerLink?: string;
   onClick?: () => void;
 }
-
-export const defaultParam: ButtonParam = {
-  type: ButtonType.basic,
-};
 
 export interface NgxFoundationImage {
   image: string;
@@ -23,7 +18,7 @@ export interface NgxFoundationImage {
 }
 
 export interface NgxFoundationVideo {
-  video: string,
+  video: string;
   posterImage?: string;
   alt?: string;
   title?: string;

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ButtonColorType } from '../button/button.component';
+import { ColorType } from '../../types/types';
+
 
 @Component({
   selector: 'foundation-info-card',
@@ -7,7 +8,7 @@ import { ButtonColorType } from '../button/button.component';
   styleUrls: ['./info-card.component.scss'],
 })
 export class InfoCardComponent implements OnInit {
-  @Input() color: ButtonColorType = 'blue';
+  @Input() color: ColorType = 'blue';
   @Input() icon: string = '';
   @Input() title: string = '';
   @Input() content: string = '';

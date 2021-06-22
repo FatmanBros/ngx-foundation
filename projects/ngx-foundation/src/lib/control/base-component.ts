@@ -6,11 +6,9 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ButtonType } from '../enum/enums';
 
 @Component({ template: '' })
 export abstract class BaseComponent implements OnDestroy {
-  public buttonType = ButtonType;
   protected detectorRef: ChangeDetectorRef;
 
   public ctlName!: string;

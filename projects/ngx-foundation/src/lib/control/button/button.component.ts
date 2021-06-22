@@ -3,11 +3,11 @@ import {
   Component,
   ElementRef,
   forwardRef,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ButtonType, MatColor } from '../../enum/enums';
-import { ButtonParam, defaultParam } from '../../interface/interface';
+import { ButtonParam } from '../../interface/interface';
+import { ButtonType, ColorType } from '../../types/types';
 
 @Component({
   selector: 'foundation-button',
@@ -23,11 +23,10 @@ import { ButtonParam, defaultParam } from '../../interface/interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  buttonType = ButtonType;
-  @Input() type: ButtonType = ButtonType.basic;
-  @Input() color: ButtonColorType = 'white';
+  @Input() type: ButtonType = 'button';
+  @Input() color: ColorType = 'white';
   @Input() label: string = 'Button';
-  @Input() buttonParam: ButtonParam = defaultParam;
+  @Input() buttonParam: ButtonParam = {};
   @Input() tabindex?: number;
   @Input() routerLink: string = '';
 
@@ -90,13 +89,3 @@ export class ButtonComponent {
     }
   }
 }
-
-export type ButtonColorType =
-  | 'blue'
-  | 'green'
-  | 'yellow'
-  | 'red'
-  | 'gray'
-  | 'purple'
-  | 'pink'
-  | 'white';

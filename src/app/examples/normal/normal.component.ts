@@ -21,7 +21,6 @@ export class NormalComponent implements OnInit {
   buttons: ButtonParam[] = [
     {
       label: 'ボタン1',
-      type: ButtonType.basic,
       tooltip: 'button 1',
       color: MatColor.primary,
       onClick: () => {
@@ -30,7 +29,6 @@ export class NormalComponent implements OnInit {
     },
     {
       label: 'ボタン2',
-      type: ButtonType.icon,
       icon: 'home',
       tooltip: 'button 2',
       color: MatColor.success,
@@ -40,7 +38,6 @@ export class NormalComponent implements OnInit {
     },
     {
       label: 'ボタン3',
-      type: ButtonType.flat,
       tooltip: 'button 3',
       color: MatColor.warn,
       onClick: () => {
@@ -49,7 +46,6 @@ export class NormalComponent implements OnInit {
     },
     {
       label: 'ボタン4',
-      type: ButtonType.raised,
       tooltip: 'button 4',
       color: MatColor.accent,
       onClick: () => {

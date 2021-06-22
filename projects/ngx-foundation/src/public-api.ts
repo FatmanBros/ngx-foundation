@@ -56,3 +56,4 @@ export * from './lib/constants/constants';
 export * from './lib/enum/enums';
 export * from './lib/ngx-foundation.options';
 export * from './lib/pipe/number-with-commas.pipe';
+export * from './lib/types/types';

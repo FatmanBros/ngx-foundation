@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import { ButtonType } from '../../enum/enums';
 
 @Component({
   selector: 'foundation-contents-slider',
@@ -18,8 +17,6 @@ export class ContentsSliderComponent implements OnInit {
   private contentCnt: number = 0;
 
   private currentNo: number = 0;
-
-  public buttonType = ButtonType;
 
   constructor(private elementRef: ElementRef) {
     window.addEventListener('mouseup', (event) => this.dragEnd(event));

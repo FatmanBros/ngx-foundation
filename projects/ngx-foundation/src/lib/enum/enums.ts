@@ -27,16 +27,6 @@ export enum LabelDirection {
   bottom,
 }
 
-export enum ButtonType {
-  basic,
-  raised,
-  stroked,
-  flat,
-  icon,
-  fab,
-  miniFab,
-}
-
 export enum MatColor {
   primary = 'primary',
   secondary = 'secondary',
