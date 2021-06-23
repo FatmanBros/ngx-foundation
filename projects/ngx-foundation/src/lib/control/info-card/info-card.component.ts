@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ColorType } from '../../types/types';
+import { TailwindColorType } from '../../types/types';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { ColorType } from '../../types/types';
   styleUrls: ['./info-card.component.scss'],
 })
 export class InfoCardComponent implements OnInit {
-  @Input() color: ColorType = 'blue';
+  @Input() color: TailwindColorType = 'blue';
   @Input() icon: string = '';
   @Input() title: string = '';
   @Input() content: string = '';
