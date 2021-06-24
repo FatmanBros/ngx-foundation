@@ -46,6 +46,7 @@ import { InfoCardComponent } from './control/info-card/info-card.component';
 import { OverlayComponent } from './control/overlay/overlay.component';
 import { SwiperComponent } from './control/swiper/swiper.component';
 import { SwiperModule } from 'swiper/angular';
+import { ToastComponent } from './control/toast/toast.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -100,6 +101,7 @@ export const defaultOptions: ngxFoundationOptions = {
     InfoCardComponent,
     OverlayComponent,
     SwiperComponent,
+    ToastComponent,
   ],
   imports: [
     RouterModule,
@@ -136,6 +138,7 @@ export const defaultOptions: ngxFoundationOptions = {
     IconButtonComponent,
     InfoCardComponent,
     SwiperComponent,
+    ToastComponent,
   ],
   providers: [
     {
