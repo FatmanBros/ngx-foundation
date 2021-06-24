@@ -49,7 +49,6 @@ export class ButtonComponent {
       `mt-3`,
       `rounded-md`,
       `border`,
-      `border-gray-300`,
       `shadow-sm`,
       `px-4`,
       `py-2`,
@@ -59,6 +58,8 @@ export class ButtonComponent {
       'focus:ring-2',
       'focus:ring-offset-2',
       'sm:mt-0',
+      `border-gray-300`,
+      `dark:border-gray-500`,
     ];
 
     return list.concat(this.getColorClass());
@@ -66,10 +67,13 @@ export class ButtonComponent {
 
   /**
    * get button class
-   * 
+   *
    * ...Avoid tailwind purge.
-   * 
+   *
    * bg-gray-600 bg-blue-600 bg-green-600 bg-yellow-600 bg-red-600 bg-purple-600 bg-pink-600
+   * text-gray-100 text-blue-100 text-green-100 text-yellow-100 text-red-100 text-purple-100 text-pink-100
+   * dark:bg-gray-600 dark:bg-blue-600 dark:bg-green-600 dark:bg-yellow-600 dark:bg-red-600 dark:bg-purple-600 dark:bg-pink-600
+   * text-gray-100 text-blue-100 text-green-100 text-yellow-100 text-red-100 text-purple-100 text-pink-100
    * hover:bg-gray-500 hover:bg-blue-500 hover:bg-green-500 hover:bg-yellow-500 hover:bg-red-500 hover:bg-purple-500 hover:bg-pink-500
    * focus:ring-gray-500 focus:ring-blue-500 focus:ring-green-500 focus:ring-yellow-500 focus:ring-red-500 focus:ring-purple-500 focus:ring-pink-500
    */
@@ -83,9 +87,17 @@ export class ButtonComponent {
           'focus:ring-gray-500',
         ];
       default:
+        const bgBase = 500;
+        const textBase = 100;
+        const dark = -100;
+        const hover = 100;
         return [
-          `bg-${this.color}-600`,
-          `hover:bg-${this.color}-500`,
+          `bg-${this.color}-${bgBase}`,
+          `text-${this.color}-${textBase}`,
+          `dark:bg-${this.color}-${bgBase + dark}`,
+          `dark:text-${this.color}-${textBase + dark}`,
+          `hover:bg-${this.color}-${bgBase + hover}`,
+          `dark:hover:bg-${this.color}-${bgBase + hover + dark}`,
           `focus:ring-${this.color}-500`,
         ];
     }
