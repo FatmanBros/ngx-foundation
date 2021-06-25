@@ -21,7 +21,6 @@ export * from './lib/control/datepicker/datepicker.component';
 export * from './lib/control/toolbar/toolbar.component';
 export * from './lib/control/card/card.component';
 export * from './lib/control/contents-slider/contents-slider.component';
-export * from './lib/control/image-slider/image-slider.component';
 export * from './lib/control/dialog/dialog.component';
 export * from './lib/control/navbar/navbar.component';
 export * from './lib/control/sidebar/sidebar.component';

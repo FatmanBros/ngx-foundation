@@ -6,8 +6,8 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { toastTime } from '../../service/toast.service';
 
+const toastTime = 3000;
 const fadeTime = 0.1;
 @Component({
   selector: 'foundation-toast',

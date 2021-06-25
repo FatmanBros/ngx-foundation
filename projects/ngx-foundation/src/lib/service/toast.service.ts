@@ -5,8 +5,6 @@ import {
 } from '../control/toast/toast.component';
 import { DomService } from './dom.service';
 
-export const toastTime = 3000;
-
 @Injectable({
   providedIn: 'root',
 })
