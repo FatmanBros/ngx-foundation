@@ -174,6 +174,6 @@ export class NormalComponent implements OnInit {
   }
 
   showToast() {
-    this.toastService.open('トーストテスト', '');
+    this.toastService.open('トーストテスト', 'testing in toast!');
   }
 }

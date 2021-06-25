@@ -1,5 +1,8 @@
 import { ComponentRef, Injectable } from '@angular/core';
-import { ToastComponent } from '../control/toast/toast.component';
+import {
+  ToastComponent,
+  ToastFrameComponent,
+} from '../control/toast/toast.component';
 import { DomService } from './dom.service';
 
 export const toastTime = 3000;
@@ -8,25 +11,29 @@ export const toastTime = 3000;
   providedIn: 'root',
 })
 export class ToastService {
-  private isShow: boolean = false;
-  private component?: ComponentRef<ToastComponent>;
+  private frameComponent: ComponentRef<ToastFrameComponent>;
 
-  constructor(private domService: DomService) {}
+  constructor(private domService: DomService) {
+    this.frameComponent = domService.createComponent(ToastFrameComponent);
+    this.domService.attachComponent(this.frameComponent);
+  }
 
   public open(title: string, content: string) {
-    if (this.isShow) {
-      return;
-    }
-    this.component = this.domService.createComponent(ToastComponent, {
-      title: title,
-      content: content,
+    const component: ComponentRef<ToastComponent> =
+      this.domService.createComponent(ToastComponent, {
+        title: title,
+        content: content,
+      });
+    this.domService.attachComponent(
+      component,
+      this.frameComponent.location.nativeElement
+    );
+
+    component.instance.onDone.subscribe((_) => {
+      this.domService.detachComponent(
+        component,
+        this.frameComponent.location.nativeElement
+      );
     });
-    this.domService.attachComponent(this.component);
-    this.isShow = true;
-    // 削除時間
-    setTimeout(() => {
-      this.domService.detachComponent(this.component!);
-      this.isShow = false;
-    }, toastTime);
   }
 }

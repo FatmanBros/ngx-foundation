@@ -20,7 +20,6 @@ import {
 } from './control/dialog/dialog.component';
 import { DropdownComponent } from './control/dropdown/dropdown.component';
 import { ImageSliderComponent } from './control/image-slider/image-slider.component';
-import { ImageComponent } from './control/image/image.component';
 import { LabelComponent } from './control/label/label.component';
 import { NavbarComponent } from './control/navbar/navbar.component';
 import { RadioComponent } from './control/radio/radio.component';
@@ -86,7 +85,6 @@ export const defaultOptions: ngxFoundationOptions = {
     CardComponent,
     ImageSliderComponent,
     ContentsSliderComponent,
-    ImageComponent,
     LoginFormComponent,
     SignUpFormComponent,
     NavbarComponent,
