@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DropdownItem } from 'projects/ngx-foundation/src/lib/control/dropdown/dropdown.component';
 import { Link } from 'projects/ngx-foundation/src/lib/control/navbar/navbar.component';
+import { DarkModeService } from 'projects/ngx-foundation/src/lib/service/dark-mode.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Link } from 'projects/ngx-foundation/src/lib/control/navbar/navbar.comp
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isDarkMode:boolean = false;
+  isDarkMode: boolean = false;
   title = 'demo';
   public avatar =
     'https://images.generated.photos/Z5HfwR5L8Fez5uCqEcj3SbogJgJhBdfxJs73ZRGjWgE/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAwNzc4NzAuanBn.jpg';
@@ -66,6 +67,17 @@ export class AppComponent {
   ];
 
   private test() {
-    console.log(this)
+    console.log(this);
+  }
+
+  constructor(private darkModeService: DarkModeService) {}
+
+  toggleLightDark() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      this.darkModeService.dark();
+    } else {
+      this.darkModeService.light();
+    }
   }
 }

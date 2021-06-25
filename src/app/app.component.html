@@ -1,7 +1,7 @@
-<div [ngClass]="{'dark': isDarkMode}">
+<div>
     <div class="dark:bg-gray-800 dark:text-gray-300">
         <app-navbar [title]="'テスト'" [avatar]="avatar" [links]="links" [userMenu]="userMenu"></app-navbar>
-        <foundation-icon-button [icon]="isDarkMode ? 'dark_mode' : 'light_mode'" (click)="isDarkMode = !isDarkMode">
+        <foundation-icon-button [icon]="isDarkMode ? 'dark_mode' : 'light_mode'" (click)="toggleLightDark()">
         </foundation-icon-button>
         <!-- <app-sidebar [menuItems]="menuItems"></app-sidebar> -->
         <div class="container fill">
