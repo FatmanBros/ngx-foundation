@@ -83,7 +83,10 @@ export class ButtonComponent {
         return [
           'bg-white',
           'text-gray-700',
+          'dark:bg-gray-500',
+          'dark:text-gray-200',
           'hover:bg-gray-50',
+          'dark:hover:bg-gray-400',
           'focus:ring-gray-500',
         ];
       default:
