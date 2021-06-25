@@ -31,6 +31,7 @@ export * from './lib/control/info-card/info-card.component';
 export * from './lib/control/icon-button/icon-button.component';
 export * from './lib/control/overlay/overlay.component';
 export * from './lib/control/swiper/swiper.component';
+export * from './lib/control/toast/toast.component';
 
 export * from './lib/component/login-form/login-form.component';
 export * from './lib/component/sign-up-form/sign-up-form.component';
@@ -42,6 +43,7 @@ export * from './lib/component/sign-up-form/sign-up-form.component';
 export * from './lib/service/dialog.service';
 export * from './lib/service/dom.service';
 export * from './lib/service/overlay.service';
+export * from './lib/service/toast.service';
 
 /**
  * validators

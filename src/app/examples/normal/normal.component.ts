@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   ButtonType, CustomFormControl,
   CustomValidators,
-  LabelDirection, MatColor
+  LabelDirection, MatColor, ToastService
 } from '@ngx-foundation/ngx-foundation';
 import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
@@ -148,6 +148,7 @@ export class NormalComponent implements OnInit {
     private fb: FormBuilder, 
     private dialog: DialogService,
     private overlayService: OverlayService,
+    private toastService: ToastService,
   ) {}
 
   ngOnInit() {}
@@ -170,5 +171,9 @@ export class NormalComponent implements OnInit {
     setTimeout(() => {
       this.overlayService.close();
     }, 3000);
+  }
+
+  showToast() {
+    this.toastService.open('トーストテスト', '');
   }
 }

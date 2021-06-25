@@ -12,6 +12,11 @@
 
 
   <div class="m1 flex flex-col w-32 self-center">
+    トースト
+    <foundation-button [label]="'トースト'" [color]="'purple'" (click)="showToast()"></foundation-button>
+  </div>
+
+  <div class="m1 flex flex-col w-32 self-center">
     カスタムダイアログ
     <foundation-button [label]="'わーん'" [color]="'yellow'" (click)="showWarnDialog()"></foundation-button>
     <foundation-button [label]="'いんふぉ'" [color]="'green'" (click)="showInfoDialog()"></foundation-button>

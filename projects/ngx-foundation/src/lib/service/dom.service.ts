@@ -30,7 +30,7 @@ export class DomService {
     return componentRef;
   }
 
-  attachComponent<T>(componentRef: ComponentRef<T>, appendTo: Element) {
+  attachComponent<T>(componentRef: ComponentRef<T>, appendTo: Element = document.body) {
     // 2. Attach component to the appRef so that it's inside the ng component tree
     this.appRef.attachView(componentRef.hostView);
 
@@ -44,7 +44,7 @@ export class DomService {
     return;
   }
 
-  detachComponent<T>(componentRef: ComponentRef<T>, detachTo: Element) {
+  detachComponent<T>(componentRef: ComponentRef<T>, detachTo: Element = document.body) {
     detachTo.removeChild(componentRef.location.nativeElement);
   }
 }
