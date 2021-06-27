@@ -13,12 +13,13 @@
 </foundation-accordion>
 
 <div fxLayout="column">
-  <div class="flex flex-wrap">
-    <foundation-info-card [icon]="'dark_mode'" [title]="'test'" [color]="'purple'" [content]="'$ 000.0 -'">
-    </foundation-info-card>
-    <foundation-info-card [title]="'test'" [color]="'green'" [content]="'$ 000.0 -'"></foundation-info-card>
-    <foundation-info-card [title]="'test'" [color]="'gray'" [content]="'$ 000.0 -'"></foundation-info-card>
-    <foundation-info-card [title]="'test'" [color]="'blue'" [content]="'$ 000.0 -'"></foundation-info-card>
+  <div class="h-80 w-80">
+    テストテストテストテスト
+    <cdk-virtual-scroll-viewport class="h-full w-full simple-scroll" itemSize="60" minBufferPx="200" maxBufferPx="400">
+      <foundation-info-card *cdkVirtualFor="let item of scrollItems" [icon]="item.icon" [title]="item.test"
+        [color]="item.color" [content]="item.content">
+      </foundation-info-card>
+    </cdk-virtual-scroll-viewport>
   </div>
 
 
