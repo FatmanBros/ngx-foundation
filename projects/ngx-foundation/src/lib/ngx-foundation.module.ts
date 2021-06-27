@@ -17,7 +17,7 @@ import { ContentsSliderComponent } from './control/contents-slider/contents-slid
 import { DatepickerComponent } from './control/datepicker/datepicker.component';
 import {
   InfoDialogComponent,
-  WarnDialogComponent
+  WarnDialogComponent,
 } from './control/dialog/dialog.component';
 import { DropdownComponent } from './control/dropdown/dropdown.component';
 import { IconButtonComponent } from './control/icon-button/icon-button.component';
@@ -35,16 +35,18 @@ import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
 import { ToastComponent } from './control/toast/toast.component';
 import { ToolbarComponent } from './control/toolbar/toolbar.component';
+import { TopComponent } from './control/top/top.component';
 import { Appearance } from './enum/enums';
 import { MaterialModule } from './mat.module';
 import { NgxFoundation } from './ngx-foundation-options';
 import { NgxFoundationComponent } from './ngx-foundation.component';
 import {
   ngxFoundationOptions,
-  NGX_FOUNDATION_OPTIONS
+  NGX_FOUNDATION_OPTIONS,
 } from './ngx-foundation.options';
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
+import { AccordionComponent } from './control/accordion/accordion.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -98,6 +100,8 @@ export const defaultOptions: ngxFoundationOptions = {
     OverlayComponent,
     SwiperComponent,
     ToastComponent,
+    TopComponent,
+    AccordionComponent,
   ],
   imports: [
     RouterModule,
@@ -134,6 +138,8 @@ export const defaultOptions: ngxFoundationOptions = {
     InfoCardComponent,
     SwiperComponent,
     ToastComponent,
+    TopComponent,
+    AccordionComponent,
   ],
   providers: [
     {

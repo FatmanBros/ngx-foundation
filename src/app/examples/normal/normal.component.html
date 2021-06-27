@@ -1,6 +1,17 @@
 <div class="w-full h-96 mt-1 mb-1">
   <foundation-swiper [images]="images"></foundation-swiper>
 </div>
+<div class="bg-pink-200 h-10 w-10" (mouseenter)="accord = 'open'" (mouseleave)="accord = 'close'">
+
+</div>
+<foundation-accordion>
+  <div class="relative flex flex-col">
+    <div>test</div>
+    <div>test</div>
+    <div>test</div>
+  </div>
+</foundation-accordion>
+
 <div fxLayout="column">
   <div class="flex flex-wrap">
     <foundation-info-card [icon]="'dark_mode'" [title]="'test'" [color]="'purple'" [content]="'$ 000.0 -'">
