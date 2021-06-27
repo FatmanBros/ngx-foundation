@@ -13,8 +13,10 @@
 </foundation-accordion>
 
 <div fxLayout="column">
-  <div class="h-80 w-80">
-    テストテストテストテスト
+  <div class="h-80 w-80 flex flex-col">
+    <div class="bg-white text-sm text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
+      Tracking events
+    </div>
     <cdk-virtual-scroll-viewport class="h-full w-full simple-scroll" itemSize="60" minBufferPx="200" maxBufferPx="400">
       <foundation-info-card *cdkVirtualFor="let item of scrollItems" [icon]="item.icon" [title]="item.test"
         [color]="item.color" [content]="item.content">
