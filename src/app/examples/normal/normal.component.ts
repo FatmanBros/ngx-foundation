@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {
-  ButtonType, CustomFormControl,
+  ButtonType, CardButton, CustomFormControl,
   CustomValidators,
   LabelDirection, MatColor, ToastService
 } from '@ngx-foundation/ngx-foundation';
-import { CardValues } from 'projects/ngx-foundation/src/lib/control/card/card.component';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
 import { DialogService } from 'projects/ngx-foundation/src/lib/service/dialog.service';
 import { OverlayService } from 'projects/ngx-foundation/src/lib/service/overlay.service';
@@ -66,29 +65,6 @@ export class NormalComponent implements OnInit {
   labelDir = LabelDirection;
 
   public form: FormGroup = this.fb.group({
-    test_card: new CustomFormControl<CardValues>({
-      labelText: '',
-      value: {
-        title: 'テストカード　タイトル',
-        subtitle: 'テストカード　サブタイトル',
-        content: 'カードのコンテンツを表示します。',
-        imgUrls: [
-          {
-            image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-            thumbImage:
-              'https://material.angular.io/assets/img/examples/shiba2.jpg',
-          },
-          {
-            image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-            thumbImage:
-              'https://material.angular.io/assets/img/examples/shiba2.jpg',
-          },
-          {
-            video: 'https://www.youtube.com/watch?v=GJkLmB1y4Do',
-          },
-        ],
-      },
-    }),
     test_textbox: new CustomFormControl({
       labelText: 'テスト テキストボックス',
       value: '',
@@ -182,4 +158,22 @@ export class NormalComponent implements OnInit {
   public scrollItems = Array.from({length: 100000}).map((_, i) => {
     return { icon: '', title: `test${i}`, 'color': 'purple', content: `$ ${i}.0 -`}
   });
+
+  public cardButtons: CardButton[] = [
+    {
+      icon: 'chat_bubble_outline',
+      classes: 'text-blue-500 dark:text-pink-700',
+      handler: (button: CardButton) => {
+        
+      }
+    },
+    {
+      icon: 'favorite_border',
+      activeIcon: 'favorite',
+      classes: 'text-red-500 dark:text-pink-700',
+      handler: (button: CardButton) => {
+        button.active = !button.active;
+      }
+    }
+  ]
 }

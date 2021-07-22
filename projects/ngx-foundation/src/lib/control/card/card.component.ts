@@ -3,12 +3,12 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input
+  Input,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   NgxFoundationImage,
-  NgxFoundationVideo
+  NgxFoundationVideo,
 } from '../../interface/interface';
 
 @Component({
@@ -25,21 +25,21 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-  @Input() topImg: string = '';
+  @Input() img: string = '';
   @Input() title: string = '';
-  @Input() subTitle: string = '';
-  @Input() auth: Auth = '';
+  @Input() content: string = '';
+  @Input() subContent: string = '';
+  @Input() leftButtons: CardButton[] = [];
+  @Input() rightButtons: CardButton[] = [];
 
   constructor(injector: Injector) {}
 }
 
-export interface Auth {}
-
-export interface CardValues {
-  title: string;
-  subtitle?: string;
-  content: string;
-  imgUrls?: (NgxFoundationImage | NgxFoundationVideo)[];
-  authorImgUrl?: string;
-  author?: string;
+export interface CardButton {
+  icon: string;
+  handler: Function;
+  activeIcon?: string;
+  active?: boolean;
+  classes?: string;
+  tooltip?: string;
 }
