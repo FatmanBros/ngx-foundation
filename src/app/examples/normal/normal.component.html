@@ -1,10 +1,7 @@
 <div class="w-full h-96 mt-1 mb-1">
   <foundation-swiper [images]="images"></foundation-swiper>
 </div>
-<div class="bg-pink-200 h-10 w-10" (mouseenter)="accord = 'open'" (mouseleave)="accord = 'close'">
-
-</div>
-<foundation-accordion>
+<foundation-accordion [title]="'アコーディオン'">
   <div class="relative flex flex-col">
     <div>test</div>
     <div>test</div>
@@ -24,7 +21,7 @@
     </cdk-virtual-scroll-viewport>
   </div>
 
-
+  <foundation-content-header [title]="'哺乳類'"></foundation-content-header>
   <div class="m1 flex flex-col w-32 self-center">
     トースト
     <foundation-button [label]="'トースト'" [color]="'purple'" (click)="showToast()"></foundation-button>

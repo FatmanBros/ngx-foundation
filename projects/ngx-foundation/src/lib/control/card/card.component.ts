@@ -3,14 +3,13 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
+  Input
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   NgxFoundationImage,
-  NgxFoundationVideo,
+  NgxFoundationVideo
 } from '../../interface/interface';
-import { BaseControlComponent } from '../base-control.component';
 
 @Component({
   selector: 'foundation-card',

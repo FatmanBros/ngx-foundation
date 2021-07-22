@@ -47,6 +47,7 @@ import {
 import { NumberWithCommasPipe } from './pipe/number-with-commas.pipe';
 import { Validation } from './validate/validation';
 import { AccordionComponent } from './control/accordion/accordion.component';
+import { ContentHeaderComponent } from './component/content-header/content-header.component';
 
 export const defaultOptions: ngxFoundationOptions = {
   messages: {
@@ -102,6 +103,7 @@ export const defaultOptions: ngxFoundationOptions = {
     ToastComponent,
     TopComponent,
     AccordionComponent,
+    ContentHeaderComponent,
   ],
   imports: [
     RouterModule,
@@ -140,6 +142,7 @@ export const defaultOptions: ngxFoundationOptions = {
     ToastComponent,
     TopComponent,
     AccordionComponent,
+    ContentHeaderComponent,
   ],
   providers: [
     {
