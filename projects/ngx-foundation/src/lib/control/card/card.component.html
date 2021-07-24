@@ -1,6 +1,14 @@
-<div class="max-w-sm rounded-sm overflow-hidden shadow-lg m-16 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-500 cursor-pointer" (click)="onClick()">
+<div
+  class="min-w-max max-w-sm rounded-sm overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-500 cursor-pointer"
+  (click)="onClick()">
 
-  <img class="h-64 bg-cover hover:bg-gray" [src]="img" />
+  <svg *ngIf="!img" width="384" height="256" class="bg-gray-300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <g class="layer">
+      <text fill="#000000" font-family="sans" font-size="60" id="svg_1" stroke="#000000" stroke-width="0"
+        text-anchor="middle" xml:space="preserve" x="190" y="150">image</text>
+    </g>
+  </svg>
+  <img *ngIf="img" class="h-64 bg-cover hover:bg-gray" [src]="img" />
   <div class="mx-6 my-4 border-b border-gray-light">
     <div class="font-medium text-base text-gray-darker mb-4">{{title}}</div>
     <p class="font-normal text-gray-dark text-sm mb-2">
@@ -13,12 +21,14 @@
   <div class="mx-6 my-4 flex">
     <div class="flex-grow">
       <span *ngFor="let button of leftButtons" class="inline-block bg-red-light rounded-full p-1 pb-0 mr-2">
-        <foundation-icon-button [icon]="button.active === true ? button.activeIcon! : button.icon" (click)="button.handler(button)" [class]="button.classes"></foundation-icon-button>
+        <foundation-icon-button [icon]="button.active === true ? button.activeIcon! : button.icon"
+          (click)="button.handler(button)" [class]="button.classes"></foundation-icon-button>
       </span>
     </div>
     <div class="flex-grow text-right">
       <span *ngFor="let button of rightButtons" class="inline-block bg-red-light rounded-full p-1 pb-0 mr-2">
-        <foundation-icon-button [icon]="button.active === true ? button.activeIcon! : button.icon" (click)="button.handler(button)"></foundation-icon-button>
+        <foundation-icon-button [icon]="button.active === true ? button.activeIcon! : button.icon"
+          (click)="button.handler(button)"></foundation-icon-button>
       </span>
     </div>
   </div>
