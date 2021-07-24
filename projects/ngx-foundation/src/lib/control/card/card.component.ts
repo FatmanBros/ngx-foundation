@@ -33,6 +33,10 @@ export class CardComponent {
   @Input() rightButtons: CardButton[] = [];
 
   constructor(injector: Injector) {}
+
+  onClick() {
+    console.log('click')
+  }
 }
 
 export interface CardButton {

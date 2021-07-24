@@ -162,9 +162,9 @@ export class NormalComponent implements OnInit {
   public cardButtons: CardButton[] = [
     {
       icon: 'chat_bubble_outline',
-      classes: 'text-blue-500 dark:text-pink-700',
+      classes: 'text-blue-500 dark:text-blue-600',
       handler: (button: CardButton) => {
-        
+        console.log('handler')
       }
     },
     {
