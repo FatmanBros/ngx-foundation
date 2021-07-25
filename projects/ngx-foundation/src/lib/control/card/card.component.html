@@ -10,11 +10,11 @@
   </svg>
   <img *ngIf="img" class="bg-cover hover:bg-gray" [src]="img" />
   <div class="mx-6 my-4 border-b border-gray-light">
-    <div class="font-medium text-base text-gray-darker mb-4">{{title}}</div>
-    <p class="font-normal text-gray-dark text-sm mb-2">
+    <div class="font-medium text-base text-gray-darker mb-4 break-words">{{title}}</div>
+    <p class="font-normal text-gray-dark text-sm mb-2 break-words">
       {{content}}
     </p>
-    <p class="font-normal text-gray-dark text-sm mb-4">
+    <p class="font-normal text-gray-dark text-sm mb-4 break-words">
       {{subContent}}
     </p>
   </div>
