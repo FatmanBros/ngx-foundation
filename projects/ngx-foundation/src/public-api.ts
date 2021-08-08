@@ -39,6 +39,8 @@ export * from './lib/component/sign-up-form/sign-up-form.component';
 export * from './lib/component/content-header/content-header.component';
 
 
+export * from './lib/control/base-control.component';
+
 /**
  * service
  */

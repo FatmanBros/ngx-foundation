@@ -1,2 +1,12 @@
-<ng-select [items]="listItems" bindLabel="label" bindValue="code" [placeholder]="placeholder">
-</ng-select>
+<div class="flex flex-col" [ngClass]="{'mb-6': !errorMessage.length}">
+  <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-300">
+    {{labelText}}
+  </label>
+
+  <ng-select [formControl]="control" [items]="listItems" bindLabel="label" bindValue="code" [placeholder]="placeholder">
+  </ng-select>
+  <span *ngFor="let err of errorMessage"
+    class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-5">
+    {{err}}
+  </span>
+</div>
