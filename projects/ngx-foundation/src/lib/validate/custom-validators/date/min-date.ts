@@ -28,7 +28,7 @@ export class MinDate {
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (new Date(control.value).getTime() > date.getTime()) {
+      if (new Date(control.value).getTime() >= date.getTime()) {
         return null;
       }
 

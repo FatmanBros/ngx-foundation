@@ -68,7 +68,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: Appearance.standard },
+      useValue: { appearance: Appearance.outline },
     },
     { provide: MAT_DATE_LOCALE, useValue: 'ja-JP' },
     {

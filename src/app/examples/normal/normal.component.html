@@ -58,7 +58,9 @@
       <div class="w-52">
         <foundation-card
           [img]="'https://user-images.githubusercontent.com/5419306/64431443-71823880-d088-11e9-9bd7-1b314f94dc1f.png'"
-          [title]="'タイトルaaaaaaaaaaaaaaaaaaaaaaaaaaa'" [content]="'コンテンツaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'" [leftButtons]="cardButtons"></foundation-card>
+          [title]="'タイトルaaaaaaaaaaaaaaaaaaaaaaaaaaa'"
+          [content]="'コンテンツaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'" [leftButtons]="cardButtons">
+        </foundation-card>
       </div>
     </div>
     <mat-divider></mat-divider>
@@ -84,10 +86,6 @@
       <foundation-radio formControlName="test_radio" class="m1" style="width: 20em"></foundation-radio>
       <mat-divider></mat-divider>
 
-      <h3 class="m1">日付ピッカー</h3>
-      <foundation-datepicker formControlName="test_date" class="m1"></foundation-datepicker>
-      <mat-divider></mat-divider>
-
       <h3 class="m1">ボタン</h3>
       <foundation-button *ngFor="let button of buttons" [buttonParam]="button"></foundation-button>
 
@@ -97,6 +95,11 @@
       <div style="width: 20em">
         <foundation-select formControlName="test_select" class="m1"></foundation-select>
       </div>
+
+      <h3 class="m1">日付ピッカー</h3>
+      <foundation-datepicker formControlName="test_date" class="m1"></foundation-datepicker>
+      <mat-divider></mat-divider>
+
     </div>
   </form>
 </div>

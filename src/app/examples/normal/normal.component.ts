@@ -108,7 +108,7 @@ export class NormalComponent implements OnInit {
     test_date: new CustomFormControl({
       labelText: 'テスト 日付',
       value: new Date(),
-      validators: [CustomValidators.minDate(DateUtils.getToday())],
+      validators: [CustomValidators.minDate(DateUtils.getToday()), CustomValidators.maxDate(new Date('2021/8/20')), CustomValidators.required()],
     }),
     test_select: new CustomFormControl({
       labelText: 'テスト セレクト',

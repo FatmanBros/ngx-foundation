@@ -42,7 +42,10 @@ export abstract class BaseControlComponent<T = any>
   public ngControl!: NgControl;
   public control!: CustomFormControl<T>;
 
-  get value(): T {
+  get value(): T | undefined {
+    if (!this.control) {
+      return;
+    }
     return this.control.value as T;
   }
 
@@ -145,7 +148,7 @@ export abstract class BaseControlComponent<T = any>
   }
 
   public get placeholder() {
-    if (!this.control.options) {
+    if (!this.control?.options) {
       return '';
     } else {
       return this.control.options.placeholder;

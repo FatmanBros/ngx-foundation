@@ -3,10 +3,7 @@
     {{labelText}}
   </label>
   <input [placeholder]="placeholder" [formControl]="control" [type]="hide ? type : 'text'" [autocomplete]="autocomplete"
-    [maxlength]="maxLength" class="text-md block px-3 py-2 rounded-lg w-full
-bg-white  border-2 border-gray-300 focus:border-gray-600 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:outline-none
-  dark:bg-gray-700 dark:border-gray-500 dark:focus:border-gray-300 dark:placeholder-gray-300 dar
-" />
+    [maxlength]="maxLength" class="input-box" />
   <span *ngFor="let err of errorMessage"
     class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-5">
     {{err}}
