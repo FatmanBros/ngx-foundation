@@ -26,7 +26,7 @@ import { BaseControlComponent } from '../base-control.component';
 export class TextboxComponent extends BaseControlComponent {
   @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
   @Input() hint: string = '';
-  @Input() type: string = '';
+  @Input() type: string = 'text';
   isNumeric: boolean = false;
   hide: boolean = true;
 

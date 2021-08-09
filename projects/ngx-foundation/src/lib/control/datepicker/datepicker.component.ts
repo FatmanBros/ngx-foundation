@@ -106,31 +106,31 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
     this.toggleDatepicker('open');
     if (this.value) {
       this.dtInput.nativeElement.value = this.value.getFullYear() + '/' + (this.value.getMonth() + 1) + '/' + this.value.getDate();
+    } else {
+      this.dtInput.nativeElement.value = '';
     }
   }
 
   setValue(date: Date | undefined) {
-    this.control.setValue(date);
-    if (date) {
+    if (date && !isNaN(date.getDate())) {
+      this.control.setValue(date);
       this.year = date.getFullYear();
       this.month = date.getMonth();
       this.date = date.getDate();
+    } else {
+      this.control.setValue(undefined);
     }
     this.control.markAsDirty();
   }
+  
   onChange() {
     const changeDate = new Date(this.dtInput.nativeElement.value);
-    if (isNaN(changeDate.getDate())) {
-      this.control.setValue(undefined);
-      this.toggleDatepicker('close');
-      return;
-    }
     this.setValue(changeDate);
 
     this.toggleDatepicker('close');
   }
 
-  private toggleDatepicker(toggle: 'open' | 'close') {
+  toggleDatepicker(toggle: 'open' | 'close') {
     this.showDatepicker = toggle === 'open';
     setTimeout(() => {
       this.detectorRef.detectChanges();

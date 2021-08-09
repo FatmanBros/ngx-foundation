@@ -1,8 +1,11 @@
 <div class="mb-5">
   <label for="datepicker" class="font-bold mb-1 text-gray-700 block">{{labelText}}</label>
-  <div class="relative" (click)="onClick()">
-    <div *ngIf="!showDatepicker" class="input-box">{{control.value ? (control.value | date: dateFormat) : ''}}</div>
-    <input #dtInput type="text" class="input-box" [ngStyle]="{'display': showDatepicker ? 'block' : 'none'}" (change)="onChange()" />
+  <div class="relative" (click)="onClick()" >
+    <div *ngIf="!showDatepicker" tabindex="0" (focus)="onClick()"
+      class="block h-10 w-full px-3 py-2 border border-gray-300 rounded-t rounded-b bg-white placeholder-gray-600 focus:border-gray-600 focus:placeholder-gray-500 focus:outline-none hover:text-gray-500 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-300 focus:dark:border-gray-300">
+      {{control.value ? (control.value | date: dateFormat) : ''}}</div>
+    <input #dtInput type="text" class="block h-10 w-full px-3 py-2 border border-gray-300 rounded-t rounded-b bg-white placeholder-gray-600 focus:border-gray-600 focus:placeholder-gray-500 focus:outline-none hover:text-gray-500 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-300 focus:dark:border-gray-300"
+      [ngStyle]="{'display': showDatepicker ? 'block' : 'none'}" (change)="onChange()" />
 
     <span *ngFor="let err of errorMessage"
       class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-5">
@@ -27,14 +30,14 @@
           <span class="ml-1 text-lg font-bold text-gray-800">{{monthNames[month]}}</span>
         </div>
         <div>
-          <button type="button"
+          <button type="button" tabindex="-1"
             class="focus:outline-none focus:shadow-outline transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-100 p-1 rounded-full"
             (click)="onPrev()">
             <svg class="h-6 w-6 text-gray-400 inline-flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button type="button"
+          <button type="button" tabindex="-1"
             class="focus:outline-none focus:shadow-outline transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-100 p-1 rounded-full"
             (click)="onNext()">
             <svg class="h-6 w-6 text-gray-400 inline-flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">

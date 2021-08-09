@@ -87,7 +87,7 @@ export class CustomFormControl<T = any> extends FormControl {
 
 export interface CustomForm<T = any> {
   labelText: string;
-  value: T;
+  value?: T;
   formState?: any;
   listItems?: ListItem[];
   validators?: { [key: string]: CustomValidatorFn }[];
