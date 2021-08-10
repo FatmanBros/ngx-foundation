@@ -1,0 +1,16 @@
+<table class="min-w-max w-full table-auto">
+  <thead>
+    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+      <th *ngFor="let def of colDefs" class="py-3 px-6 text-left" [ngStyle]="getWidth(def)">{{def.label}}</th>
+    </tr>
+  </thead>
+  <tbody class="text-gray-600 text-sm font-light">
+    <tr *ngFor="let row of rowData" class="border-b border-gray-200 hover:bg-gray-100">
+      <td *ngFor="let def of colDefs" class="py-3 px-6 text-left whitespace-nowrap">
+        <div class="flex items-center">
+          <span class="font-medium">{{row[def.fieldId]?.value}}</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
