@@ -5,6 +5,7 @@ import {
   CustomValidators,
   FndTableColDef,
   FndTableRowData,
+  FndTbColumnType,
   LabelDirection, MatColor, ToastService
 } from '@ngx-foundation/ngx-foundation';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
@@ -184,7 +185,7 @@ export class NormalComponent implements OnInit {
   ]
 
   public tableColDefs: FndTableColDef[] = [
-    { fieldId: 'field1', label: 'テスト１' },
+    { fieldId: 'field1', label: 'テスト１', editable: true, type: FndTbColumnType.text, validators: [CustomValidators.required()] },
     { fieldId: 'field2', label: 'テスト２' },
     { fieldId: 'field3', label: 'テスト３' },
     { fieldId: 'field4', label: 'テスト４' },
@@ -195,31 +196,31 @@ export class NormalComponent implements OnInit {
     {
       field1: { value: '１行目　１列目' },
       field2: { value: '１行目　２列目' },
-      field3: { value: '１行目　３列目' }, 
+      field3: { value: '１行目　３列目' },
       field4: { value: '１行目　４列目' },
     },
     {
       field1: { value: '２行目　１列目' },
       field2: { value: '２行目　２列目' },
-      field3: { value: '２行目　３列目' }, 
+      field3: { value: '２行目　３列目' },
       field5: { value: '２行目　５列目' },
     },
     {
       field1: { value: '３行目　１列目' },
       field2: { value: '３行目　２列目' },
-      field4: { value: '３行目　４列目' }, 
+      field4: { value: '３行目　４列目' },
       field5: { value: '３行目　５列目' },
     },
     {
       field1: { value: '４行目　１列目' },
       field3: { value: '４行目　３列目' },
-      field4: { value: '４行目　４列目' }, 
+      field4: { value: '４行目　４列目' },
       field5: { value: '４行目　５列目' },
     },
     {
       field2: { value: '５行目　２列目' },
       field3: { value: '５行目　３列目' },
-      field4: { value: '５行目　４列目' }, 
+      field4: { value: '５行目　４列目' },
       field5: { value: '５行目　５列目' },
     },
   ]

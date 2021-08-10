@@ -29,10 +29,7 @@ export class CustomFormControl<T = any> extends FormControl {
     this.listItems = customForm.listItems;
     this.options = customForm.options;
 
-    const customValidators = this.createCustomValidatorFns(
-      customForm.validators
-    );
-    this.setValidators(Validators.compose(customValidators));
+    this.setCustomValidators(customForm.validators);
   }
 
   /**
@@ -69,6 +66,15 @@ export class CustomFormControl<T = any> extends FormControl {
   setValue(value: any, options?: Object): void {
     super.setValue(value);
     this.viewUpdate();
+  }
+  setListItems(listItems: ListItem[] | undefined):void {
+    this.listItems = listItems;
+  }
+  setCustomValidators(validators: { [key: string]: CustomValidatorFn }[] | undefined): void {
+    const customValidators = this.createCustomValidatorFns(
+      validators
+    );
+    this.setValidators(Validators.compose(customValidators));
   }
   patchValue(value: any, options?: Object): void {
     super.patchValue(value);

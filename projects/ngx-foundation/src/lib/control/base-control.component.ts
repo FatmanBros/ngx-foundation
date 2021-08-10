@@ -35,9 +35,9 @@ export abstract class BaseControlComponent<T = any>
   @Input() appearance: Appearance = Appearance.standard;
   @Input() color?: MatColor;
 
-  @Output() focus = new EventEmitter<CustomFormControl<T>>();
-  @Output() blur = new EventEmitter<CustomFormControl<T>>();
-  @Output() change = new EventEmitter<CustomFormControl<T>>();
+  @Output() focusEvent = new EventEmitter<CustomFormControl<T>>();
+  @Output() blurEvent = new EventEmitter<CustomFormControl<T>>();
+  @Output() changeEvent = new EventEmitter<CustomFormControl<T>>();
 
   public ngControl!: NgControl;
   public control!: CustomFormControl<T>;
@@ -110,16 +110,16 @@ export abstract class BaseControlComponent<T = any>
   writeValue(v: any): void {}
 
   onFocus() {
-    this.focus.emit(this.control);
+    this.focusEvent.emit(this.control);
   }
 
   onBlur() {
     this._onTouchedCallback();
-    this.blur.emit(this.control);
+    this.blurEvent.emit(this.control);
   }
 
   onChange() {
-    this.change.emit(this.control);
+    this.changeEvent.emit(this.control.value);
   }
 
   public get errorMessage(): string[] {
