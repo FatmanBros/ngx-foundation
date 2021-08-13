@@ -12,6 +12,7 @@ import { Validation } from '../validate/validation';
 export class CustomFormControl<T = any> extends FormControl {
   public validators?: { [key: string]: CustomValidatorFn }[];
   public viewUpdate$ = new Subject();
+  public focus$ = new Subject();
   public args: { [key: string]: any } = {};
 
   public labelText!: string;
@@ -87,6 +88,12 @@ export class CustomFormControl<T = any> extends FormControl {
 
   public viewUpdate(): CustomFormControl {
     this.viewUpdate$.next(null);
+    return this;
+  }
+  public focus(): CustomFormControl {
+    setTimeout(() => {
+      this.focus$.next(null);
+    });
     return this;
   }
 }

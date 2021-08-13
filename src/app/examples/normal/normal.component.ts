@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   ButtonType, CardButton, CustomFormControl,
@@ -6,7 +6,7 @@ import {
   FndTableColDef,
   FndTableRowData,
   FndTbColumnType,
-  LabelDirection, MatColor, ToastService
+  LabelDirection, MatColor, TableComponent, ToastService
 } from '@ngx-foundation/ngx-foundation';
 import { ButtonParam } from 'projects/ngx-foundation/src/lib/interface/interface';
 import { DialogService } from 'projects/ngx-foundation/src/lib/service/dialog.service';
@@ -224,4 +224,11 @@ export class NormalComponent implements OnInit {
       field5: { value: '５行目　５列目' },
     },
   ]
+
+  @ViewChild('fndTable')
+  public fndTable!: TableComponent;
+
+  public getTableData() {
+    console.log(this.fndTable.getData());
+  }
 }

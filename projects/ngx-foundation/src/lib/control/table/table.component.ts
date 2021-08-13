@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnInit, PipeTransform } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ListItem } from '../../constants/constants';
 import { CustomValidatorFn } from '../../validate/custom-validators';
@@ -21,7 +21,17 @@ export class TableComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private detectorRef: ChangeDetectorRef) { }
 
+  public esc = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      this.editingCell = null;
+      this.detectorRef.detectChanges();
+    }
+  }
   ngOnInit(): void {
+    document.addEventListener('keydown', this.esc)
+  }
+  ngOnDestroy() {
+    document.removeEventListener('keydown', this.esc)
   }
 
   getWidth(def: FndTableColDef) {
@@ -48,18 +58,13 @@ export class TableComponent implements OnInit {
       col: def.fieldId,
       row: row
     }
-    
+
     this.control.setValue(this.rowData[row][def.fieldId]?.value);
     this.control.setListItems(def.listItems);
     this.control.setCustomValidators(def.validators);
-    
+    this.control.focus();
+
     this.detectorRef.detectChanges();
-  }
-  onKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      this.editingCell = null;
-      this.detectorRef.detectChanges();
-    }
   }
 
   isEditing(def: FndTableColDef, row: number): boolean {
@@ -77,6 +82,16 @@ export class TableComponent implements OnInit {
     }
     this.editingCell = null;
     this.detectorRef.detectChanges();
+  }
+
+  public getData(): { [key: string]: string }[] {
+    return this.rowData.map(row => {
+      let result = {};
+      this.colDefs.forEach(def => {
+        Object.assign(result, { [def.fieldId]: row[def.fieldId]?.value ?? '' });
+      })
+      return result;
+    })
   }
 }
 

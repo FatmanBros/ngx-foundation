@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   forwardRef,
   Injector,
-  Input
+  Input,
+  ViewChild
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Autocomplete } from '../../enum/enums';
@@ -43,6 +45,9 @@ export class TextboxComponent extends BaseControlComponent {
     this.isNumeric = !!this.control.validators?.some((validator) =>
       Object.keys(validator).some((key) => key === Validation.numeric)
     );
+  }
 
+  focus() {
+    this.elementRef.nativeElement.querySelector('input').focus()
   }
 }

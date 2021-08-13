@@ -100,7 +100,8 @@
       <foundation-datepicker formControlName="test_date" class="m1"></foundation-datepicker>
       <mat-divider></mat-divider>
 
-      <foundation-table [colDefs]="tableColDefs" [rowData]="rowData"></foundation-table>
+      <foundation-table #fndTable [colDefs]="tableColDefs" [rowData]="rowData"></foundation-table>
+      <foundation-button (click)="getTableData()">データ取得</foundation-button>
     </div>
   </form>
 </div>

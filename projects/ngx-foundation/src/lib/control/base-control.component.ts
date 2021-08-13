@@ -94,8 +94,18 @@ export abstract class BaseControlComponent<T = any>
         this.detectorRef.markForCheck();
       })
     );
+
+    // フォーカス
+    this.subscriptions.push(
+      this.control.focus$.subscribe(() => {
+        this.focus()
+      })
+    )
+    
     this.mainNgAfterViewInit();
   }
+
+  protected focus() { }
 
   protected _onChangeCallback = (_: any) => {};
   protected _onTouchedCallback = () => {};
