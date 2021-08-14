@@ -202,4 +202,8 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
     this.month++;
     this.getCalendar()
   }
+
+  focus() {
+    this.elementRef.nativeElement.querySelector('input').focus()
+  }
 }

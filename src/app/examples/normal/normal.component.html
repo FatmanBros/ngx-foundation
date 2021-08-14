@@ -100,8 +100,12 @@
       <foundation-datepicker formControlName="test_date" class="m1"></foundation-datepicker>
       <mat-divider></mat-divider>
 
+      <div class="flex">
+        <foundation-button (click)="getTableData()" [label]="'データ取得'"></foundation-button>
+        <foundation-button (click)="addRow()" [label]="'行追加'"></foundation-button>
+        <foundation-button (click)="removeRow()" [label]="'行削除'"></foundation-button>
+      </div>
       <foundation-table #fndTable [colDefs]="tableColDefs" [rowData]="rowData"></foundation-table>
-      <foundation-button (click)="getTableData()">データ取得</foundation-button>
     </div>
   </form>
 </div>

@@ -229,6 +229,12 @@ export class NormalComponent implements OnInit {
   public fndTable!: TableComponent;
 
   public getTableData() {
-    console.log(this.fndTable.getData());
+    console.log(this.fndTable.value);
+  }
+  addRow() {
+    this.fndTable.addRow();
+  }
+  removeRow() {
+    this.fndTable.removeRow(0);
   }
 }

@@ -84,7 +84,22 @@ export class TableComponent implements OnInit {
     this.detectorRef.detectChanges();
   }
 
-  public getData(): { [key: string]: string }[] {
+  public addRow() {
+    let newRow = {};
+    this.colDefs.forEach(def => {
+      Object.assign(newRow, { [def.fieldId]: { value: '' } })
+    });
+
+    this.rowData.splice(this.rowData.length, 0, newRow);
+  }
+
+  public removeRow(i: number) {
+    if (this.rowData.length - 1 > i) {
+      this.rowData.splice(i, 1)
+    }
+  }
+
+  public get value(): { [key: string]: string }[] {
     return this.rowData.map(row => {
       let result = {};
       this.colDefs.forEach(def => {
