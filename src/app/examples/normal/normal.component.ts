@@ -186,7 +186,7 @@ export class NormalComponent implements OnInit {
 
   public tableColDefs: FndTableColDef[] = [
     { fieldId: 'field1', label: 'テスト１', editable: true, type: FndTbColumnType.text, validators: [CustomValidators.required()] },
-    { fieldId: 'field2', label: 'テスト２' },
+    { fieldId: 'field2', label: 'テスト２', editable: true, type: FndTbColumnType.date },
     { fieldId: 'field3', label: 'テスト３' },
     { fieldId: 'field4', label: 'テスト４' },
     { fieldId: 'field5', label: 'テスト５' },

@@ -1,5 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, HostListener, Input, OnInit, PipeTransform } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { isDate } from 'moment';
+import { retryWhen } from 'rxjs';
 import { ListItem } from '../../constants/constants';
 import { CustomValidatorFn } from '../../validate/custom-validators';
 import { CustomFormControl } from '../custom-form-control';
@@ -10,6 +13,7 @@ import { CustomFormControl } from '../custom-form-control';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
+  public readonly dateFormat = "yyyy/MM/dd";
 
   public tblType = FndTbColumnType;
 
@@ -19,12 +23,29 @@ export class TableComponent implements OnInit {
   @Input()
   public rowData: FndTableRowData[] = [];
 
-  constructor(private _fb: FormBuilder, private detectorRef: ChangeDetectorRef) { }
+  constructor(
+    private _fb: FormBuilder,
+    private detectorRef: ChangeDetectorRef,
+    private datePipe: DatePipe) { }
 
   public esc = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       this.editingCell = null;
       this.detectorRef.detectChanges();
+    }
+  }
+  public dispCellValue(row: { [key: string]: any }, def: FndTableColDef) {
+    switch (def.type) {
+      case FndTbColumnType.date:
+        if (isDate(row[def.fieldId]?.value)) {
+          return this.datePipe.transform(row[def.fieldId]?.value, this.dateFormat);
+        } else {
+          return '';
+        }
+      case FndTbColumnType.dropdown:
+        return
+      default:
+        return row[def.fieldId]?.value;
     }
   }
   ngOnInit(): void {
@@ -72,16 +93,18 @@ export class TableComponent implements OnInit {
   }
 
   onChange(value: any, def: FndTableColDef, row: number) {
-    if (this.control.invalid) {
-      return;
-    }
-    if (this.rowData[row][def.fieldId]) {
-      this.rowData[row][def.fieldId].value = value;
-    } else {
-      this.rowData[row][def.fieldId] = { value: value };
-    }
-    this.editingCell = null;
-    this.detectorRef.detectChanges();
+    setTimeout(() => {
+      if (this.control.invalid) {
+        return;
+      }
+      if (this.rowData[row][def.fieldId]) {
+        this.rowData[row][def.fieldId].value = value;
+      } else {
+        this.rowData[row][def.fieldId] = { value: value };
+      }
+      this.editingCell = null;
+      this.detectorRef.detectChanges();
+    })
   }
 
   public addRow() {

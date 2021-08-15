@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,6 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isDate } from 'moment';
 import { BaseControlComponent } from '../base-control.component';
 
 const MONTH_NAMES = [
@@ -91,7 +93,7 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
     this.inside = false;
   }
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private datePipe: DatePipe) {
     super(injector);
   }
 
@@ -99,12 +101,19 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
     this.getCalendar();
   }
 
+  public get dispValue() {
+    if (!isDate(this.control?.value)) {
+      return;
+    }
+    return this.datePipe.transform(this.control.value, this.dateFormat);
+  }
+
   onClick() {
     setTimeout(() => {
       this.dtInput.nativeElement.focus();
     });
     this.toggleDatepicker('open');
-    if (this.value) {
+    if (isDate(this.value)) {
       this.dtInput.nativeElement.value = this.value.getFullYear() + '/' + (this.value.getMonth() + 1) + '/' + this.value.getDate();
     } else {
       this.dtInput.nativeElement.value = '';
@@ -121,6 +130,7 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
       this.control.setValue(undefined);
     }
     this.control.markAsDirty();
+    super.onChange();
   }
   
   onChange() {
@@ -141,6 +151,9 @@ export class DatepickerComponent extends BaseControlComponent<Date> {
     return '';
   }
   isSelectedDate(date: number): boolean {
+    if (!isDate(this.value)) {
+      return false;
+    }
     return this.value?.getTime() === new Date(this.year, this.month, date).getTime();
   }
   isToday(date: number): boolean {
