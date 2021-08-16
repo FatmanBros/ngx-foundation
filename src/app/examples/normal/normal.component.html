@@ -105,7 +105,7 @@
         <foundation-button (click)="addRow()" [label]="'行追加'"></foundation-button>
         <foundation-button (click)="removeRow()" [label]="'行削除'"></foundation-button>
       </div>
-      <foundation-table #fndTable [colDefs]="tableColDefs" [rowData]="rowData"></foundation-table>
+      <foundation-table #fndTable [colDefs]="tableColDefs" [rowData]="rowData" (selectRow)="selectRow($event)"></foundation-table>
     </div>
   </form>
 </div>

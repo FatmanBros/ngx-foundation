@@ -237,4 +237,7 @@ export class NormalComponent implements OnInit {
   removeRow() {
     this.fndTable.removeRow(0);
   }
+  selectRow(row: FndTableRowData) {
+    console.log(row);
+  }
 }

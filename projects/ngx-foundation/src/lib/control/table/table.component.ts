@@ -1,8 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, HostListener, Input, OnInit, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, PipeTransform } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { isDate } from 'moment';
-import { retryWhen } from 'rxjs';
 import { ListItem } from '../../constants/constants';
 import { CustomValidatorFn } from '../../validate/custom-validators';
 import { CustomFormControl } from '../custom-form-control';
@@ -92,7 +91,10 @@ export class TableComponent implements OnInit {
     return this.editingCell?.col === def.fieldId && this.editingCell?.row === row;
   }
 
-  onChange(value: any, def: FndTableColDef, row: number) {
+  @Output('onChange')
+  public onChange$: EventEmitter<FndTableRowData> = new EventEmitter<FndTableRowData>();
+
+  _onChange(value: any, def: FndTableColDef, row: number) {
     setTimeout(() => {
       if (this.control.invalid) {
         return;
@@ -105,6 +107,16 @@ export class TableComponent implements OnInit {
       this.editingCell = null;
       this.detectorRef.detectChanges();
     })
+    this.onChange$.emit(this.rowData[row]);
+  }
+
+  public selectedRowIndex?: number;
+  @Output('selectRow')
+  public selectRow$: EventEmitter<FndTableRowData> = new EventEmitter<FndTableRowData>();
+  public selectRow(row: FndTableRowData, i: number) {
+    this.selectedRowIndex = i;
+    this.selectRow$.emit(row);
+    this.detectorRef.detectChanges();
   }
 
   public addRow() {
