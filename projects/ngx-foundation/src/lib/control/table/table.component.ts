@@ -110,6 +110,12 @@ export class TableComponent implements OnInit {
     this.onChange$.emit(this.rowData[row]);
   }
 
+  _onClick(value: any, def: FndTableColDef, row: number) {
+    if (def.buttonOption?.clickEvents) {
+      def.buttonOption.clickEvents(this.rowData[row]);
+    }
+  }
+
   public selectedRowIndex?: number;
   @Output('selectRow')
   public selectRow$: EventEmitter<FndTableRowData> = new EventEmitter<FndTableRowData>();
@@ -150,6 +156,7 @@ export enum FndTbColumnType {
   dropdown,
   checkbox,
   date,
+  button,
 }
 
 export interface FndTableColDef {
@@ -162,6 +169,11 @@ export interface FndTableColDef {
   pipe?: PipeTransform;
   width?: number;
   changeEvents?: (param: FndTableRowData) => {}
+  buttonOption?: {
+    label: string,
+    clickEvents: (param: FndTableRowData) => void
+    styles?: string,
+  }
 }
 
 export interface FndTableRowData {

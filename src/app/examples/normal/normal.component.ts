@@ -185,6 +185,16 @@ export class NormalComponent implements OnInit {
   ]
 
   public tableColDefs: FndTableColDef[] = [
+    {
+      fieldId: 'field0', label: '', type: FndTbColumnType.button,
+      width: 5,
+      buttonOption: {
+        label: '削除', clickEvents: (param: FndTableRowData) => {
+          console.log('テスト')
+        },
+        styles: ''
+      }
+    },
     { fieldId: 'field1', label: 'テスト１', editable: true, type: FndTbColumnType.text, validators: [CustomValidators.required()] },
     { fieldId: 'field2', label: 'テスト２', editable: true, type: FndTbColumnType.date },
     { fieldId: 'field3', label: 'テスト３' },
