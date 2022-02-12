@@ -15,7 +15,7 @@ import { Authority } from '../constants';
 import { DateUtils } from '../utils/date-utils';
 
 @Component({
-  selector: 'app-normal',
+  selector: 'foundation-normal',
   templateUrl: './normal.component.html',
   styleUrls: ['./normal.component.scss'],
 })

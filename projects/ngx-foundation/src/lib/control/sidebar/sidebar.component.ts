@@ -9,7 +9,7 @@ declare interface RouteInfo {
 }
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'foundation-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })

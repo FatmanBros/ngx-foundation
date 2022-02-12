@@ -4,7 +4,7 @@ import { Link } from 'projects/ngx-foundation/src/lib/control/navbar/navbar.comp
 import { DarkModeService } from 'projects/ngx-foundation/src/lib/service/dark-mode.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'foundation-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

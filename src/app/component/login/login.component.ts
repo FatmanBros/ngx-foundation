@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginParameter } from '@ngx-foundation/ngx-foundation';
 
 @Component({
-  selector: 'app-login',
+  selector: 'foundation-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

@@ -7,7 +7,7 @@ export declare interface Link {
 }
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'foundation-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
