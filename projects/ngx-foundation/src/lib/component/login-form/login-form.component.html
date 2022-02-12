@@ -1,0 +1,18 @@
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+<div class="max-w-sm mx-auto px-6">
+  <div class="relative flex flex-wrap">
+    <div class="w-full relative">
+      <div class="md:mt-6">
+        <form class="mt-8" [formGroup]="form" (ngSubmit)="submit()">
+          <div class="mx-auto max-w-lg ">
+            <foundation-textbox formControlName="id"></foundation-textbox>
+            <foundation-textbox formControlName="password" [type]="'password'"></foundation-textbox>
+
+            <foundation-button [label]="'ログイン'" [color]="'gray'" [type]="'submit'"></foundation-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

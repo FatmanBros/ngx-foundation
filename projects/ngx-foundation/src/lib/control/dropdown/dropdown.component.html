@@ -1,0 +1,17 @@
+<div class="relative inline-block text-left z-50">
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div
+    class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+    role="menu" tabindex="-1" [ngStyle]="{'display': toggle ? '' : 'none'}">
+    <div *ngFor="let section of items" class="py-1" role="none">
+      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+      <a *ngFor="let item of section " class="block px-4 py-2 text-sm cursor-pointer" role="menuitem"
+        tabindex="-1" (click)="item.action()" (click)="toggle = false">
+        <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+        {{item.title}}
+      </a>
+    </div>
+  </div>
+</div>

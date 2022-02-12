@@ -1,0 +1,29 @@
+$my-primary-color: (
+  color: #a5c3cf,
+  contrast: #2f3131,
+);
+
+$my-warn-color: (
+  color: #b71311,
+  contrast: #f8f1e5,
+);
+
+$my-accent-color: (
+  color: #e59d5c,
+  contrast: #f8f1e5,
+);
+
+$custom-colors: (
+  secondary: (
+    color: #f3d3b8,
+    contrast: #6a6158,
+  ),
+  tertiary: (
+    color: #a99f3c,
+    contrast: #fefeff,
+  ),
+  base: (
+    color: #f8f1e5,
+    contrast: #2f3131,
+  ),
+);

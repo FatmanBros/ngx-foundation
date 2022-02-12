@@ -12,6 +12,7 @@ export enum Validation {
   dateGraterThan = 'dateGraterThan',
   dateLessThan = 'dateLessThan',
   email = 'email',
+  password = 'password',
   postcode = 'postcode',
   phoneNumber = 'phoneNumber',
 }

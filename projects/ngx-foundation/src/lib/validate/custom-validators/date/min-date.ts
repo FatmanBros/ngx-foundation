@@ -1,9 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import * as _moment from 'moment';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
 const moment = _moment;
@@ -11,36 +11,33 @@ const moment = _moment;
 @Injectable({
   providedIn: 'root',
 })
-export class MinDate extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator = (date: Date) => {
+export class MinDate {
+  public static validator(date: Date) {
     return {
       [Validation.minDate]: {
-        func: this.func,
+        func: MinDate.func,
         args: date,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       const date: Date = control.args[validatorKey];
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (new Date(control.value).getTime() > date.getTime()) {
+      if (new Date(control.value).getTime() >= date.getTime()) {
         return null;
       }
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.minDate],
+          NgxFoundation.options.messages[Validation.minDate],
           moment(date).format('l')
         ),
       };
     };
-  };
+  }
 }

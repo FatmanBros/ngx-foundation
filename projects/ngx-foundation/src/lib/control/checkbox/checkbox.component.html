@@ -1,10 +1,4 @@
-<mat-label *ngIf="dir === labelDirection.left">{{ labelText }}</mat-label>
-<mat-checkbox
-  [formControl]="control"
-  [id]="ctlName"
-  [name]="ctlName"
-  (focus)="onFocus()"
-  (blur)="onBlur()"
-  (change)="onChange()"
-></mat-checkbox>
-<mat-label *ngIf="dir === labelDirection.right">{{ labelText }}</mat-label>
+<label class="label-right" *ngIf="labelDir === labelDirection.left">{{ labelText }}</label>
+<input type="checkbox" [formControl]="control" class="rounded h-4 w-4 text-blue-600" (focus)="onFocus()"
+  (blur)="onBlur()" (change)="onChange()">
+<label class="label-left" *ngIf="labelDir === labelDirection.right">{{ labelText }}</label>

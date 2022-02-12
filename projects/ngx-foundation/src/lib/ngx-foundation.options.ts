@@ -16,10 +16,12 @@ export interface ngxFoundationOptions {
     [Validation.maxValue]: string;
     [Validation.minValue]: string;
     [Validation.numeric]: string;
+    [Validation.email]: string;
   };
 
   option: {
     numberOfWords: string;
+    overlay?: { main: string; sub: string };
   };
   appearance?: Appearance;
 }

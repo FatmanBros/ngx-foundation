@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -9,23 +10,41 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxFoundationModule } from '@ngx-foundation/ngx-foundation';
+import {
+  MaterialModule,
+  NgxFoundationModule,
+} from '@ngx-foundation/ngx-foundation';
 import { Appearance } from 'projects/ngx-foundation/src/lib/enum/enums';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './component/login/login.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { NormalComponent } from './examples/normal/normal.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [AppComponent, NormalComponent],
+  declarations: [
+    AppComponent,
+    NormalComponent,
+    LoginComponent,
+    SignUpComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    ScrollingModule,
     NgxFoundationModule.init({
       messages: {
         required: '必須です。',
@@ -36,9 +55,11 @@ import { NormalComponent } from './examples/normal/normal.component';
         maxValue: '$0以下の値を入力してください。',
         minValue: '$0以上の値を入力してください。',
         numeric: '数値を入力してください。',
+        email: 'メールアドレスの形式で入力してください。',
       },
       option: {
         numberOfWords: '残り$0文字',
+        overlay: { main: '通信中です', sub: 'しばらくお待ち下さい。' },
       },
     }),
   ],

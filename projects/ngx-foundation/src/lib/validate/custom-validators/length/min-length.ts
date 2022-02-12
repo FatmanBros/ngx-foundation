@@ -1,43 +1,36 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../../control/custom-form-control';
+import { NgxFoundation } from '../../../ngx-foundation-options';
 import { Util } from '../../../util/utils';
-import { BaseValidator } from '../../base-validator';
 import { Validation, Validations } from '../../validation';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class MinLength extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator = (len: number) => {
+export class MinLength {
+  public static validator(len: number) {
     return {
       [Validation.minLength]: {
-        func: this.func,
+        func: MinLength.func,
         args: len,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       const minLength: number = control.args[validatorKey];
       if (Validations.isNullOrLengthZero(control.value)) {
         return null;
       }
-      if (control.value?.length > minLength) {
+      if (control.value?.length >= minLength) {
         return null;
       }
 
       return {
         [validatorKey]: Util.message(
-          this.options.messages[Validation.maxLength],
+          NgxFoundation.options.messages[Validation.minLength],
           minLength + ''
         ),
       };
     };
-  };
+  }
 }

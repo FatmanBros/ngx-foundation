@@ -5,32 +5,32 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { ListItem } from '../constants/constants';
 import { CustomValidatorFn } from '../validate/custom-validators';
 import { Validation } from '../validate/validation';
 
-export class CustomFormControl extends FormControl {
+export class CustomFormControl<T = any> extends FormControl {
   public validators?: { [key: string]: CustomValidatorFn }[];
   public viewUpdate$ = new Subject();
+  public focus$ = new Subject();
   public args: { [key: string]: any } = {};
 
   public labelText!: string;
   public required!: boolean;
   public maxLength!: number;
   public decimalDigitLength?: number;
+  public listItems?: ListItem[];
+  public options?: CustomFormOptions;
 
-  constructor(customForm: CustomForm) {
+  constructor(customForm: CustomForm<T>) {
     super(customForm.formState);
-    
     this.setValue(customForm.value);
-    
     this.labelText = customForm.labelText;
-
     this.validators = customForm.validators;
+    this.listItems = customForm.listItems;
+    this.options = customForm.options;
 
-    const customValidators = this.createCustomValidatorFns(
-      customForm.validators
-    );
-    this.setValidators(Validators.compose(customValidators));
+    this.setCustomValidators(customForm.validators);
   }
 
   /**
@@ -68,6 +68,15 @@ export class CustomFormControl extends FormControl {
     super.setValue(value);
     this.viewUpdate();
   }
+  setListItems(listItems: ListItem[] | undefined):void {
+    this.listItems = listItems;
+  }
+  setCustomValidators(validators: { [key: string]: CustomValidatorFn }[] | undefined): void {
+    const customValidators = this.createCustomValidatorFns(
+      validators
+    );
+    this.setValidators(Validators.compose(customValidators));
+  }
   patchValue(value: any, options?: Object): void {
     super.patchValue(value);
     this.viewUpdate();
@@ -81,12 +90,23 @@ export class CustomFormControl extends FormControl {
     this.viewUpdate$.next(null);
     return this;
   }
+  public focus(): CustomFormControl {
+    setTimeout(() => {
+      this.focus$.next(null);
+    });
+    return this;
+  }
 }
 
-export interface CustomForm {
+export interface CustomForm<T = any> {
   labelText: string;
-  value: any;
+  value?: T;
   formState?: any;
+  listItems?: ListItem[];
   validators?: { [key: string]: CustomValidatorFn }[];
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;
+  options?: CustomFormOptions;
+}
+export interface CustomFormOptions {
+  placeholder: string;
 }

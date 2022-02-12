@@ -1,1 +1,25 @@
-<p>button works!</p>
+<div class="pt-2">
+  <ng-container *ngIf="!routerLink">
+    <div class="text-center space-x-1 space-y-2">
+      <button *ngIf="color !== 'white'" type="{{type}}" [ngClass]="getClass()">
+        {{label}}
+      </button>
+
+      <button *ngIf="color === 'white'" type="{{type}}" [ngClass]="getClass()">
+        {{label}}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="routerLink">
+    <div class="mt-2 text-center space-x-1 space-y-2">
+      <a *ngIf="color !== 'white'" type="button" [routerLink]="routerLink" [ngClass]="getClass()">
+        {{label}}
+      </a>
+
+      <a *ngIf="color === 'white'" type="button" [routerLink]="routerLink" [ngClass]="getClass()">
+        {{label}}
+      </a>
+    </div>
+  </ng-container>
+</div>

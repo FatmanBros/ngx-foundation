@@ -1,0 +1,18 @@
+<div class="outer" [ngStyle]="outerStyles">
+  <foundation-button
+    [buttonParam]="{ icon: 'chevron_left' }"
+    (click)="onLeft()"
+  ></foundation-button>
+  <div
+    class="inner"
+    [ngClass]="innerStyles"
+    [ngStyle]="{ 'margin-left': left }"
+    (mousedown)="dragStart($event)"
+  >
+    <ng-content></ng-content>
+  </div>
+  <foundation-button
+    [buttonParam]="{ icon: 'chevron_right' }"
+    (click)="onRight()"
+  ></foundation-button>
+</div>

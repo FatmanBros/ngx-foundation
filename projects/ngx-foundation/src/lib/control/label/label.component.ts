@@ -2,15 +2,15 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Injector
+  Injector,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
-  selector: 'faundation-label',
+  selector: 'foundation-label',
   templateUrl: './label.component.html',
-  styleUrls: ['./label.component.scss'],
+  styleUrls: ['../../css/styles.scss', './label.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,5 +24,4 @@ export class LabelComponent extends BaseControlComponent {
   constructor(injector: Injector) {
     super(injector);
   }
-
 }

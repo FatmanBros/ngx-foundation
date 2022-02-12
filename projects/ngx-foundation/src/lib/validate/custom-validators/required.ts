@@ -1,28 +1,20 @@
-import { Injectable, Injector } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { CustomFormControl } from '../../control/custom-form-control';
+import { NgxFoundation } from '../../ngx-foundation-options';
 import { Util } from '../../util/utils';
-import { BaseValidator } from '../base-validator';
-import { CustomValidatorFn } from '../custom-validators';
 import { Validation, Validations } from '../validation';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class Required extends BaseValidator {
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  public validator: () => { [key: string]: CustomValidatorFn } = () => {
+export class Required  {
+  public static validator() {
     return {
       [Validation.required]: {
-        func: this.func,
+        func: Required.func,
         args: null,
       },
     };
-  };
+  }
 
-  public func = (validatorKey: any) => {
+  public static func(validatorKey: any) {
     return (c: AbstractControl) => {
       const control: CustomFormControl = c as CustomFormControl;
       if (!control.labelText) {
@@ -33,7 +25,7 @@ export class Required extends BaseValidator {
       if (Validations.isBlank(control.value)) {
         return {
           [validatorKey]: Util.message(
-            this.options.messages[Validation.required],
+            NgxFoundation.options.messages[Validation.required],
             control.labelText
           ),
         };
@@ -41,5 +33,5 @@ export class Required extends BaseValidator {
         return null;
       }
     };
-  };
+  }
 }

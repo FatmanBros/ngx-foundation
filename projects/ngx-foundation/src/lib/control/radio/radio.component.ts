@@ -12,7 +12,7 @@ import { BaseControlComponent } from '../base-control.component';
 @Component({
   selector: 'foundation-radio',
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss'],
+  styleUrls: ['../../css/styles.scss', './radio.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -23,8 +23,6 @@ import { BaseControlComponent } from '../base-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioComponent extends BaseControlComponent {
-  @Input() radioOptions: ListItem[] = [];
-
   constructor(injector: Injector) {
     super(injector);
   }

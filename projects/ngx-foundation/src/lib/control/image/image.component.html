@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="getContentType()">
+  <img *ngSwitchCase="contentType.image" [src]="imgContent.image" />
+</ng-container>
+<ng-container *ngIf="content; instanceof: NgxFoundationVideo">
+  <video *ngSwitchCase="contentType.video" [src]="videoContent.video"></video>
+</ng-container>

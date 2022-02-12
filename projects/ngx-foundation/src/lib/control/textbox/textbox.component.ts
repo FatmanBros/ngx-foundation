@@ -1,18 +1,21 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   forwardRef,
   Injector,
-  Input
+  Input,
+  ViewChild
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Autocomplete } from '../../enum/enums';
+import { Validation, Validations } from '../../validate/validation';
 import { BaseControlComponent } from '../base-control.component';
 
 @Component({
   selector: 'foundation-textbox',
   templateUrl: './textbox.component.html',
-  styleUrls: ['./textbox.component.css'],
+  styleUrls: ['../../css/styles.scss', './textbox.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,8 +28,26 @@ import { BaseControlComponent } from '../base-control.component';
 export class TextboxComponent extends BaseControlComponent {
   @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
   @Input() hint: string = '';
+  @Input() type: string = 'text';
+  isNumeric: boolean = false;
+  hide: boolean = true;
 
   constructor(injector: Injector) {
     super(injector);
+  }
+
+  mainNgAfterViewInit() {
+    // emailタイプの自動判定
+    if (this.existValidation(Validation.email)) {
+      this.type = 'email';
+    }
+
+    this.isNumeric = !!this.control.validators?.some((validator) =>
+      Object.keys(validator).some((key) => key === Validation.numeric)
+    );
+  }
+
+  focus() {
+    this.elementRef.nativeElement.querySelector('input').focus()
   }
 }

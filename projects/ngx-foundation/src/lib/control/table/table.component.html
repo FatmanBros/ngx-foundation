@@ -1,0 +1,63 @@
+<table class="min-w-max w-full table-auto">
+  <thead>
+    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+      <th *ngFor="let def of colDefs" class="py-3 px-6 text-left" [ngStyle]="getWidth(def)">{{def.label}}</th>
+    </tr>
+  </thead>
+  <tbody class="text-gray-600 text-sm font-light">
+    <tr *ngFor="let row of rowData; index as i" class="border-b border-gray-200"
+      [ngClass]="{'bg-indigo-100': i === selectedRowIndex}" (click)="selectRow(row, i)">
+      <td *ngFor="let def of colDefs;" class="text-left whitespace-nowrap hover:bg-blue-100 px-2">
+        <span class="font-medium" (click)="edit(def, i)">
+          <form [formGroup]="editForm">
+            <ng-container *ngIf="isEditing(def, i) || def.type === tblType.button; else showLabel ">
+              <ng-container [ngSwitch]="def.type">
+                <ng-container *ngSwitchCase="tblType.text">
+                  <foundation-textbox formControlName="edit" (changeEvent)="_onChange($event, def, i)">
+                  </foundation-textbox>
+                </ng-container>
+                <ng-container *ngSwitchCase="tblType.date">
+                  <foundation-datepicker formControlName="edit" (changeEvent)="_onChange($event, def, i)">
+                  </foundation-datepicker>
+                </ng-container>
+                <ng-container *ngSwitchCase="tblType.dropdown">
+                  <foundation-select formControlName="edit" (changeEvent)="_onChange($event, def, i)">
+                  </foundation-select>
+                </ng-container>
+                <ng-container *ngSwitchCase="tblType.button">
+                  <foundation-button [label]="def.buttonOption?.label ?? ''" (click)="_onClick($event, def, i)">
+                  </foundation-button>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </form>
+          <ng-template #showLabel>
+            <div class="flex justify-between py-3 px-6 w-full" [ngClass]="{'cursor-pointer': def.editable}">
+              <div>
+                {{dispCellValue(row, def)}}
+              </div>
+              <div *ngIf="def.editable" class="w-4 h-4">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 117.74 122.88"
+                  style="enable-background:new 0 0 117.74 122.88" xml:space="preserve">
+                  <style type="text/css">
+                    .st0 {
+                      fill-rule: evenodd;
+                      clip-rule: evenodd;
+                    }
+                  </style>
+                  <g>
+                    <path class="st0"
+                      d="M94.62,2c-1.46-1.36-3.14-2.09-5.02-1.99c-1.88,0-3.56,0.73-4.92,2.2L73.59,13.72l31.07,30.03l11.19-11.72 c1.36-1.36,1.88-3.14,1.88-5.02s-0.73-3.66-2.09-4.92L94.62,2L94.62,2L94.62,2z M41.44,109.58c-4.08,1.36-8.26,2.62-12.35,3.98 c-4.08,1.36-8.16,2.72-12.35,4.08c-9.73,3.14-15.07,4.92-16.22,5.23c-1.15,0.31-0.42-4.18,1.99-13.6l7.74-29.61l0.64-0.66 l30.56,30.56L41.44,109.58L41.44,109.58L41.44,109.58z M22.2,67.25l42.99-44.82l31.07,29.92L52.75,97.8L22.2,67.25L22.2,67.25z" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -20,10 +20,26 @@ export enum Appearance {
   outline = 'outline',
 }
 
-
 export enum LabelDirection {
   top,
   left,
   right,
-  bottom
+  bottom,
+}
+
+export enum MatColor {
+  primary = 'primary',
+  secondary = 'secondary',
+  tertiary = 'tertiary',
+  success = 'success',
+  accent = 'accent',
+  warn = 'warn',
+  white = 'white',
+  base = 'base',
+}
+
+export enum ImageVideoContentType {
+  image,
+  video,
+  other,
 }

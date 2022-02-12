@@ -12,7 +12,8 @@ import {
   NgControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Appearance } from '../enum/enums';
+import { ListItem } from '../constants/constants';
+import { Appearance, MatColor } from '../enum/enums';
 import {
   ngxFoundationOptions,
   NGX_FOUNDATION_OPTIONS,
@@ -26,20 +27,35 @@ import { CustomFormControl } from './custom-form-control';
 @Component({
   template: '',
 })
-export abstract class BaseControlComponent
+export abstract class BaseControlComponent<T = any>
   extends BaseComponent
   implements OnInit, AfterViewInit, ControlValueAccessor
 {
   @Input() labelText: string = '';
   @Input() appearance: Appearance = Appearance.standard;
-  isNumeric: boolean = false;
+  @Input() color?: MatColor;
 
-  @Output() focus = new EventEmitter<CustomFormControl>();
-  @Output() blur = new EventEmitter<CustomFormControl>();
-  @Output() change = new EventEmitter<CustomFormControl>();
+  @Output() focusEvent = new EventEmitter<T>();
+  @Output() blurEvent = new EventEmitter<T>();
+  @Output() changeEvent = new EventEmitter<T>();
 
   public ngControl!: NgControl;
-  public control!: CustomFormControl;
+  public control!: CustomFormControl<T>;
+
+  get value(): T | undefined {
+    if (!this.control) {
+      return;
+    }
+    return this.control.value as T;
+  }
+
+  get listItems(): ListItem[] {
+    if (this.control.listItems) {
+      return this.control.listItems;
+    } else {
+      return [];
+    }
+  }
 
   public matcher = new CustomErrorStateMatcher();
 
@@ -65,21 +81,31 @@ export abstract class BaseControlComponent
   }
 
   ngAfterContentInit(): void {
-    this.control = this.ngControl.control as CustomFormControl;
+    this.control = this.ngControl.control as CustomFormControl<T>;
     this.labelText = this.control.labelText;
   }
 
+  protected mainNgAfterViewInit() {}
+
   ngAfterViewInit() {
-    this.isNumeric = !!this.control.validators?.some((validator) =>
-      Object.keys(validator).some((key) => key === Validation.numeric)
-    );
     // ビュー更新
     this.subscriptions.push(
       this.control.viewUpdate$.subscribe(() => {
         this.detectorRef.markForCheck();
       })
     );
+
+    // フォーカス
+    this.subscriptions.push(
+      this.control.focus$.subscribe(() => {
+        this.focus()
+      })
+    )
+    
+    this.mainNgAfterViewInit();
   }
+
+  protected focus() { }
 
   protected _onChangeCallback = (_: any) => {};
   protected _onTouchedCallback = () => {};
@@ -94,20 +120,24 @@ export abstract class BaseControlComponent
   writeValue(v: any): void {}
 
   onFocus() {
-    this.focus.emit(this.control);
+    this.focusEvent.emit(this.control.value);
   }
 
   onBlur() {
     this._onTouchedCallback();
-    this.blur.emit(this.control);
+    this.blurEvent.emit(this.control.value);
   }
 
   onChange() {
-    this.change.emit(this.control);
+    this.changeEvent.emit(this.control.value);
   }
 
   public get errorMessage(): string[] {
     if (!this.control) {
+      return [];
+    }
+
+    if (!this.control.dirty && !this.control.touched) {
       return [];
     }
 
@@ -119,5 +149,25 @@ export abstract class BaseControlComponent
       (key) => (this.control.errors as ValidationErrors)[key]
     );
     return msg;
+  }
+
+  public get ngClass() {
+    return {
+      [`mat-${this.color}`]: true,
+    };
+  }
+
+  public get placeholder() {
+    if (!this.control?.options) {
+      return '';
+    } else {
+      return this.control.options.placeholder;
+    }
+  }
+
+  protected existValidation(key: string): boolean {
+    return !!this.control.validators?.some((validator) =>
+      Object.keys(validator).some((k) => k === key)
+    );
   }
 }
