@@ -29,7 +29,6 @@ export * from './lib/control/image-chip/image-chip.component';
 export * from './lib/control/info-card/info-card.component';
 export * from './lib/control/icon-button/icon-button.component';
 export * from './lib/control/overlay/overlay.component';
-export * from './lib/control/swiper/swiper.component';
 export * from './lib/control/toast/toast.component';
 export * from './lib/control/top/top.component';
 export * from './lib/control/accordion/accordion.component';
