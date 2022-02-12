@@ -48,3 +48,5 @@ Thumbs.db
 *.css
 !*scss
 *css.map
+
+.angular
