@@ -26,7 +26,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { NormalComponent } from './examples/normal/normal.component';
-import { SwiperModule } from 'swiper/angular';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
@@ -45,7 +44,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MaterialModule,
     FlexLayoutModule,
     MatFormFieldModule,
-    SwiperModule,
     ScrollingModule,
     NgxFoundationModule.init({
       messages: {

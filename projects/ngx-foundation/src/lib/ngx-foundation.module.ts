@@ -6,7 +6,6 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SwiperModule } from 'swiper/angular';
 import { LoginFormComponent } from './component/login-form/login-form.component';
 import { SignUpFormComponent } from './component/sign-up-form/sign-up-form.component';
 import { AvatarComponent } from './control/avatar/avatar.component';
@@ -30,7 +29,6 @@ import { RadioComponent } from './control/radio/radio.component';
 import { SelectComponent } from './control/select/select.component';
 import { SidebarComponent } from './control/sidebar/sidebar.component';
 import { SocialMediaButtonsComponent } from './control/social-media-buttons/social-media-buttons.component';
-import { SwiperComponent } from './control/swiper/swiper.component';
 import { TextareaComponent } from './control/textarea/textarea.component';
 import { TextboxComponent } from './control/textbox/textbox.component';
 import { ToastComponent } from './control/toast/toast.component';
@@ -100,7 +98,6 @@ export const defaultOptions: ngxFoundationOptions = {
     IconButtonComponent,
     InfoCardComponent,
     OverlayComponent,
-    SwiperComponent,
     ToastComponent,
     TopComponent,
     AccordionComponent,
@@ -114,7 +111,6 @@ export const defaultOptions: ngxFoundationOptions = {
     ReactiveFormsModule,
     MaterialModule,
     NgSelectModule,
-    SwiperModule,
   ],
   exports: [
     NgxFoundationComponent,
@@ -140,7 +136,6 @@ export const defaultOptions: ngxFoundationOptions = {
     ImageChipComponent,
     IconButtonComponent,
     InfoCardComponent,
-    SwiperComponent,
     ToastComponent,
     TopComponent,
     AccordionComponent,
