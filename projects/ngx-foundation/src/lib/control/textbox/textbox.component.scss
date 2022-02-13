@@ -1,0 +1,21 @@
+.text-box-h {
+  @apply h-8;
+}
+.text-box-border {
+  @apply border border-gray-300 rounded-t rounded-b;
+}
+.text-box-bottom-border {
+  @apply bg-transparent border-x-0 border-t-0 border-b;
+}
+.default-frame {
+  @apply block w-full px-3 py-2;
+  @apply text-box-h;
+  @apply text-box-border;
+  @apply bg-white placeholder-gray-600 focus:border-gray-600 focus:placeholder-gray-500 focus:outline-none hover:text-gray-500 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-300 focus:dark:border-gray-300;
+}
+.custom-frame {
+  @apply block w-full px-3 py-2;
+  @apply text-box-h;
+  @apply text-box-bottom-border;
+  @apply bg-none placeholder-gray-600 focus:border-gray-600 focus:placeholder-gray-500 focus:outline-none hover:text-gray-500 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-300 focus:dark:border-gray-300;
+}

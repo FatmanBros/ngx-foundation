@@ -29,6 +29,7 @@ export class TextboxComponent extends BaseControlComponent {
   @Input() autocomplete: Autocomplete = Autocomplete.newPassword;
   @Input() hint: string = '';
   @Input() type: string = 'text';
+  @Input() style: 'default' | 'custom' = 'default'
   isNumeric: boolean = false;
   hide: boolean = true;
 
